@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TP_AI">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="java-output-path" value="/TP_AI/build/classes"/>
+        <property name="ClientProject" value="TP_AIClient"/>
+        <property name="ClientJARURI" value="TP_AIClient.jar"/>
+    </wb-module>
+</project-modules>

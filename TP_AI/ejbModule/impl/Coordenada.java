@@ -1,9 +1,14 @@
 package impl;
 
-public class Coordenada extends PersistentObject {
-	private static final long serialVersionUID = 1L;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Coordenada {
+
+	@Column(name = "latitud")
 	private double latitud;
+	@Column(name = "longitud")
 	private double longitud;
 
 	public Coordenada() {

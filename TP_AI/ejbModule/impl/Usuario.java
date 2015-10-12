@@ -1,9 +1,18 @@
 package impl;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Usuarios")
 public class Usuario extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "nombre")
 	private String nombre;
+	@Embedded
 	private Coordenada coordenada;
 
 	public Usuario() {

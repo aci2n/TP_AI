@@ -32,14 +32,6 @@ create table Despachos (
 	activo bit
 )
 
-create table OrdenesDespacho (
-	id int primary key identity not null,
-	id_despacho int,
-	estado varchar(100),
-	
-	constraint fk_ordenesdespacho_despachos foreign key(id_despacho) references Despachos
-)
-
 create table Detalles (
 	id int primary key identity not null,
 	id_articulo int,
@@ -64,10 +56,18 @@ create table Ventas (
 	longitud float,
 	latitud float,
 	id_usuario int,
-	id_orden_despacho int,
 
-	constraint fk_ventas_usuarios foreign key(id_usuario) references Usuarios,
-	constraint fk_ventas_ordenesdespacho foreign key(id_orden_despacho) references OrdenesDespacho
+	constraint fk_ventas_usuarios foreign key(id_usuario) references Usuarios
+)
+
+create table OrdenesDespacho (
+	id int primary key identity not null,
+	id_despacho int,
+	id_venta int,
+	estado varchar(100),
+	
+	constraint fk_ordenesdespacho_despachos foreign key(id_despacho) references Despachos,
+	constraint fk_ordenesdespacho_ventas foreign key(id_venta) references Ventas
 )
 
 create table ItemsArticulo (
@@ -95,11 +95,11 @@ go
 
 -- sp auxiliares
 
-create procedure tpai_seleccionartodo as
+create procedure tpad_seleccionartodo as
 begin
 	declare @nombreTabla varchar(200)
 	declare cursorTablas cursor fast_forward
-	for select name as nombreTabla from tpai.sys.objects where type = 'U'
+	for select name as nombreTabla from tpad.sys.objects where type = 'U'
 	open cursorTablas
 	fetch next from cursorTablas into @nombreTabla
 	while (@@FETCH_STATUS <> -1)

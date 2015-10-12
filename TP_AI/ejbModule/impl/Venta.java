@@ -3,15 +3,35 @@ package impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Ventas")
 public class Venta extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 
+	@OneToMany
+	@JoinColumn(name = "id_articulo")
 	private List<ItemArticulo> articulos;
+	@Column(name = "fecha")
 	private Date fecha;
+	@Column(name = "portal")
 	private String portal;
+	@Column(name = "total")
 	private double total;
+	@Embedded
 	private Coordenada destino;
+	@OneToOne(mappedBy = "venta")
 	private OrdenDespacho orden;
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
 	public Venta() {

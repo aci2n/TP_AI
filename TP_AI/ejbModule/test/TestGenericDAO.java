@@ -1,5 +1,7 @@
 package test;
 
+import java.util.List;
+
 import dao.ArticuloDAO;
 import impl.Articulo;
 
@@ -12,6 +14,10 @@ public class TestGenericDAO {
 			a1.setCodigo(1);
 			a1.setDescripcion("Esto es un articulo.");
 			dao.insert(a1);
+			List<Articulo> arts = dao.getAll();
+			for (Articulo a:arts) {
+				System.out.println(a.getCodigo());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

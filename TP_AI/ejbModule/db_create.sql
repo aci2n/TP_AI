@@ -95,11 +95,11 @@ go
 
 -- sp auxiliares
 
-create procedure tpad_seleccionartodo as
+create procedure tpai_seleccionartodo as
 begin
 	declare @nombreTabla varchar(200)
 	declare cursorTablas cursor fast_forward
-	for select name as nombreTabla from tpad.sys.objects where type = 'U'
+	for select name as nombreTabla from tpai.sys.objects where type = 'U'
 	open cursorTablas
 	fetch next from cursorTablas into @nombreTabla
 	while (@@FETCH_STATUS <> -1)

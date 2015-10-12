@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import view.ItemArticuloView;
-import view.ViewUtil;
 
 @Entity
 @Table(name = "ItemsArticulo")

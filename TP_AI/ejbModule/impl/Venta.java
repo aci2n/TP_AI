@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import view.VentaView;
-import view.ViewUtil;
 
 @Entity
 @Table(name = "Ventas")

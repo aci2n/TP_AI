@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import view.ArticuloView;
-import view.ViewUtil;
 
 @Entity
 @Table(name = "Articulos")

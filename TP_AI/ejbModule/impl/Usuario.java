@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import view.UsuarioView;
-import view.ViewUtil;
 
 @Entity
 @Table(name = "Usuarios")

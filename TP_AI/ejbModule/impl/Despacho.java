@@ -7,7 +7,6 @@ import javax.persistence.Table;
 
 import view.DespachoCercanoView;
 import view.DespachoView;
-import view.ViewUtil;
 
 @Entity
 @Table(name = "Despachos")

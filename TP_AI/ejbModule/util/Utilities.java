@@ -8,15 +8,18 @@ import javax.xml.bind.Marshaller;
 
 public class Utilities {
 
-	public static <T> void print(T o, Class<T> type) throws JAXBException {
+	private static <T> Marshaller getMarshaller(Class<T> type) throws JAXBException {
 		Marshaller jaxbMarshaller = JAXBContext.newInstance(type).createMarshaller();
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.marshal(o, System.out);
+		return jaxbMarshaller;
+	}
+	
+	public static <T> void print(T o, Class<T> type) throws JAXBException {
+		getMarshaller(type).marshal(o, System.out);
 	}
 
 	public static <T> void printList(List<T> list, Class<T> type) throws JAXBException {
-		Marshaller jaxbMarshaller = JAXBContext.newInstance(type).createMarshaller();
-		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		Marshaller jaxbMarshaller = getMarshaller(type);
 		for (T o : list) {
 			jaxbMarshaller.marshal(o, System.out);
 		}

@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import view.OrdenDespachoView;
-import view.ViewUtil;
 
 @Embeddable
 public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {	

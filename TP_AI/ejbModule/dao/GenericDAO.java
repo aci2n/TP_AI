@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class GenericDAO<T> extends CheckedSessionOperations {
 	private final Class<T> type;
 
-	public GenericDAO(Class<T> type) {
+	protected GenericDAO(Class<T> type) {
 		this.type = type;
 	}
 
@@ -32,15 +32,16 @@ public abstract class GenericDAO<T> extends CheckedSessionOperations {
 		} , obj);
 	}
 
-	public List<T> executeQuery(String q) {
+	public List<T> getAll() {
+		return (List<T>) executeQuery(String.format("from %s", type.getName()));
+	}
+	
+
+	protected List<T> executeQuery(String q) {
 		return (List<T>) executeCheckedRead(s -> s.createQuery(q).list());
 	}
 
-	public T executeQueryUniqueResult(String q) {
+	protected T executeQueryUniqueResult(String q) {
 		return (T) executeCheckedRead(s -> s.createQuery(q).uniqueResult());
-	}
-
-	public List<T> getAll() {
-		return (List<T>) executeQuery(String.format("from %s", type.getName()));
 	}
 }

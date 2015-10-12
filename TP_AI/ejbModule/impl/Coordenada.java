@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Coordenada {
+	private static final double kilometrosPorGrado = 111.12f;
 
 	@Column(name = "latitud")
 	private double latitud;
@@ -13,6 +14,13 @@ public class Coordenada {
 
 	public Coordenada() {
 
+	}
+
+	public double calcularDistanciaEnKilometros(Coordenada coordenada) {
+		float difLatitud = (float) Math.abs(this.latitud - coordenada.getLatitud());
+		float difLongitud = (float) Math.abs(this.longitud - coordenada.getLongitud());
+		float cateto = (float) Math.sqrt((difLatitud * difLatitud) + (difLongitud * difLongitud));
+		return cateto * kilometrosPorGrado;
 	}
 
 	public double getLatitud() {

@@ -5,6 +5,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import view.DespachoCercanoView;
+
 @Entity
 @Table(name = "Despachos")
 public class Despacho extends PersistentObject {
@@ -12,11 +14,22 @@ public class Despacho extends PersistentObject {
 
 	@Embedded
 	private Coordenada coordenada;
+	@Column(name = "nombre")
+	private String nombre;
 	@Column(name = "activo")
 	private boolean activo;
 
 	public Despacho() {
 
+	}
+
+	public DespachoCercanoView getDespachoCercanoView(Coordenada c) {
+		DespachoCercanoView despachoCercano = new DespachoCercanoView();
+		despachoCercano.setId(id);
+		despachoCercano.setNombre(nombre);
+		despachoCercano.setDistancia(coordenada.calcularDistanciaEnKilometros(c));
+
+		return despachoCercano;
 	}
 
 	public Coordenada getCoordenada() {
@@ -33,6 +46,14 @@ public class Despacho extends PersistentObject {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }

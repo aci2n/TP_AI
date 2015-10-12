@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -16,10 +14,11 @@ public class VentasWebService {
 	}
 
 	@WebMethod
-	public boolean procesarVentas(List<Venta> ventas) {
+	public boolean procesarVentas(Venta v) {
 		boolean exito = false;
 		try {
-			Utilities.printList(ventas, Venta.class);
+			Utilities.print(v, Venta.class);
+			exito = true;
 		} catch (Exception e) {
 			// logear
 		}

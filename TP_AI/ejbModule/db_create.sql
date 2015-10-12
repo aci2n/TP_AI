@@ -27,6 +27,7 @@ create table Articulos (
 
 create table Despachos (
 	id int primary key identity not null,
+	nombre varchar(100),
 	latitud float,
 	longitud float,
 	activo bit

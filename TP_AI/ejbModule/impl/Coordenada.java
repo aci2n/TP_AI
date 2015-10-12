@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import view.CoordenadaView;
 
 @Embeddable
-public class Coordenada {
+public class Coordenada implements ViewGenerator<CoordenadaView> {
 	private static final double kilometrosPorGrado = 111.12f;
 
 	@Column(name = "latitud")

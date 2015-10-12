@@ -12,11 +12,12 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import view.ArticuloView;
+import view.ViewUtil;
 
 @Entity
 @Table(name = "Articulos")
 @XmlRootElement
-public class Articulo extends PersistentObject {
+public class Articulo extends PersistentObject implements ViewGenerator<ArticuloView> {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "nombre")
@@ -112,7 +113,7 @@ public class Articulo extends PersistentObject {
 		av.setDescripcion(descripcion);
 		av.setDetalles(new ArrayList<>());
 		for (Detalle d : detalles) {
-			av.getDetalles().add(d.getView());
+			av.getDetalles().add(ViewUtil.getViewChecked(d));
 		}
 		av.setMarca(marca);
 		av.setNombre(nombre);

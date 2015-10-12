@@ -7,10 +7,11 @@ import javax.persistence.Table;
 
 import view.DespachoCercanoView;
 import view.DespachoView;
+import view.ViewUtil;
 
 @Entity
 @Table(name = "Despachos")
-public class Despacho extends PersistentObject {
+public class Despacho extends PersistentObject implements ViewGenerator<DespachoView> {
 	private static final long serialVersionUID = 1L;
 
 	@Embedded
@@ -60,7 +61,7 @@ public class Despacho extends PersistentObject {
 	public DespachoView getView() {
 		DespachoView dv = new DespachoView();
 		dv.setActivo(activo);
-		dv.setCoordenada(coordenada.getView());
+		dv.setCoordenada(ViewUtil.getViewChecked(coordenada));
 		dv.setNombre(nombre);
 		return dv;
 	}

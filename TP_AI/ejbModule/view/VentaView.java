@@ -3,6 +3,9 @@ package view;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class VentaView {
 	private List<ItemArticuloView> articulos;
 	private Date fecha;

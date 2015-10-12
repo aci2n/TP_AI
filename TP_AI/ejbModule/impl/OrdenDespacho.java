@@ -8,9 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import view.OrdenDespachoView;
+import view.ViewUtil;
 
 @Embeddable
-public class OrdenDespacho {	
+public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {	
 	@ManyToOne
 	@JoinColumn(name = "id_despacho")
 	private Despacho despacho;
@@ -40,7 +41,7 @@ public class OrdenDespacho {
 
 	public OrdenDespachoView getView() {
 		OrdenDespachoView odv = new OrdenDespachoView();
-		odv.setDespacho(despacho.getView());
+		odv.setDespacho(ViewUtil.getViewChecked(despacho));
 		odv.setEstado(estado);
 		return odv;
 	}

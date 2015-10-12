@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import view.UsuarioView;
+import view.ViewUtil;
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuario extends PersistentObject {
+public class Usuario extends PersistentObject implements ViewGenerator<UsuarioView> {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "nombre")
@@ -38,7 +39,7 @@ public class Usuario extends PersistentObject {
 
 	public UsuarioView getView() {
 		UsuarioView uv = new UsuarioView();
-		uv.setCoordenada(coordenada.getView());
+		uv.setCoordenada(ViewUtil.getViewChecked(coordenada));
 		uv.setNombre(nombre);
 		return uv;
 	}

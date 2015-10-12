@@ -8,7 +8,7 @@ import view.DetalleView;
 
 @Entity
 @Table(name = "Detalles")
-public class Detalle extends PersistentObject {
+public class Detalle extends PersistentObject implements ViewGenerator<DetalleView> {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "titulo")

@@ -7,10 +7,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import view.ItemArticuloView;
+import view.ViewUtil;
 
 @Entity
 @Table(name = "ItemsArticulo")
-public class ItemArticulo extends PersistentObject {
+public class ItemArticulo extends PersistentObject implements ViewGenerator<ItemArticuloView> {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
@@ -41,7 +42,7 @@ public class ItemArticulo extends PersistentObject {
 
 	public ItemArticuloView getView() {
 		ItemArticuloView iav = new ItemArticuloView();
-		iav.setArticulo(articulo.getView());
+		iav.setArticulo(ViewUtil.getViewChecked(articulo));
 		iav.setCantidad(cantidad);
 		return iav;
 	}

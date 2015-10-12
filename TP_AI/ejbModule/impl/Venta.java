@@ -14,11 +14,12 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import view.VentaView;
+import view.ViewUtil;
 
 @Entity
 @Table(name = "Ventas")
 @XmlRootElement
-public class Venta extends PersistentObject {
+public class Venta extends PersistentObject implements ViewGenerator<VentaView> {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany
@@ -109,14 +110,14 @@ public class Venta extends PersistentObject {
 		VentaView vv = new VentaView();
 		vv.setArticulos(new ArrayList<>());
 		for (ItemArticulo a : articulos) {
-			vv.getArticulos().add(a.getView());
+			vv.getArticulos().add(ViewUtil.getViewChecked(a));
 		}
-		vv.setDestino(destino.getView());
+		vv.setDestino(ViewUtil.getViewChecked(destino));
 		vv.setFecha(fecha);
-		vv.setOrden(orden.getView());
+		vv.setOrden(ViewUtil.getViewChecked(orden));
 		vv.setPortal(portal);
 		vv.setTotal(total);
-		vv.setUsuario(usuario.getView());
+		vv.setUsuario(ViewUtil.getViewChecked(usuario));
 		return vv;
 	}
 

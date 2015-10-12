@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import view.ItemArticuloView;
+
 @Entity
 @Table(name = "ItemsArticulo")
 public class ItemArticulo extends PersistentObject {
@@ -37,4 +39,10 @@ public class ItemArticulo extends PersistentObject {
 		this.cantidad = cantidad;
 	}
 
+	public ItemArticuloView getView() {
+		ItemArticuloView iav = new ItemArticuloView();
+		iav.setArticulo(articulo.getView());
+		iav.setCantidad(cantidad);
+		return iav;
+	}
 }

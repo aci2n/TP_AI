@@ -5,6 +5,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import view.UsuarioView;
+
 @Entity
 @Table(name = "Usuarios")
 public class Usuario extends PersistentObject {
@@ -32,6 +34,13 @@ public class Usuario extends PersistentObject {
 
 	public void setCoordenada(Coordenada coordenada) {
 		this.coordenada = coordenada;
+	}
+
+	public UsuarioView getView() {
+		UsuarioView uv = new UsuarioView();
+		uv.setCoordenada(coordenada.getView());
+		uv.setNombre(nombre);
+		return uv;
 	}
 
 }

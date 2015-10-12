@@ -1,5 +1,6 @@
 package impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import view.ArticuloView;
 
 @Entity
 @Table(name = "Articulos")
@@ -35,6 +38,7 @@ public class Articulo extends PersistentObject {
 	private List<Detalle> detalles;
 
 	public Articulo() {
+
 	}
 
 	public String getNombre() {
@@ -101,4 +105,20 @@ public class Articulo extends PersistentObject {
 		this.detalles = detalles;
 	}
 
+
+	public ArticuloView getView() {
+		ArticuloView av = new ArticuloView();
+		av.setCodigo(codigo);
+		av.setDescripcion(descripcion);
+		av.setDetalles(new ArrayList<>());
+		for (Detalle d : detalles) {
+			av.getDetalles().add(d.getView());
+		}
+		av.setMarca(marca);
+		av.setNombre(nombre);
+		av.setOrigen(origen);
+		av.setPathFoto(pathFoto);
+		av.setPrecio(precio);
+		return av;
+	}
 }

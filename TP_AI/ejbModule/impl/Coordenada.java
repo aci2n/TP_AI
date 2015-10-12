@@ -3,6 +3,8 @@ package impl;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import view.CoordenadaView;
+
 @Embeddable
 public class Coordenada {
 	private static final double kilometrosPorGrado = 111.12f;
@@ -37,6 +39,13 @@ public class Coordenada {
 
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
+	}
+	
+	public CoordenadaView getView() {
+		CoordenadaView cv = new CoordenadaView();
+		cv.setLatitud(latitud);
+		cv.setLongitud(longitud);
+		return cv;
 	}
 
 }

@@ -43,4 +43,5 @@ public abstract class CheckedSessionOperations {
 				s.close();
 		}
 	}
+	
 }

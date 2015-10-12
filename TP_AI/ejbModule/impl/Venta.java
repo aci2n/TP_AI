@@ -1,5 +1,6 @@
 package impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,9 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import view.VentaView;
 
 @Entity
 @Table(name = "Ventas")
@@ -30,13 +32,14 @@ public class Venta extends PersistentObject {
 	private double total;
 	@Embedded
 	private Coordenada destino;
-	@OneToOne(mappedBy = "venta")
+	@Embedded
 	private OrdenDespacho orden;
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
 	public Venta() {
+
 	}
 
 	public List<ItemArticulo> getArticulos() {
@@ -93,6 +96,28 @@ public class Venta extends PersistentObject {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public void asignarDespacho(Despacho despacho) {
+		OrdenDespacho orden = new OrdenDespacho();
+		orden.setDespacho(despacho);
+		orden.setEstado(Estado.ACTIVO);
+		this.orden = orden;
+	}
+
+	public VentaView getView() {
+		VentaView vv = new VentaView();
+		vv.setArticulos(new ArrayList<>());
+		for (ItemArticulo a : articulos) {
+			vv.getArticulos().add(a.getView());
+		}
+		vv.setDestino(destino.getView());
+		vv.setFecha(fecha);
+		vv.setOrden(orden.getView());
+		vv.setPortal(portal);
+		vv.setTotal(total);
+		vv.setUsuario(usuario.getView());
+		return vv;
 	}
 
 }

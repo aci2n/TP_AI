@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import view.DespachoCercanoView;
+import view.DespachoView;
 
 @Entity
 @Table(name = "Despachos")
@@ -54,6 +55,14 @@ public class Despacho extends PersistentObject {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public DespachoView getView() {
+		DespachoView dv = new DespachoView();
+		dv.setActivo(activo);
+		dv.setCoordenada(coordenada.getView());
+		dv.setNombre(nombre);
+		return dv;
 	}
 
 }

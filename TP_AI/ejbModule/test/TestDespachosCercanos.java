@@ -20,8 +20,8 @@ public class TestDespachosCercanos {
 			
 			Despacho d2 = new Despacho();
 			Coordenada c2 = new Coordenada();
-			c2.setLatitud(1000);
-			c2.setLongitud(1000);
+			c2.setLatitud(2);
+			c2.setLongitud(2);
 			d2.setCoordenada(c2);
 			d2.setActivo(true);
 			

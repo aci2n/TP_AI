@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import view.DetalleView;
+
 @Entity
 @Table(name = "Detalles")
 public class Detalle extends PersistentObject {
@@ -32,6 +34,13 @@ public class Detalle extends PersistentObject {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public DetalleView getView() {
+		DetalleView dv = new DetalleView();
+		dv.setDescripcion(descripcion);
+		dv.setTitulo(titulo);
+		return dv;
 	}
 
 }

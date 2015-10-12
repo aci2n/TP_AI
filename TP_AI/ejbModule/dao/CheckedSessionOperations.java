@@ -28,12 +28,16 @@ public abstract class CheckedSessionOperations {
 
 	protected Object executeCheckedWrite(WriteOperation wo, Object obj) {
 		Session s = null;
+		Transaction t = null;
 		try {
 			s = sf.openSession();
-			Transaction t = s.beginTransaction();
+			t = s.beginTransaction();
 			Object o = wo.operation(s, obj);
 			t.commit();
 			return o;
+		} catch (Exception e) {
+			t.rollback();
+			throw e;
 		} finally {
 			if (s != null)
 				s.close();

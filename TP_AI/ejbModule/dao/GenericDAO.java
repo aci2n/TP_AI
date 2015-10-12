@@ -3,7 +3,7 @@ package dao;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class GenericDAO<T> extends CheckedSessionOperations {
+public abstract class GenericDAO<T> extends CheckedSessionOperations {
 	private final Class<T> type;
 
 	public GenericDAO(Class<T> type) {

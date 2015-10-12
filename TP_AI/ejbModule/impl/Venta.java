@@ -11,9 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "Ventas")
+@XmlRootElement
 public class Venta extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class Venta extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 
-	private List<Articulo> articulos;
+	private List<ItemArticulo> articulos;
 	private Date fecha;
 	private String portal;
 	private double total;
@@ -17,11 +17,11 @@ public class Venta extends PersistentObject {
 	public Venta() {
 	}
 
-	public List<Articulo> getArticulos() {
+	public List<ItemArticulo> getArticulos() {
 		return articulos;
 	}
 
-	public void setArticulos(List<Articulo> articulos) {
+	public void setArticulos(List<ItemArticulo> articulos) {
 		this.articulos = articulos;
 	}
 

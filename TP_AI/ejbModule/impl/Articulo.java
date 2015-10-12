@@ -2,16 +2,33 @@ package impl;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Articulos")
 public class Articulo extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "codigo")
 	private int codigo;
+	@Column(name = "descripcion")
 	private String descripcion;
+	@Column(name = "marca")
 	private String marca;
+	@Column(name = "precio")
 	private double precio;
+	@Column(name = "pathFoto")
 	private String pathFoto;
+	@Column(name = "origen")
 	private String origen;
+	@OneToMany
+	@JoinColumn(name = "id_articulo")
 	private List<Detalle> detalles;
 
 	public Articulo() {

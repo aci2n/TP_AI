@@ -8,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "Articulos")
+@XmlRootElement
 public class Articulo extends PersistentObject {
 	private static final long serialVersionUID = 1L;
 

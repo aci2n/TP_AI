@@ -44,4 +44,12 @@ public class OrdenDespacho extends PersistentObject {
 		this.estado = estado;
 	}
 
+	public Venta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+
 }

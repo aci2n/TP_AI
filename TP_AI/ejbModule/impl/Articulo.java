@@ -2,6 +2,7 @@ package impl;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,7 @@ public class Articulo extends PersistentObject {
 	private String pathFoto;
 	@Column(name = "origen")
 	private String origen;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_articulo")
 	private List<Detalle> detalles;
 

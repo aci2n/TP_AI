@@ -18,6 +18,7 @@ public class TestGenericDAO {
 			for (Articulo a:arts) {
 				System.out.println(a.getCodigo());
 			}
+			dao.delete(a1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

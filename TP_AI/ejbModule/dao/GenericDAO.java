@@ -33,8 +33,8 @@ public abstract class GenericDAO<T> extends CheckedSessionOperations {
 	}
 
 	public List<T> getAll() {
-		return (List<T>) executeQuery("from " + type.getName());
-	}	
+		return (List<T>) executeQuery(String.format("from %s", type.getName()));
+	}
 
 	protected List<T> executeQuery(String q) {
 		return (List<T>) executeCheckedRead(s -> s.createQuery(q).list());

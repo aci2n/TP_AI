@@ -5,9 +5,9 @@ import dao.DespachoDAO;
 import impl.Coordenada;
 import impl.Despacho;
 import util.Utilities;
-import view.DespachoCercanoView;
+import view.DistanciaADespachoView;
 
-public class TestDespachosCercanos {
+public class TestDistanciasADespachos {
 
 	public static void main(String[] args) {
 		try {
@@ -33,7 +33,7 @@ public class TestDespachosCercanos {
 			dDao.insert(d1);
 			dDao.insert(d2);
 			
-			Utilities.printList(ControladorPrincipal.getInstancia().obtenerDespachoMasCercano(c3), DespachoCercanoView.class);
+			Utilities.printList(ControladorPrincipal.getInstancia().obtenerDistanciasADespacho(c3), DistanciaADespachoView.class);
 			
 			dDao.delete(d1);
 			dDao.delete(d2);

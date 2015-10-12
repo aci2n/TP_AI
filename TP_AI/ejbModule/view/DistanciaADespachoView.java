@@ -3,12 +3,12 @@ package view;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class DespachoCercanoView {
+public class DistanciaADespachoView {
 	private int id;
 	private String nombre;
 	private double distancia;
 
-	public DespachoCercanoView() {
+	public DistanciaADespachoView() {
 
 	}
 

@@ -5,9 +5,11 @@ import java.util.List;
 
 import dao.DespachoDAO;
 import exception.DespachoException;
+import exception.DistanciaADespachoException;
+import exceptionlogger.ExceptionLogger;
 import impl.Coordenada;
 import impl.Despacho;
-import view.DespachoCercanoView;
+import view.DistanciaADespachoView;
 
 public class DespachoAdministrador {
 	private DespachoDAO dao;
@@ -16,17 +18,21 @@ public class DespachoAdministrador {
 		dao = new DespachoDAO();
 	}
 
-	public List<DespachoCercanoView> obtenerDespachosCercanos(Coordenada coordenada) throws DespachoException {
+	public List<DistanciaADespachoView> obtenerDistanciasADespacho(Coordenada coordenada) throws DespachoException {
 		List<Despacho> despachos = dao.getDespachosActivos();
 		if (despachos.size() == 0) {
 			throw new DespachoException("No hay despachos activos.");
 		}
-		List<DespachoCercanoView> despachosCercanos = new ArrayList<>();
+		List<DistanciaADespachoView> distanciasADespacho = new ArrayList<>();
 		for (Despacho despacho : despachos) {
-			despachosCercanos.add(despacho.getDespachoCercanoView(coordenada));
+			try {
+				distanciasADespacho.add(despacho.getDistanciaADespachoView(coordenada));
+			} catch (DistanciaADespachoException e) {
+				ExceptionLogger.log(e);
+			}
 		}
-		despachosCercanos.sort((a, b) -> (int) Math.ceil(a.getDistancia() - b.getDistancia()));
-		return despachosCercanos;
+		distanciasADespacho.sort((a, b) -> (int) Math.ceil(a.getDistancia() - b.getDistancia()));
+		return distanciasADespacho;
 	}
 
 	public Despacho get(Integer id) throws DespachoException {

@@ -75,6 +75,13 @@ create table ItemsArticulo (
 	constraint fk_itemsarticulo_articulos foreign key(id_articulo) references Articulos
 )
 
+create table ExceptionLogs (
+	id int primary key identity not null,
+	tipo varchar(100),
+	mensaje varchar(1000),
+	stack_trace varchar(5000),
+	fecha datetime
+)
 
 -- crear usuario
 

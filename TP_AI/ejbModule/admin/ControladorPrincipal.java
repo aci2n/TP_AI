@@ -6,7 +6,7 @@ import exception.DespachoException;
 import exception.VentaException;
 import impl.Coordenada;
 import impl.Despacho;
-import view.DespachoCercanoView;
+import view.DistanciaADespachoView;
 import view.VentaView;
 
 public class ControladorPrincipal {
@@ -29,8 +29,8 @@ public class ControladorPrincipal {
 		return ventaAdmin.obtenerVentasSinOrdenDespacho();
 	}
 
-	public List<DespachoCercanoView> obtenerDespachoMasCercano(Coordenada coordenada) throws DespachoException {
-		return despachoAdmin.obtenerDespachosCercanos(coordenada);
+	public List<DistanciaADespachoView> obtenerDistanciasADespacho(Coordenada coordenada) throws DespachoException {
+		return despachoAdmin.obtenerDistanciasADespacho(coordenada);
 	}
 
 	public void asignarDespachoAVenta(Integer idDespacho, Integer idVenta) throws DespachoException, VentaException {

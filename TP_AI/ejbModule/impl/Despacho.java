@@ -5,8 +5,9 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import view.DespachoCercanoView;
+import exception.DistanciaADespachoException;
 import view.DespachoView;
+import view.DistanciaADespachoView;
 
 @Entity
 @Table(name = "Despachos")
@@ -24,13 +25,18 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 
 	}
 
-	public DespachoCercanoView getDespachoCercanoView(Coordenada c) {
-		DespachoCercanoView despachoCercano = new DespachoCercanoView();
-		despachoCercano.setId(id);
-		despachoCercano.setNombre(nombre);
-		despachoCercano.setDistancia(coordenada.calcularDistanciaEnKilometros(c));
+	public DistanciaADespachoView getDistanciaADespachoView(Coordenada c) throws DistanciaADespachoException {
+		if (coordenada == null) {
+			throw new DistanciaADespachoException(
+					String.format("El despacho %d no tiene una coordenada asignada.", id));
+		}
 
-		return despachoCercano;
+		DistanciaADespachoView distanciaADespacho = new DistanciaADespachoView();
+		distanciaADespacho.setId(id);
+		distanciaADespacho.setNombre(nombre);
+		distanciaADespacho.setDistancia(coordenada.calcularDistanciaEnKilometros(c));
+
+		return distanciaADespacho;
 	}
 
 	public Coordenada getCoordenada() {

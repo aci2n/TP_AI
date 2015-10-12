@@ -5,6 +5,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import exceptionlogger.ExceptionLog;
 import impl.Articulo;
 import impl.Coordenada;
 import impl.Despacho;
@@ -20,15 +21,11 @@ public class HibernateUtil {
 
 	static {
 		try {
-			Configuration config = new Configuration()
-				.addAnnotatedClass(Articulo.class)
-				.addAnnotatedClass(Coordenada.class)
-				.addAnnotatedClass(Despacho.class)
-				.addAnnotatedClass(Detalle.class)
-				.addAnnotatedClass(ItemArticulo.class)
-				.addAnnotatedClass(OrdenDespacho.class)
-				.addAnnotatedClass(Usuario.class)
-				.addAnnotatedClass(Venta.class);
+			Configuration config = new Configuration().addAnnotatedClass(ExceptionLog.class)
+					.addAnnotatedClass(Articulo.class).addAnnotatedClass(Coordenada.class)
+					.addAnnotatedClass(Despacho.class).addAnnotatedClass(Detalle.class)
+					.addAnnotatedClass(ItemArticulo.class).addAnnotatedClass(OrdenDespacho.class)
+					.addAnnotatedClass(Usuario.class).addAnnotatedClass(Venta.class);
 			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
 			sessionFactory = config.buildSessionFactory(serviceRegistry);
 		} catch (Exception e) {

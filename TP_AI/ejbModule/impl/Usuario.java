@@ -18,6 +18,12 @@ public class Usuario extends PersistentObject implements ViewGenerator<UsuarioVi
 	private Coordenada coordenada;
 
 	public Usuario() {
+		
+	}
+
+	public Usuario(String nombre, Coordenada coordenada) {
+		this.nombre = nombre;
+		this.coordenada = coordenada;
 	}
 
 	public String getNombre() {

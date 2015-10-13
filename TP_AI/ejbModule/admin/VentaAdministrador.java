@@ -31,11 +31,11 @@ public class VentaAdministrador {
 	}
 
 	public List<VentaView> obtenerVentasSinOrdenDespacho() {
-		List<Venta> ventasSinOrden = dao.ventasSinOrdenesDeDespacho();
+		List<Venta> ventasSinOrden = dao.ventasSinOrdenesDespacho();
 		List<VentaView> ventasSinOrdenView = new ArrayList<>();
 		for (Venta v : ventasSinOrden) {
 			ventasSinOrdenView.add(v.getView());
 		}
-		return ventasSinOrdenView;		
+		return ventasSinOrdenView;
 	}
 }

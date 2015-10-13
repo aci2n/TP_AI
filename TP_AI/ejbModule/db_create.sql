@@ -61,7 +61,7 @@ create table Ventas (
 	id_despacho int,
 	estado varchar(100),
 
-	constraint fk_ordenesdespacho_despachos foreign key(id_despacho) references Despachos,
+	constraint fk_ventas_despachos foreign key(id_despacho) references Despachos,
 	constraint fk_ventas_usuarios foreign key(id_usuario) references Usuarios
 )
 

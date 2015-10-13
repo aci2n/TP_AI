@@ -10,7 +10,7 @@ public class VentaDAO extends GenericDAO<Venta> {
 		super(Venta.class);
 	}
 
-	public List<Venta> ventasSinOrdenesDeDespacho() {
+	public List<Venta> ventasSinOrdenesDespacho() {
 		return executeQuery("select v from Venta as v left join v.orden as od where od is null");
 	}
 }

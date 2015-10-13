@@ -20,6 +20,11 @@ public class Detalle extends PersistentObject implements ViewGenerator<DetalleVi
 
 	}
 
+	public Detalle(String titulo, String descripcion) {
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}

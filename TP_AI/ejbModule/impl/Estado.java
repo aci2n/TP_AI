@@ -1,5 +1,5 @@
 package impl;
 
 public enum Estado {
-	ACTIVO, NO_ACTIVO, QUE_SE_YO
+	ACTIVO, NO_ACTIVO
 }

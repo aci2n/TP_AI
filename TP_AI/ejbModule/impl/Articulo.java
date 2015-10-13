@@ -41,6 +41,17 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 
 	}
 
+	public Articulo(String nombre, int codigo, String descripcion, String marca, double precio, String pathFoto,
+			String origen) {
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.marca = marca;
+		this.precio = precio;
+		this.pathFoto = pathFoto;
+		this.origen = origen;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -104,7 +115,6 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 	public void setDetalles(List<Detalle> detalles) {
 		this.detalles = detalles;
 	}
-
 
 	public ArticuloView getView() {
 		ArticuloView av = new ArticuloView();

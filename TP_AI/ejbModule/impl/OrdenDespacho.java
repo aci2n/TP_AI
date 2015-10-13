@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import view.OrdenDespachoView;
 
 @Embeddable
-public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {	
+public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {
 	@ManyToOne
 	@JoinColumn(name = "id_despacho")
 	private Despacho despacho;
@@ -20,6 +20,11 @@ public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {
 
 	public OrdenDespacho() {
 
+	}
+
+	public OrdenDespacho(Despacho despacho, Estado estado) {
+		this.despacho = despacho;
+		this.estado = estado;
 	}
 
 	public Despacho getDespacho() {

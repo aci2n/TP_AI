@@ -42,6 +42,14 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 
 	}
 
+	public Venta(Date fecha, String portal, double total, Coordenada destino, Usuario usuario) {
+		this.fecha = fecha;
+		this.portal = portal;
+		this.total = total;
+		this.destino = destino;
+		this.usuario = usuario;
+	}
+
 	public List<ItemArticulo> getArticulos() {
 		return articulos;
 	}
@@ -99,10 +107,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	}
 
 	public void asignarDespacho(Despacho despacho) {
-		OrdenDespacho orden = new OrdenDespacho();
-		orden.setDespacho(despacho);
-		orden.setEstado(Estado.ACTIVO);
-		this.orden = orden;
+		this.orden = new OrdenDespacho(despacho, Estado.ACTIVO);
 	}
 
 	public VentaView getView() {

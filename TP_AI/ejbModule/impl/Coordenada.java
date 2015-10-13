@@ -18,6 +18,11 @@ public class Coordenada implements ViewGenerator<CoordenadaView> {
 
 	}
 
+	public Coordenada(double latitud, double longitud) {
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
+
 	public double calcularDistanciaEnKilometros(Coordenada coordenada) {
 		float difLatitud = (float) Math.abs(this.latitud - coordenada.getLatitud());
 		float difLongitud = (float) Math.abs(this.longitud - coordenada.getLongitud());
@@ -40,7 +45,7 @@ public class Coordenada implements ViewGenerator<CoordenadaView> {
 	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
-	
+
 	public CoordenadaView getView() {
 		CoordenadaView cv = new CoordenadaView();
 		cv.setLatitud(latitud);

@@ -21,7 +21,7 @@ public class TestDistanciasADespachos {
 			Despacho d2 = new Despacho();
 			Coordenada c2 = new Coordenada();
 			c2.setLatitud(2);
-			c2.setLongitud(2);
+			c2.setLongitud(3);
 			d2.setCoordenada(c2);
 			d2.setActivo(true);
 			

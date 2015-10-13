@@ -19,8 +19,13 @@ public class ItemArticulo extends PersistentObject implements ViewGenerator<Item
 	@Column(name = "cantidad")
 	private int cantidad;
 
-	private ItemArticulo() {
+	public ItemArticulo() {
 
+	}
+
+	public ItemArticulo(Articulo articulo, int cantidad) {
+		this.articulo = articulo;
+		this.cantidad = cantidad;
 	}
 
 	public Articulo getArticulo() {

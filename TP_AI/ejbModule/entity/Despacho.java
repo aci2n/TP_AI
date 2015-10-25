@@ -5,7 +5,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import exception.DistanciaADespachoException;
+import exception.DespachoException;
 import view.DespachoView;
 import view.DistanciaADespachoView;
 
@@ -31,9 +31,9 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 		this.activo = activo;
 	}
 
-	public DistanciaADespachoView getDistanciaADespachoView(Coordenada c) throws DistanciaADespachoException {
+	public DistanciaADespachoView getDistanciaADespachoView(Coordenada c) throws DespachoException {
 		if (coordenada == null) {
-			throw new DistanciaADespachoException(
+			throw new DespachoException(
 					String.format("El despacho %d no tiene una coordenada asignada.", id));
 		}
 

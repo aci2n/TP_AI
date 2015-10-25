@@ -10,80 +10,9 @@ create database TPAI
 
 go
 
--- crear tablas
-
-use TPAI	
-
-create table Articulos (
-	id int primary key identity not null,
-	nombre varchar(100),
-	codigo int,
-	descripcion varchar(200),
-	marca varchar(100),
-	precio float,
-	pathFoto varchar(200),
-	origen varchar(100)
-)
-
-create table Despachos (
-	id int primary key identity not null,
-	nombre varchar(100),
-	latitud float,
-	longitud float,
-	activo bit
-)
-
-create table Detalles (
-	id int primary key identity not null,
-	id_articulo int,
-	titulo varchar(100),
-	descripcion varchar(500),
-	
-	constraint fk_detalles_articulos foreign key (id_articulo) references Articulos
-)
-
-create table Usuarios (
-	id int primary key identity not null,
-	nombre varchar(100),
-	latitud float,
-	longitud float
-)
-
-create table Ventas (
-	id int primary key identity not null,
-	fecha datetime,
-	portal varchar(100),
-	total float,
-	longitud float,
-	latitud float,
-	id_usuario int,
-	--orden despacho embedded
-	id_despacho int,
-	estado varchar(100),
-
-	constraint fk_ventas_despachos foreign key(id_despacho) references Despachos,
-	constraint fk_ventas_usuarios foreign key(id_usuario) references Usuarios
-)
-
-create table ItemsArticulo (
-	id int primary key identity not null,
-	id_articulo int,
-	id_venta int,
-	cantidad int,
-	
-	constraint fk_itemsarticulo_ventas foreign key(id_venta) references Ventas,
-	constraint fk_itemsarticulo_articulos foreign key(id_articulo) references Articulos
-)
-
-create table ExceptionLogs (
-	id int primary key identity not null,
-	tipo varchar(100),
-	mensaje varchar(1000),
-	stack_trace varchar(5000),
-	fecha datetime
-)
-
 -- crear usuario
+
+use TPAI
 
 if exists (select name from master.sys.server_principals where name = 'AIuser')
 begin

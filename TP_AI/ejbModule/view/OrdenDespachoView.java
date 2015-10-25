@@ -1,6 +1,6 @@
 package view;
 
-import impl.Estado;
+import entity.Estado;
 
 public class OrdenDespachoView {
 	private DespachoView despacho;

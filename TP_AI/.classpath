@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="ejbModule"/>
+	<classpathentry excluding="dao/|exceptionlogger/|admin/|test/TestAsignarDespachoAVenta.java|test/TestDespachosActivos.java|test/TestDistanciasADespachos.java|test/TestInsertArticulo.java|test/TestVentasSinOrdenesDeDespacho.java" kind="src" path="ejbModule"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_60">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>

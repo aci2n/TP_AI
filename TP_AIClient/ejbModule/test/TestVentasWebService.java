@@ -1,18 +1,14 @@
 package test;
 
-import bean.Venta;
-import bean.VentasWebService;
-import bean.VentasWebServiceProxy;
+import bean.Ventas;
+import bean.VentasProxy;
 
 public class TestVentasWebService {
 
 	public static void main(String[] args) {
 		try {
-			VentasWebService vws = new VentasWebServiceProxy();
-			Venta v = new Venta();
-			v.setPortal("Esto es un portal de prueba.");
-			Venta[] ventas = {v};
-			vws.procesarVentas(ventas);
+			Ventas vp = new VentasProxy();
+			vp.testAgregarVenta();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

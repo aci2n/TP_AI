@@ -13,7 +13,7 @@ import view.VentaView;
 
 @Stateless
 @LocalBean
-public class VentasBean extends GenericBean<Venta> implements VentasBeanRemote {
+public class VentasBean extends GenericBean<Venta> {
 
 	public VentasBean() {
 		super(Venta.class);

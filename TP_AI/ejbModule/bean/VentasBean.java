@@ -6,17 +6,41 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import entity.Coordenada;
 import entity.Despacho;
+import entity.OrdenDespacho;
+import entity.Usuario;
 import entity.Venta;
 import exception.NoExisteException;
+import exception.PersistException;
 import view.VentaView;
 
-@Stateless
+@Stateless(name="test", mappedName="test")
 @LocalBean
 public class VentasBean extends GenericBean<Venta> {
 
 	public VentasBean() {
 		super(Venta.class);
+	}
+	
+	public Integer agregarVenta(VentaView view) throws PersistException {
+		Venta venta = new Venta();
+		venta.setPortal(view.getPortal());
+		venta.setTotal(view.getTotal());
+		venta.setCodigo(view.getCodigo());
+		venta.setFecha(view.getFecha());
+		venta.setUsuario(
+			view.getUsuario() != null ? new Usuario(view.getUsuario()) : null
+		);
+		venta.setDestino(
+			view.getDestino() != null ? new Coordenada(view.getDestino()) : null
+		);
+		venta.setOrden(
+			view.getOrden() != null ? new OrdenDespacho(view.getOrden()) : null
+		);
+		
+		save(venta);
+		return venta.getId();
 	}
 
 	public void asignarDespachoAVenta(Integer idVenta, Despacho despacho) throws NoExisteException {

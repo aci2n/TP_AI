@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class VentaView {
 	private List<ItemArticuloView> articulos;
+	private String codigo;
 	private Date fecha;
 	private String portal;
 	private double total;
@@ -69,6 +70,14 @@ public class VentaView {
 
 	public void setUsuario(UsuarioView usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 }

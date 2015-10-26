@@ -1,16 +1,8 @@
 package view;
 
 public class UsuarioView {
-	private String nombre;
+	private String dni;
 	private CoordenadaView coordenada;
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 	public CoordenadaView getCoordenada() {
 		return coordenada;
@@ -18,6 +10,14 @@ public class UsuarioView {
 
 	public void setCoordenada(CoordenadaView coordenada) {
 		this.coordenada = coordenada;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 }

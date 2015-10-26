@@ -26,6 +26,13 @@ public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {
 		this.despacho = despacho;
 		this.estado = estado;
 	}
+	
+	public OrdenDespacho(OrdenDespachoView view) {
+		this(
+			view.getDespacho() != null ? new Despacho(view.getDespacho()) : null,
+			view.getEstado()
+		);
+	}
 
 	public Despacho getDespacho() {
 		return despacho;

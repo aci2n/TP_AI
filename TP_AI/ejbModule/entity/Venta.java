@@ -28,6 +28,8 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	private Date fecha;
 	@Column(name = "portal")
 	private String portal;
+	@Column(name = "codigo")
+	private String codigo;
 	@Column(name = "total")
 	private double total;
 	@Embedded
@@ -39,10 +41,22 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	private Usuario usuario;
 
 	public Venta() {
-
+		
+	}
+	
+	public Venta(VentaView view) {
+		this(
+			view.getCodigo(),
+			view.getFecha(),
+			view.getPortal(),
+			view.getTotal(),
+			view.getDestino() != null ? new Coordenada(view.getDestino()) : null,
+			view.getUsuario() != null ? new Usuario(view.getUsuario()) : null,
+			view.getOrden() != null ? new OrdenDespacho(view.getOrden()) : null
+		);
 	}
 
-	public Venta(Date fecha, String portal, double total, Coordenada destino, Usuario usuario) {
+	public Venta(String codigo, Date fecha, String portal, double total, Coordenada destino, Usuario usuario, OrdenDespacho orden) {
 		this.fecha = fecha;
 		this.portal = portal;
 		this.total = total;
@@ -104,6 +118,14 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public void asignarDespacho(Despacho despacho) {

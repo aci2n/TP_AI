@@ -30,6 +30,14 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 		this.nombre = nombre;
 		this.activo = activo;
 	}
+	
+	public Despacho(DespachoView view) {
+		this(
+			view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null,
+			view.getNombre(),
+			view.isActivo()
+		);
+	}
 
 	public DistanciaADespachoView getDistanciaADespachoView(Coordenada c) throws DespachoException {
 		if (coordenada == null) {

@@ -1,19 +1,17 @@
 package entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import view.UsuarioView;
 
-@Entity
-@Table(name = "Usuarios")
+@Embeddable
 public class Usuario extends PersistentObject implements ViewGenerator<UsuarioView> {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "nombre")
-	private String nombre;
+	@Column(name = "dni")
+	private String dni;
 	@Embedded
 	private Coordenada coordenada;
 
@@ -21,17 +19,24 @@ public class Usuario extends PersistentObject implements ViewGenerator<UsuarioVi
 		
 	}
 
-	public Usuario(String nombre, Coordenada coordenada) {
-		this.nombre = nombre;
+	public Usuario(String dni, Coordenada coordenada) {
+		this.dni = dni;
 		this.coordenada = coordenada;
 	}
-
-	public String getNombre() {
-		return nombre;
+	
+	public Usuario (UsuarioView view) {
+		this(
+			view.getDni(),
+			view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null
+		);
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public Coordenada getCoordenada() {
@@ -45,8 +50,8 @@ public class Usuario extends PersistentObject implements ViewGenerator<UsuarioVi
 	public UsuarioView getView() {
 		UsuarioView uv = new UsuarioView();
 		uv.setCoordenada(ViewUtil.getViewChecked(coordenada));
-		uv.setNombre(nombre);
+		uv.setDni(dni);
 		return uv;
 	}
-
+	
 }

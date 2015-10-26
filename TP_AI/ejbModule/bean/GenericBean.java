@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 
+import entity.ExceptionLog;
 import entity.PersistentObject;
 import exception.NoExisteException;
 import exception.PersistException;
@@ -45,10 +46,14 @@ public abstract class GenericBean<T> {
 	}
 
 	protected List<T> getAll() {
-		return (List<T>) em.createNamedQuery("from " + type.getName()).getResultList();
+		return (List<T>) em.createQuery("from " + type.getName()).getResultList();
 	}
 	
 	protected List<T> executeQuery(String query) {
-		return (List<T>) em.createNamedQuery(query).getResultList();
+		return (List<T>) em.createQuery(query).getResultList();
+	}
+	
+	protected void log(ExceptionLog e) {
+		em.persist(e);
 	}
 }

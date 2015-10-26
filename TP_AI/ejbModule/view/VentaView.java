@@ -5,10 +5,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import entity.Venta;
-
 @XmlRootElement
-public class VentaView implements View<Venta> {
+public class VentaView {
 	private List<ItemArticuloView> articulos;
 	private String codigo;
 	private Date fecha;

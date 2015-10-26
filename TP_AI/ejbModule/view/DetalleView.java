@@ -1,8 +1,6 @@
 package view;
 
-import entity.Detalle;
-
-public class DetalleView implements View<Detalle> {
+public class DetalleView {
 	private String titulo;
 	private String descripcion;
 

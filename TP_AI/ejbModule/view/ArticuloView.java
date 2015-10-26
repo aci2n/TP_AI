@@ -4,7 +4,7 @@ import java.util.List;
 
 import entity.Articulo;
 
-public class ArticuloView implements View<Articulo> {
+public class ArticuloView {
 	private String nombre;
 	private int codigo;
 	private String descripcion;

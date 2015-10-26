@@ -1,8 +1,6 @@
 package view;
 
-import entity.Despacho;
-
-public class DespachoView implements View<Despacho> {
+public class DespachoView {
 	private String nombre;
 	private CoordenadaView coordenada;
 	private boolean activo;

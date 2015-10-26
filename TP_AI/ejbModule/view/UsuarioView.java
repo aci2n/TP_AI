@@ -1,8 +1,6 @@
 package view;
 
-import entity.Usuario;
-
-public class UsuarioView implements View<Usuario> {
+public class UsuarioView {
 	private String dni;
 	private CoordenadaView coordenada;
 

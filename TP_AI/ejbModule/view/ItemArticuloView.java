@@ -1,6 +1,8 @@
 package view;
 
-public class ItemArticuloView {
+import entity.ItemArticulo;
+
+public class ItemArticuloView implements View<ItemArticulo> {
 	private ArticuloView articulo;
 	private int cantidad;
 

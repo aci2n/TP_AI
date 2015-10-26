@@ -23,7 +23,7 @@ public class VentasBean extends GenericBean<Venta> {
 		super(Venta.class);
 	}
 	
-	public Integer agregarVenta(VentaView view) throws PersistException {
+	public Integer guardarVenta(VentaView view) throws PersistException {
 		Venta venta = new Venta();
 		venta.setPortal(view.getPortal());
 		venta.setTotal(view.getTotal());
@@ -41,6 +41,10 @@ public class VentasBean extends GenericBean<Venta> {
 		
 		save(venta);
 		return venta.getId();
+	}
+	
+	public Venta obtenerVenta(Integer idVenta) throws NoExisteException {
+		return null;
 	}
 
 	public void asignarDespachoAVenta(Integer idVenta, Despacho despacho) throws NoExisteException {

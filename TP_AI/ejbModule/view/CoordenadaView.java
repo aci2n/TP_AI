@@ -1,6 +1,8 @@
 package view;
 
-public class CoordenadaView {
+import entity.Coordenada;
+
+public class CoordenadaView implements View<Coordenada> {
 	private double latitud;
 	private double longitud;
 

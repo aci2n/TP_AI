@@ -2,7 +2,9 @@ package view;
 
 import java.util.List;
 
-public class ArticuloView {
+import entity.Articulo;
+
+public class ArticuloView implements View<Articulo> {
 	private String nombre;
 	private int codigo;
 	private String descripcion;

@@ -33,9 +33,9 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 	private String pathFoto;
 	@Column(name = "origen")
 	private String origen;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_articulo")
-	private List<Detalle> detalles;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "id_articulo")
+//	private List<Detalle> detalles;
 
 	public Articulo() {
 
@@ -108,22 +108,22 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 		this.origen = origen;
 	}
 
-	public List<Detalle> getDetalles() {
-		return detalles;
-	}
-
-	public void setDetalles(List<Detalle> detalles) {
-		this.detalles = detalles;
-	}
+//	public List<Detalle> getDetalles() {
+//		return detalles;
+//	}
+//
+//	public void setDetalles(List<Detalle> detalles) {
+//		this.detalles = detalles;
+//	}
 
 	public ArticuloView getView() {
 		ArticuloView av = new ArticuloView();
 		av.setCodigo(codigo);
 		av.setDescripcion(descripcion);
 		av.setDetalles(new ArrayList<>());
-		for (Detalle d : detalles) {
-			av.getDetalles().add(ViewUtil.getViewChecked(d));
-		}
+//		for (Detalle d : detalles) {
+//			av.getDetalles().add(ViewUtil.getViewChecked(d));
+//		}
 		av.setMarca(marca);
 		av.setNombre(nombre);
 		av.setOrigen(origen);

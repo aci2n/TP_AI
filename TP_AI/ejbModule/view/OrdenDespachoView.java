@@ -1,9 +1,8 @@
 package view;
 
 import entity.Estado;
-import entity.OrdenDespacho;
 
-public class OrdenDespachoView implements View<OrdenDespacho> {
+public class OrdenDespachoView {
 	private DespachoView despacho;
 	private Estado estado;
 

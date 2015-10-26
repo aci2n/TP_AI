@@ -1,9 +1,7 @@
 package util;
 
-import view.View;
-
-public interface ViewUtils<T> {
+public interface ViewUtils<T, V> {
 	
-	public T fromView(View<T> view);
+	public T fromView(V view);
 	
 }

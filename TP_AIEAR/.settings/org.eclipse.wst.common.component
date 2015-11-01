@@ -8,5 +8,9 @@
         <dependent-module archiveName="TP_AIClient.jar" deploy-path="/" handle="module:/resource/TP_AIClient/TP_AIClient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="TP_AIWEB2.war" deploy-path="/" handle="module:/resource/TP_AIWEB2/TP_AIWEB2">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

@@ -7,9 +7,6 @@ import entity.Estado;
 import entity.OrdenDespacho;
 import exception.NoExisteException;
 
-/**
- * Session Bean implementation class OrdenesDespachoBean
- */
 @Stateless
 @LocalBean
 public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {

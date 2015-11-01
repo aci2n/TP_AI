@@ -1,29 +1,30 @@
-package bean;
+package rest;
+
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import bean.OrdenesDespachoBean;
 import entity.ExceptionLog;
 
 @Stateless
-@LocalBean
-public class OrdenesDespachoWebService {
+@Path("/ordenes")
+public class OrdenesDespachoRESTService {
 
 	@EJB
 	private OrdenesDespachoBean ordenes;
 	
-	public OrdenesDespachoWebService() {
+	public OrdenesDespachoRESTService() {
 
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/ordenes/{id}")
+	@Path("/actualizar/{id}")
 	public boolean actualizarOrden(Integer id) {
 		try {
 			ordenes.actualizarOrden(id);

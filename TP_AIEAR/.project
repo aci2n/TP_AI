@@ -5,6 +5,7 @@
 	<projects>
 		<project>TP_AI</project>
 		<project>TP_AIClient</project>
+		<project>TP_AIWEB2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -62,7 +62,7 @@ public abstract class GenericBean<T> {
 		return (List<Object[]>) em.createQuery(query).getResultList();
 	}
 
-	protected void log(ExceptionLog e) {
+	public void log(ExceptionLog e) {
 		em.persist(e);
 	}
 

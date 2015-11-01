@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -33,7 +34,8 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	private double total;
 	@Embedded
 	private Coordenada destino;
-	@Embedded
+	@OneToOne
+	@JoinColumn(name = "id_orden")
 	private OrdenDespacho orden;
 	@Embedded
 	private Usuario usuario;

@@ -3,8 +3,17 @@ package view;
 import entity.Estado;
 
 public class OrdenDespachoView {
+	private Integer id;
 	private DespachoView despacho;
 	private Estado estado;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public DespachoView getDespacho() {
 		return despacho;

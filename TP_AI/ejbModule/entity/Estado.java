@@ -1,5 +1,5 @@
 package entity;
 
 public enum Estado {
-	ACTIVO, NO_ACTIVO
+	ACTIVO, NO_ACTIVO, ENTREGADO
 }

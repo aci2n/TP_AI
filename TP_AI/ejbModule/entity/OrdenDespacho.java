@@ -1,22 +1,29 @@
 package entity;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import view.OrdenDespachoView;
 
-@Embeddable
-public class OrdenDespacho implements ViewGenerator<OrdenDespachoView> {
+@Entity
+@Table(name = "OrdenesDespacho")
+public class OrdenDespacho extends PersistentObject implements ViewGenerator<OrdenDespachoView> {
+	private static final long serialVersionUID = 1L;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_despacho")
 	private Despacho despacho;
 	@Column(name = "estado")
 	@Enumerated(value = EnumType.STRING)
 	private Estado estado;
+	@OneToOne(mappedBy = "orden")
+	private Venta venta;
 
 	public OrdenDespacho() {
 

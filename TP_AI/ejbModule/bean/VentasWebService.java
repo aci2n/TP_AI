@@ -7,6 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import entity.ExceptionLog;
+import view.OrdenDespachoView;
 import view.VentaView;
 
 @Stateless
@@ -31,5 +32,4 @@ public class VentasWebService implements VentasWebServiceRemote, VentasWebServic
 			return false;
 		}
 	}
-
 }

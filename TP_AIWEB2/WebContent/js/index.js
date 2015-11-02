@@ -7,7 +7,7 @@ $("#menu_principal").click(function() {
 	$("#myTable").empty();
 });
 
-$('#linkBestSellers').click(function() {
+$('#linkVentas').click(function() {
 	cargarContenido('Ventas');
 });
 

@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1>Reportes:</h1>
+<a href="#"><strong><i class="glyphicon glyphicon-stats"></i> Reportes</strong></a>
+<hr>
 <ul>
 	<c:forEach var="portal" items="${portales}">
 		<li>

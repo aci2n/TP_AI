@@ -8,10 +8,12 @@ import javax.ejb.Stateless;
 import entity.Coordenada;
 import entity.Despacho;
 import entity.OrdenDespacho;
+import entity.Reporte;
 import entity.Usuario;
 import entity.Venta;
 import exception.NoExisteException;
 import exception.PersistException;
+import view.PortalView;
 import view.VentaView;
 
 @Stateless
@@ -19,7 +21,7 @@ public class VentasBean extends GenericBean<Venta> {
 
 	public VentasBean() {
 		super(Venta.class);
-	}	
+	}
 
 	public Integer guardarVenta(VentaView view) throws PersistException {
 		Venta venta = new Venta();
@@ -55,15 +57,25 @@ public class VentasBean extends GenericBean<Venta> {
 
 		return ventasSinOrdenView;
 	}
-	
+
 	public List<VentaView> getAllViews() {
 		List<Venta> ventas = getAll();
 		List<VentaView> ventasView = new ArrayList<>();
 		for (Venta v : ventas) {
 			ventasView.add(v.getView());
 		}
-		
+
 		return ventasView;
+	}
+
+	public List<PortalView> getReportePortales() {
+		Reporte reporte = new Reporte();
+		for (Venta v : getAll()) {
+			reporte.agregarVenta(v);
+		}
+		reporte.ordenar();
+
+		return reporte.getPortales();
 	}
 
 }

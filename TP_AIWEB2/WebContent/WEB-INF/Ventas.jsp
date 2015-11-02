@@ -12,14 +12,17 @@
 	<h1>Ventas:</h1>
 	<ul>
 		<c:forEach var="venta" items="${ventas}">
-			<ul>
-				<li>${venta.fecha}</li>
-				<li>${venta.total}</li>
-				<li>${venta.portal}</li>
-				<li>${venta.usuario.coordenada.latitud}</li>
-				<li>${venta.usuario.coordenada.longitud}</li>
-				<li>${venta.orden.estado}</li>
-			</ul>
+			<li>
+				<h4>${venta.codigo}</h4>
+				<ul>
+					<li>${venta.fecha}</li>
+					<li>${venta.total}</li>
+					<li>${venta.portal}</li>
+					<li>${venta.usuario.coordenada.latitud}</li>
+					<li>${venta.usuario.coordenada.longitud}</li>
+					<li>${venta.orden.estado}</li>
+				</ul>
+			</li>
 		</c:forEach>
 	</ul>
 </body>

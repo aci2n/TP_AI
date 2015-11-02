@@ -59,9 +59,8 @@ public class VentasBean extends GenericBean<Venta> {
 	}
 
 	public List<VentaView> getAllViews() {
-		List<Venta> ventas = getAll();
 		List<VentaView> ventasView = new ArrayList<>();
-		for (Venta v : ventas) {
+		for (Venta v : getAll()) {
 			ventasView.add(v.getView());
 		}
 

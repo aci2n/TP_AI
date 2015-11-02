@@ -74,4 +74,12 @@ public abstract class GenericBean<T> {
 		return gson.fromJson(json, type);
 	}
 
+	public void logException(ExceptionLog e) {
+		try {
+			em.persist(e);
+		} catch (Exception ex) {
+			// hola
+		}
+	}
+
 }

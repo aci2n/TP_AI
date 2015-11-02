@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webService.monitor.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WSProcVentaBeanService" targetNamespace="http://webService.monitor.com/">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://webService.monitor.com/" version="1.0">
+
+			<xs:element name="procesarCarrito" type="tns:procesarCarrito"/>
+
+			<xs:element name="procesarCarritoResponse" type="tns:procesarCarritoResponse"/>
+
+			<xs:element name="procesarVenta" type="tns:procesarVenta"/>
+
+			<xs:element name="procesarVentaResponse" type="tns:procesarVentaResponse"/>
+
+			<xs:complexType name="procesarCarrito">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="arg0" type="tns:voCarrito"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="voCarrito">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="carrito" type="tns:voCarrito"/>
+					<xs:element name="idBusqueda" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="procesarCarritoResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="procesarVenta">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="arg0" type="tns:voVenta"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="voVenta">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="cliente" type="tns:cliente"/>
+					<xs:element name="codigoVenta" type="xs:int"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="collectionItems" nillable="true" type="tns:voItemVenta"/>
+					<xs:element minOccurs="0" name="estado" type="xs:string"/>
+					<xs:element minOccurs="0" name="fecha" type="xs:dateTime"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="cliente">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="apelido" type="xs:string"/>
+					<xs:element minOccurs="0" name="coordenada" type="xs:string"/>
+					<xs:element name="dni" type="xs:long"/>
+					<xs:element name="idCliente" type="xs:long"/>
+					<xs:element minOccurs="0" name="nombre" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="voItemVenta">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="cantidad" type="xs:int"/>
+					<xs:element minOccurs="0" name="codigo" type="xs:int"/>
+					<xs:element name="precio" type="xs:float"/>
+					<xs:element minOccurs="0" name="producto" type="tns:voProducto"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="voProducto">
+				<xs:sequence>
+					<xs:element name="codigo" type="xs:long"/>
+					<xs:element name="precio" type="xs:float"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="procesarVentaResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="procesarVentaResponse">
+		<wsdl:part element="tns:procesarVentaResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="procesarCarritoResponse">
+		<wsdl:part element="tns:procesarCarritoResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="procesarCarrito">
+		<wsdl:part element="tns:procesarCarrito" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="procesarVenta">
+		<wsdl:part element="tns:procesarVenta" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="WSProcVentaBean">
+		<wsdl:operation name="procesarCarrito">
+			<wsdl:input message="tns:procesarCarrito" name="procesarCarrito">
+			</wsdl:input>
+			<wsdl:output message="tns:procesarCarritoResponse" name="procesarCarritoResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="procesarVenta">
+			<wsdl:input message="tns:procesarVenta" name="procesarVenta">
+			</wsdl:input>
+			<wsdl:output message="tns:procesarVentaResponse" name="procesarVentaResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WSProcVentaBeanServiceSoapBinding" type="tns:WSProcVentaBean">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="procesarCarrito">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="procesarCarrito">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="procesarCarritoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="procesarVenta">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="procesarVenta">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="procesarVentaResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WSProcVentaBeanService">
+		<wsdl:port binding="tns:WSProcVentaBeanServiceSoapBinding" name="WSProcVentaBeanPort">
+			<soap:address location="http://localhost:8080/TP_AIWEB/services/WSProcVentaBeanPort"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

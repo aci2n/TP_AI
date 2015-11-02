@@ -1,10 +1,13 @@
-package bean;
+package ws;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import bean.VentasBean;
+import bean.VentasWebServiceLocal;
+import bean.VentasWebServiceRemote;
 import entity.ExceptionLog;
 import view.VentaView;
 

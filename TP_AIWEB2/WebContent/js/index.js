@@ -18,7 +18,9 @@ $('#linkReporte').click(function() {
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();
-	$('#contenido').load(url, function() {
+	var contenido = $('#contenido');
+	contenido.html('');
+	contenido.load(url, function() {
 		loading.hide();
 	});
 }

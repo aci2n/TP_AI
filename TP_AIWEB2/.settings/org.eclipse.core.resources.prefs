@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/com/monitor/webservice/Cliente.java=UTF-8
+encoding//src/com/monitor/webservice/VoCarrito.java=UTF-8
+encoding//src/com/monitor/webservice/VoItemVenta.java=UTF-8
+encoding//src/com/monitor/webservice/VoProducto.java=UTF-8
+encoding//src/com/monitor/webservice/VoVenta.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBean.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBeanService.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBeanServiceLocator.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBeanServiceSoapBindingImpl.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBeanServiceSoapBindingSkeleton.java=UTF-8
+encoding//src/com/monitor/webservice/WSProcVentaBeanServiceSoapBindingStub.java=UTF-8

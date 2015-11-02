@@ -3,14 +3,14 @@ package entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import view.LogView;
 
+@Entity
+@Table(name = "Logs")
 public class Log extends PersistentObject implements ViewGenerator<LogView> {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4075787279248040309L;
 
 	@Column(name = "modulo")
@@ -19,8 +19,21 @@ public class Log extends PersistentObject implements ViewGenerator<LogView> {
 	private String descripcion;
 	@Column(name = "fecha")
 	private Date fecha;
-	
-	
+
+	public Log() {
+
+	}
+
+	public Log(String modulo, String descripcion, Date fecha) {
+		this.modulo = modulo;
+		this.descripcion = descripcion;
+		this.fecha = fecha;
+	}
+
+	public Log(LogView log) {
+		this(log.getModulo(), log.getDescripcion(), log.getFecha());
+	}
+
 	public String getModulo() {
 		return modulo;
 	}

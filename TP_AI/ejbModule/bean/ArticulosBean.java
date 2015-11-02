@@ -3,14 +3,12 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import entity.Articulo;
 import view.BestSellerView;
 
 @Stateless
-@LocalBean
 public class ArticulosBean extends GenericBean<Articulo> {
 
 	public ArticulosBean() {

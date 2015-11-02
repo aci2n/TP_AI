@@ -1,6 +1,5 @@
 package bean;
 
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import entity.Estado;
@@ -8,7 +7,6 @@ import entity.OrdenDespacho;
 import exception.NoExisteException;
 
 @Stateless
-@LocalBean
 public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 
 	public OrdenesDespachoBean() {

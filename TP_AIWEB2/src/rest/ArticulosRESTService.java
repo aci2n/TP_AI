@@ -23,7 +23,7 @@ public class ArticulosRESTService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/bestsellers")
+	@Path("/bestSellers")
 	public String getBestSellers() {
 		return articulos.getBestSellers();
 	}

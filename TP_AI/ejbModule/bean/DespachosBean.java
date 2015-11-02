@@ -3,7 +3,6 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import entity.Coordenada;
@@ -13,7 +12,6 @@ import exception.DespachoException;
 import view.DistanciaADespachoView;
 
 @Stateless
-@LocalBean
 public class DespachosBean extends GenericBean<Despacho> {
 
 	public DespachosBean() {

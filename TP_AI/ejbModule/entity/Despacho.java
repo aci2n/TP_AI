@@ -52,6 +52,14 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 
 		return distanciaADespacho;
 	}
+	
+	public double obtenerDistanciaACoordenada(Coordenada c) throws DespachoException {
+		if (coordenada == null) {
+			throw new DespachoException(String.format("El despacho %d no tiene una coordenada asignada.", id));
+		}
+
+		return coordenada.calcularDistanciaEnKilometros(c);
+	}
 
 	public Coordenada getCoordenada() {
 		return coordenada;

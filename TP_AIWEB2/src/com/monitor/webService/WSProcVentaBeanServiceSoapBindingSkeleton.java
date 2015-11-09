@@ -5,10 +5,10 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.monitor.webservice;
+package com.monitor.webService;
 
 public class WSProcVentaBeanServiceSoapBindingSkeleton implements WSProcVentaBean, org.apache.axis.wsdl.Skeleton {
-    private com.monitor.webservice.WSProcVentaBean impl;
+    private com.monitor.webService.WSProcVentaBean impl;
     private static java.util.Map _myOperations = new java.util.Hashtable();
     private static java.util.Collection _myOperationsList = new java.util.ArrayList();
 
@@ -31,7 +31,7 @@ public class WSProcVentaBeanServiceSoapBindingSkeleton implements WSProcVentaBea
         org.apache.axis.description.FaultDesc _fault;
         org.apache.axis.description.ParameterDesc [] _params;
         _params = new org.apache.axis.description.ParameterDesc [] {
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.monitor.com/", "voCarrito"), com.monitor.webservice.VoCarrito.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.monitor.com/", "voCarrito"), com.monitor.webService.VoCarrito.class, false, false), 
         };
         _oper = new org.apache.axis.description.OperationDesc("procesarCarrito", _params, new javax.xml.namespace.QName("", "return"));
         _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -43,7 +43,7 @@ public class WSProcVentaBeanServiceSoapBindingSkeleton implements WSProcVentaBea
         }
         ((java.util.List)_myOperations.get("procesarCarrito")).add(_oper);
         _params = new org.apache.axis.description.ParameterDesc [] {
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.monitor.com/", "voVenta"), com.monitor.webservice.VoVenta.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.monitor.com/", "voVenta"), com.monitor.webService.VoVenta.class, false, false), 
         };
         _oper = new org.apache.axis.description.OperationDesc("procesarVenta", _params, new javax.xml.namespace.QName("", "return"));
         _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -57,19 +57,19 @@ public class WSProcVentaBeanServiceSoapBindingSkeleton implements WSProcVentaBea
     }
 
     public WSProcVentaBeanServiceSoapBindingSkeleton() {
-        this.impl = new com.monitor.webservice.WSProcVentaBeanServiceSoapBindingImpl();
+        this.impl = new com.monitor.webService.WSProcVentaBeanServiceSoapBindingImpl();
     }
 
-    public WSProcVentaBeanServiceSoapBindingSkeleton(com.monitor.webservice.WSProcVentaBean impl) {
+    public WSProcVentaBeanServiceSoapBindingSkeleton(com.monitor.webService.WSProcVentaBean impl) {
         this.impl = impl;
     }
-    public java.lang.String procesarCarrito(com.monitor.webservice.VoCarrito arg0) throws java.rmi.RemoteException
+    public java.lang.String procesarCarrito(com.monitor.webService.VoCarrito arg0) throws java.rmi.RemoteException
     {
         java.lang.String ret = impl.procesarCarrito(arg0);
         return ret;
     }
 
-    public java.lang.String procesarVenta(com.monitor.webservice.VoVenta arg0) throws java.rmi.RemoteException
+    public java.lang.String procesarVenta(com.monitor.webService.VoVenta arg0) throws java.rmi.RemoteException
     {
         java.lang.String ret = impl.procesarVenta(arg0);
         return ret;

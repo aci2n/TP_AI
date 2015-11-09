@@ -1,5 +1,5 @@
 
-package com.monitor.webservice;
+package com.monitor.webService;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

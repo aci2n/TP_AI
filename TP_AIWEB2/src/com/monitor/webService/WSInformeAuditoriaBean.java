@@ -1,4 +1,4 @@
-package com.monitor.webservice;
+package com.monitor.webService;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -24,6 +24,6 @@ public interface WSInformeAuditoriaBean {
     @WebResult(name = "return", targetNamespace = "")
     public boolean agregarInforme(
         @WebParam(name = "arg0", targetNamespace = "")
-        com.monitor.webservice.LogDTO arg0
+        com.monitor.webService.LogDTO arg0
     );
 }

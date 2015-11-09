@@ -11,6 +11,8 @@ public class UsuarioViewUtils implements ViewUtils<Usuario, UsuarioView> {
 	public Usuario fromView(UsuarioView view) {
 		Usuario usuario = new Usuario();
 		usuario.setDni(view.getDni());
+		usuario.setNombre(view.getNombre());
+		usuario.setApellido(view.getApellido());
 		
 		CoordenadaView cView = view.getCoordenada();
 		if (cView != null) {

@@ -1,5 +1,5 @@
 
-package com.monitor.webservice;
+package com.monitor.webService;
 
 import java.util.ArrayList;
 import java.util.List;

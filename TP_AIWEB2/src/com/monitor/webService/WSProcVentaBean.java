@@ -1,5 +1,6 @@
-package com.monitor.webservice;
+package com.monitor.webService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import javax.jws.WebMethod;
@@ -18,7 +19,7 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(targetNamespace = "http://webService.monitor.com/", name = "WSProcVentaBean")
 @XmlSeeAlso({ObjectFactory.class})
-public interface WSProcVentaBean {
+public interface WSProcVentaBean extends Remote {
 
     @WebMethod
     @RequestWrapper(localName = "procesarCarrito", targetNamespace = "http://webService.monitor.com/", className = "com.monitor.webservice.ProcesarCarrito")
@@ -26,7 +27,7 @@ public interface WSProcVentaBean {
     @WebResult(name = "return", targetNamespace = "")
     public java.lang.String procesarCarrito(
         @WebParam(name = "arg0", targetNamespace = "")
-        com.monitor.webservice.VoCarrito arg0
+        com.monitor.webService.VoCarrito arg0
     ) throws RemoteException;
 
     @WebMethod
@@ -35,6 +36,6 @@ public interface WSProcVentaBean {
     @WebResult(name = "return", targetNamespace = "")
     public java.lang.String procesarVenta(
         @WebParam(name = "arg0", targetNamespace = "")
-        com.monitor.webservice.VoVenta arg0
+        com.monitor.webService.VoVenta arg0
     ) throws RemoteException;
 }

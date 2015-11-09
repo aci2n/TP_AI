@@ -19,7 +19,12 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 		@AttributeOverride(name = "longitud", column = @Column(name = "longitud_usuario")) 
 	})
 	private Coordenada coordenada;
+	@Column(name = "nombre")
+	private String nombre;
+	@Column(name = "apellido")
+	private String apellido;
 
+	
 	public Usuario() {
 
 	}
@@ -48,6 +53,23 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 	public void setCoordenada(Coordenada coordenada) {
 		this.coordenada = coordenada;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 
 	public UsuarioView getView() {
 		UsuarioView uv = new UsuarioView();

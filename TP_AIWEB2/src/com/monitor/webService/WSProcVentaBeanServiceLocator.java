@@ -5,9 +5,9 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.monitor.webservice;
+package com.monitor.webService;
 
-public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Service implements WSProcVentaBeanService {
+public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Service {
 
 	public WSProcVentaBeanServiceLocator() {
 	}
@@ -39,7 +39,7 @@ public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Servic
 		WSProcVentaBeanPortWSDDServiceName = name;
 	}
 
-	public com.monitor.webservice.WSProcVentaBean getWSProcVentaBeanPort() throws javax.xml.rpc.ServiceException {
+	public com.monitor.webService.WSProcVentaBean getWSProcVentaBeanPort() throws javax.xml.rpc.ServiceException {
 		java.net.URL endpoint;
 		try {
 			endpoint = new java.net.URL(WSProcVentaBeanPort_address);
@@ -49,10 +49,10 @@ public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Servic
 		return getWSProcVentaBeanPort(endpoint);
 	}
 
-	public com.monitor.webservice.WSProcVentaBean getWSProcVentaBeanPort(java.net.URL portAddress)
+	public com.monitor.webService.WSProcVentaBean getWSProcVentaBeanPort(java.net.URL portAddress)
 			throws javax.xml.rpc.ServiceException {
 		try {
-			com.monitor.webservice.WSProcVentaBeanServiceSoapBindingStub _stub = new com.monitor.webservice.WSProcVentaBeanServiceSoapBindingStub(
+			com.monitor.webService.WSProcVentaBeanServiceSoapBindingStub _stub = new com.monitor.webService.WSProcVentaBeanServiceSoapBindingStub(
 					portAddress, this);
 			_stub.setPortName(getWSProcVentaBeanPortWSDDServiceName());
 			return _stub;
@@ -71,8 +71,8 @@ public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Servic
 	 */
 	public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
 		try {
-			if (com.monitor.webservice.WSProcVentaBean.class.isAssignableFrom(serviceEndpointInterface)) {
-				com.monitor.webservice.WSProcVentaBeanServiceSoapBindingStub _stub = new com.monitor.webservice.WSProcVentaBeanServiceSoapBindingStub(
+			if (com.monitor.webService.WSProcVentaBean.class.isAssignableFrom(serviceEndpointInterface)) {
+				com.monitor.webService.WSProcVentaBeanServiceSoapBindingStub _stub = new com.monitor.webService.WSProcVentaBeanServiceSoapBindingStub(
 						new java.net.URL(WSProcVentaBeanPort_address), this);
 				_stub.setPortName(getWSProcVentaBeanPortWSDDServiceName());
 				return _stub;

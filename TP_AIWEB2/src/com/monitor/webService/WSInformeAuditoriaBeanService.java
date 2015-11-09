@@ -1,4 +1,4 @@
-package com.monitor.webservice;
+package com.monitor.webService;
 
 import java.net.MalformedURLException;
 import java.net.URL;

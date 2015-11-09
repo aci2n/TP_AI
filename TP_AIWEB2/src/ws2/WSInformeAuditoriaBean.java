@@ -24,6 +24,6 @@ public interface WSInformeAuditoriaBean {
     @WebResult(name = "return", targetNamespace = "")
     public boolean agregarInforme(
         @WebParam(name = "arg0", targetNamespace = "")
-        com.monitor.webservice.LogDTO arg0
+        com.monitor.webService.LogDTO arg0
     );
 }

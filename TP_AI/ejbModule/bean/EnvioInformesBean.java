@@ -48,7 +48,7 @@ public class EnvioInformesBean {
 		Context context = null;
 
 		try {
-			// Set up the context for the JNDI lookup
+			// Set up the context for the JNDI lookup //
 			Properties env = new Properties();
 			env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
 			env.put(Context.PROVIDER_URL, System.getProperty(Context.PROVIDER_URL, PROVIDER_URL));

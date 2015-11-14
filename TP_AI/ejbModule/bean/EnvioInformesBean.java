@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -15,8 +16,7 @@ import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import com.google.gson.Gson;
-
+import config.Config;
 import entity.Log;
 
 /**
@@ -25,6 +25,9 @@ import entity.Log;
 @Stateless
 @LocalBean
 public class EnvioInformesBean {
+
+	@EJB
+	private LogBean logBean;
 
 	public EnvioInformesBean() {
 
@@ -37,7 +40,7 @@ public class EnvioInformesBean {
 		String DEFAULT_USERNAME = "#";
 		String DEFAULT_PASSWORD = "guest";
 		String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
-		String PROVIDER_URL = "http-remoting://localhost:8180";
+		String PROVIDER_URL = "http-remoting://" + Config.getSetting("queue_email_url");
 
 		ConnectionFactory connectionFactory = null;
 		Connection connection = null;
@@ -71,7 +74,7 @@ public class EnvioInformesBean {
 			// consumer = session.createConsumer(destination);
 			connection.start();
 
-			String content = new Gson().toJson(logs);
+			String content = logBean.toJson(logs);
 			Logger.getAnonymousLogger().info(content);
 			// String content = System.getProperty("message.content",
 			// gson.toJson(logs));
@@ -83,7 +86,7 @@ public class EnvioInformesBean {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logBean.logException(e);
 		}
 
 	}

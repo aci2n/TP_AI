@@ -63,6 +63,7 @@ public abstract class GenericBean<T> {
 	}
 
 	public void logException(Exception e) {
+		e.printStackTrace();
 		em.persist(new ExceptionLog(e));
 	}
 

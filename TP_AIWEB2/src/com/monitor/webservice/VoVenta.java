@@ -1,5 +1,5 @@
 
-package com.monitor.webService;
+package com.monitor.webservice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="collectionItems" type="{http://webService.monitor.com/}voItemVenta" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="idPortal" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,7 +41,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "codigoVenta",
     "collectionItems",
     "estado",
-    "fecha"
+    "fecha",
+    "idPortal"
 })
 public class VoVenta {
 
@@ -51,6 +53,7 @@ public class VoVenta {
     protected String estado;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fecha;
+    protected int idPortal;
 
     /**
      * Obtiene el valor de la propiedad cliente.
@@ -167,6 +170,22 @@ public class VoVenta {
      */
     public void setFecha(XMLGregorianCalendar value) {
         this.fecha = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad idPortal.
+     * 
+     */
+    public int getIdPortal() {
+        return idPortal;
+    }
+
+    /**
+     * Define el valor de la propiedad idPortal.
+     * 
+     */
+    public void setIdPortal(int value) {
+        this.idPortal = value;
     }
 
 }

@@ -3,21 +3,20 @@ package com.monitor.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para agregarInformeResponse complex type.
+ * <p>Clase Java para voCarrito complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="agregarInformeResponse"&gt;
+ * &lt;complexType name="voCarrito"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="idBusqueda" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,28 +26,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "agregarInformeResponse", propOrder = {
-    "_return"
+@XmlType(name = "voCarrito", propOrder = {
+    "idBusqueda"
 })
-public class AgregarInformeResponse {
+public class VoCarrito {
 
-    @XmlElement(name = "return")
-    protected boolean _return;
+    protected int idBusqueda;
 
     /**
-     * Obtiene el valor de la propiedad return.
+     * Obtiene el valor de la propiedad idBusqueda.
      * 
      */
-    public boolean isReturn() {
-        return _return;
+    public int getIdBusqueda() {
+        return idBusqueda;
     }
 
     /**
-     * Define el valor de la propiedad return.
+     * Define el valor de la propiedad idBusqueda.
      * 
      */
-    public void setReturn(boolean value) {
-        this._return = value;
+    public void setIdBusqueda(int value) {
+        this.idBusqueda = value;
     }
 
 }

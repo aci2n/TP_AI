@@ -1,23 +1,22 @@
 
-package com.monitor.webService;
+package com.monitor.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para procesarCarritoResponse complex type.
+ * <p>Clase Java para procesarVenta complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="procesarCarritoResponse"&gt;
+ * &lt;complexType name="procesarVenta"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://webService.monitor.com/}voVenta" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "procesarCarritoResponse", propOrder = {
-    "_return"
+@XmlType(name = "procesarVenta", propOrder = {
+    "arg0"
 })
-public class ProcesarCarritoResponse {
+public class ProcesarVenta {
 
-    @XmlElement(name = "return")
-    protected String _return;
+    protected VoVenta arg0;
 
     /**
-     * Obtiene el valor de la propiedad return.
+     * Obtiene el valor de la propiedad arg0.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link VoVenta }
      *     
      */
-    public String getReturn() {
-        return _return;
+    public VoVenta getArg0() {
+        return arg0;
     }
 
     /**
-     * Define el valor de la propiedad return.
+     * Define el valor de la propiedad arg0.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link VoVenta }
      *     
      */
-    public void setReturn(String value) {
-        this._return = value;
+    public void setArg0(VoVenta value) {
+        this.arg0 = value;
     }
 
 }

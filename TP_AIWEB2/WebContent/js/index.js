@@ -15,6 +15,10 @@ $('#linkReporte').click(function() {
 	cargarContenido('Reporte');
 });
 
+$('#configuracion').click(function() {
+	cargarContenido('configuracion');
+});
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

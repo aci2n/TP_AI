@@ -7,6 +7,8 @@
 
 package ws.ventas;
 
+import config.Config;
+
 public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Service implements ws.ventas.WSProcVentaBeanService {
 
     public WSProcVentaBeanServiceLocator() {
@@ -22,7 +24,7 @@ public class WSProcVentaBeanServiceLocator extends org.apache.axis.client.Servic
     }
 
     // Use to get a proxy class for WSProcVentaBeanPort
-    private java.lang.String WSProcVentaBeanPort_address = "http://localhost:8080/TP_AIWEB/WSProcVentaBean";
+    private java.lang.String WSProcVentaBeanPort_address = Config.getSetting("ws_ventas_url");//http://localhost:8080/TP_AIWEB/WSProcVentaBean";
 
     public java.lang.String getWSProcVentaBeanPortAddress() {
         return WSProcVentaBeanPort_address;

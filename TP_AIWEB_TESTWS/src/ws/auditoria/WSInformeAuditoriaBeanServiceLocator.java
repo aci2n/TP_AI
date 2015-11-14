@@ -7,6 +7,8 @@
 
 package ws.auditoria;
 
+import config.Config;
+
 public class WSInformeAuditoriaBeanServiceLocator extends org.apache.axis.client.Service implements ws.auditoria.WSInformeAuditoriaBeanService {
 
     public WSInformeAuditoriaBeanServiceLocator() {
@@ -22,7 +24,7 @@ public class WSInformeAuditoriaBeanServiceLocator extends org.apache.axis.client
     }
 
     // Use to get a proxy class for WSInformeAuditoriaBeanPort
-    private java.lang.String WSInformeAuditoriaBeanPort_address = "http://localhost:8080/TP_AIWEB/WSInformeAuditoriaBean";
+    private java.lang.String WSInformeAuditoriaBeanPort_address = Config.getSetting("ws_auditoria_url");//"http://localhost:8080/TP_AIWEB/WSInformeAuditoriaBean";
 
     public java.lang.String getWSInformeAuditoriaBeanPortAddress() {
         return WSInformeAuditoriaBeanPort_address;

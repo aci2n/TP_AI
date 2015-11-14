@@ -4,8 +4,9 @@
 	<comment></comment>
 	<projects>
 		<project>TP_AI</project>
-		<project>TP_AIClient</project>
 		<project>TP_AIWEB</project>
+		<project>TP_AIWEB_TESTWS</project>
+		<project>TP_AIWEB_MAIL</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

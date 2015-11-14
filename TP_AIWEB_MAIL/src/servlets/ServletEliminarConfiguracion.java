@@ -1,10 +1,6 @@
-package servletsTest;
+package servlets;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,22 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.EnvioInformesBean;
-import entity.Log;
-
-
+import bean.ModuloBean;
 
 /**
- * Servlet implementation class PruebaMDB
+ * Servlet implementation class ServletEliminarConfiguracion
  */
-@WebServlet("/PruebaMDB")
-public class PruebaMDB extends HttpServlet {
+@WebServlet("/eliminarConfiguracion")
+public class ServletEliminarConfiguracion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private EnvioInformesBean envioInformes;
+	private ModuloBean moduloBean;
 
-	public PruebaMDB() {
+	public ServletEliminarConfiguracion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,8 +32,8 @@ public class PruebaMDB extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.getRequestDispatcher("PruebaMDB.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -50,19 +43,8 @@ public class PruebaMDB extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String mensaje = request.getParameter("mensaje");
-		if (mensaje != null) {
-
-			List<Log> logs = new ArrayList<Log>();
-			logs.add(new Log("Monitor", mensaje, Calendar.getInstance().getTime()));
-			envioInformes.enviarInformes(logs);
-			response.getWriter().append("Mensaje enviado").append(request.getContextPath());
-
-		} else {
-			response.getWriter().append("Hubo un error").append(request.getContextPath());
-
-		}
-
+		String ip = request.getParameter("ip");
+		moduloBean.deleteMiConfiguracion(ip);
 	}
 
 }

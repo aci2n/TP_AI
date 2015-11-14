@@ -5,10 +5,15 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="TP_AIClient.jar" deploy-path="/" handle="module:/resource/TP_AIClient/TP_AIClient">
+        <dependent-module archiveName="TP_AIWEB.war" deploy-path="/" handle="module:/resource/TP_AIWEB/TP_AIWEB">
+            <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="TP_AIWEB.war" deploy-path="/" handle="module:/resource/TP_AIWEB/TP_AIWEB">
+        <dependent-module archiveName="TP_AIWEB_TESTWS.war" deploy-path="/" handle="module:/resource/TP_AIWEB_TESTWS/TP_AIWEB_TESTWS">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TP_AIWEB_MAIL.war" deploy-path="/" handle="module:/resource/TP_AIWEB_MAIL/TP_AIWEB_MAIL">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -61,9 +61,7 @@ public class ServletAgregarConfiguracion extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		request.getRequestDispatcher("configuracion.jsp").forward(request, response);
-		
+				
 	}
 
 }

@@ -29,7 +29,7 @@
 					<td><%= m.getCola() %></td>
 					<td><%= m.getmodulo().toString() %></td>
 					<td><%= m.isActivo() %></td>
-					<td><input type="checkbox" class="check_sel"/></td><tr>
+					<td><input type="checkbox" class="check_sel" name="sel"/></td><tr>
 				<% }
 				}%>
 			</tr>
@@ -100,13 +100,13 @@
 
 				$.ajax({
 					type : "POST",
-					data : {"ip" : ipSelected },
+					data : {"ip" : ipSelected},
 					//dataType : "json",
 					url : "eliminarConfiguracion",
 					success : function(data) {
 
-						$("#tbody_conf").empty();
-						$("#agregar_conf").removeClass("disabled");			
+						$("#tbody_conf tr").has('input[name="sel"]:checked').remove()
+					
 					}		
 				});
 			});
@@ -123,9 +123,8 @@
 					url : "configuracion",
 					success : function(data) {
 
-						$('#table_conf > tbody:last-child').append('<tr><td>'+ip_dir+'</td><td>'+puerto+'</td><td>'+cola+'</td>'+
+						$('#tbody_conf').append('<tr><td>'+ip_dir+'</td><td>'+puerto+'</td><td>'+cola+'</td>'+
 								'<td>Email<td>'+Si+'</td><td><input type="checkbox"/></td></tr>');
-						$("#agregar_conf").addClass("disabled");
 					}		
 				});
 			});

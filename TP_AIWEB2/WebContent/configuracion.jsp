@@ -29,7 +29,7 @@
 					<td><%= m.getCola() %></td>
 					<td><%= m.getmodulo().toString() %></td>
 					<td><%= m.isActivo() %></td>
-					<td><input type="checkbox"/></td><tr>
+					<td><input type="checkbox" class="check_sel"/></td><tr>
 				<% }
 				}%>
 			</tr>
@@ -89,6 +89,9 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		$('input.check_sel').on('change', function() {
+		    $('input.check_sel').not(this).prop('checked', false);  
+		});
 		
 		// ELIMINA LA CONFIGURACION ACTUAL
 		$("#eliminar_conf").click(function(){

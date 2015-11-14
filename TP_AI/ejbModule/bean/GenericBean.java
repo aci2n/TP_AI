@@ -62,8 +62,8 @@ public abstract class GenericBean<T> {
 		return (List<Object[]>) em.createQuery(query).getResultList();
 	}
 
-	public void log(ExceptionLog e) {
-		em.persist(e);
+	public void logException(Exception e) {
+		em.persist(new ExceptionLog(e));
 	}
 
 	protected String toJson(Object obj) {
@@ -72,14 +72,6 @@ public abstract class GenericBean<T> {
 
 	protected T fromJson(String json) {
 		return gson.fromJson(json, type);
-	}
-
-	public void logException(ExceptionLog e) {
-		try {
-			em.persist(e);
-		} catch (Exception ex) {
-			// hola
-		}
 	}
 
 }

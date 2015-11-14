@@ -1,5 +1,8 @@
 package util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -13,7 +16,7 @@ public class Utilities {
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		return jaxbMarshaller;
 	}
-	
+
 	public static <T> void print(T o, Class<T> type) throws JAXBException {
 		getMarshaller(type).marshal(o, System.out);
 	}
@@ -23,6 +26,14 @@ public class Utilities {
 		for (T o : list) {
 			jaxbMarshaller.marshal(o, System.out);
 		}
+	}
+
+	public static Date stringToDate(String date, String format) throws ParseException {
+		return new SimpleDateFormat(format).parse(date);
+	}
+
+	public static String generarMensajeError(Exception e) {
+		return String.format("Error: %s", e.getMessage());
 	}
 
 }

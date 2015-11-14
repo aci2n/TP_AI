@@ -7,7 +7,10 @@
 
 package ws.ventas;
 
-public interface WSProcVentaBeanService extends java.rmi.Remote {
-    public java.lang.String procesarCarrito(com.monitor.webService.VoCarrito arg0) throws java.rmi.RemoteException;
-    public java.lang.String procesarVenta(com.monitor.webService.VoVenta arg0) throws java.rmi.RemoteException;
+public interface WSProcVentaBeanService extends javax.xml.rpc.Service {
+    public java.lang.String getWSProcVentaBeanPortAddress();
+
+    public ws.ventas.WSProcVentaBean getWSProcVentaBeanPort() throws javax.xml.rpc.ServiceException;
+
+    public ws.ventas.WSProcVentaBean getWSProcVentaBeanPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }

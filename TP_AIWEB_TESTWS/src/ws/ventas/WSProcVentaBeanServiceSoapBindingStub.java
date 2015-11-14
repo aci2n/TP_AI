@@ -1,5 +1,5 @@
 /**
- * WSProcVentaBeanServiceServiceSoapBindingStub.java
+ * WSProcVentaBeanServiceSoapBindingStub.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
@@ -7,7 +7,7 @@
 
 package ws.ventas;
 
-public class WSProcVentaBeanServiceServiceSoapBindingStub extends org.apache.axis.client.Stub implements ws.ventas.WSProcVentaBeanService {
+public class WSProcVentaBeanServiceSoapBindingStub extends org.apache.axis.client.Stub implements ws.ventas.WSProcVentaBean {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -49,16 +49,16 @@ public class WSProcVentaBeanServiceServiceSoapBindingStub extends org.apache.axi
 
     }
 
-    public WSProcVentaBeanServiceServiceSoapBindingStub() throws org.apache.axis.AxisFault {
+    public WSProcVentaBeanServiceSoapBindingStub() throws org.apache.axis.AxisFault {
          this(null);
     }
 
-    public WSProcVentaBeanServiceServiceSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSProcVentaBeanServiceSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
          this(service);
          super.cachedEndpoint = endpointURL;
     }
 
-    public WSProcVentaBeanServiceServiceSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public WSProcVentaBeanServiceSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {

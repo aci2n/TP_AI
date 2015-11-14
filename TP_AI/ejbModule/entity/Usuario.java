@@ -14,28 +14,28 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 	@Column(name = "dni")
 	private String dni;
 	@Embedded
-	@AttributeOverrides({ 
-		@AttributeOverride(name = "latitud", column = @Column(name = "latitud_usuario")),
-		@AttributeOverride(name = "longitud", column = @Column(name = "longitud_usuario")) 
-	})
+	@AttributeOverrides({ @AttributeOverride(name = "latitud", column = @Column(name = "latitud_usuario") ),
+			@AttributeOverride(name = "longitud", column = @Column(name = "longitud_usuario") ) })
 	private Coordenada coordenada;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "apellido")
 	private String apellido;
 
-	
 	public Usuario() {
 
 	}
 
-	public Usuario(String dni, Coordenada coordenada) {
+	public Usuario(String dni, Coordenada coordenada, String nombre, String apellido) {
 		this.dni = dni;
 		this.coordenada = coordenada;
+		this.nombre = nombre;
+		this.apellido = apellido;
 	}
 
 	public Usuario(UsuarioView view) {
-		this(view.getDni(), view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null);
+		this(view.getDni(), view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null,
+				view.getNombre(), view.getApellido());
 	}
 
 	public String getDni() {
@@ -53,7 +53,7 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 	public void setCoordenada(Coordenada coordenada) {
 		this.coordenada = coordenada;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -69,7 +69,6 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 
 	public UsuarioView getView() {
 		UsuarioView uv = new UsuarioView();

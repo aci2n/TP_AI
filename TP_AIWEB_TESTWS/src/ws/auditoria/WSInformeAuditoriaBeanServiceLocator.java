@@ -1,59 +1,59 @@
 /**
- * WSProcVentaBeanServiceServiceLocator.java
+ * WSInformeAuditoriaBeanServiceLocator.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package ws.ventas;
+package ws.auditoria;
 
-public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client.Service implements ws.ventas.WSProcVentaBeanServiceService {
+public class WSInformeAuditoriaBeanServiceLocator extends org.apache.axis.client.Service implements ws.auditoria.WSInformeAuditoriaBeanService {
 
-    public WSProcVentaBeanServiceServiceLocator() {
+    public WSInformeAuditoriaBeanServiceLocator() {
     }
 
 
-    public WSProcVentaBeanServiceServiceLocator(org.apache.axis.EngineConfiguration config) {
+    public WSInformeAuditoriaBeanServiceLocator(org.apache.axis.EngineConfiguration config) {
         super(config);
     }
 
-    public WSProcVentaBeanServiceServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public WSInformeAuditoriaBeanServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
 
-    // Use to get a proxy class for WSProcVentaBeanServicePort
-    private java.lang.String WSProcVentaBeanServicePort_address = "http://localhost:8080/TP_AIWEB/WSProcVentaBeanService";
+    // Use to get a proxy class for WSInformeAuditoriaBeanPort
+    private java.lang.String WSInformeAuditoriaBeanPort_address = "http://localhost:8080/TP_AIWEB/WSInformeAuditoriaBean";
 
-    public java.lang.String getWSProcVentaBeanServicePortAddress() {
-        return WSProcVentaBeanServicePort_address;
+    public java.lang.String getWSInformeAuditoriaBeanPortAddress() {
+        return WSInformeAuditoriaBeanPort_address;
     }
 
     // The WSDD service name defaults to the port name.
-    private java.lang.String WSProcVentaBeanServicePortWSDDServiceName = "WSProcVentaBeanServicePort";
+    private java.lang.String WSInformeAuditoriaBeanPortWSDDServiceName = "WSInformeAuditoriaBeanPort";
 
-    public java.lang.String getWSProcVentaBeanServicePortWSDDServiceName() {
-        return WSProcVentaBeanServicePortWSDDServiceName;
+    public java.lang.String getWSInformeAuditoriaBeanPortWSDDServiceName() {
+        return WSInformeAuditoriaBeanPortWSDDServiceName;
     }
 
-    public void setWSProcVentaBeanServicePortWSDDServiceName(java.lang.String name) {
-        WSProcVentaBeanServicePortWSDDServiceName = name;
+    public void setWSInformeAuditoriaBeanPortWSDDServiceName(java.lang.String name) {
+        WSInformeAuditoriaBeanPortWSDDServiceName = name;
     }
 
-    public ws.ventas.WSProcVentaBeanService getWSProcVentaBeanServicePort() throws javax.xml.rpc.ServiceException {
+    public ws.auditoria.WSInformeAuditoriaBean getWSInformeAuditoriaBeanPort() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(WSProcVentaBeanServicePort_address);
+            endpoint = new java.net.URL(WSInformeAuditoriaBeanPort_address);
         }
         catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
-        return getWSProcVentaBeanServicePort(endpoint);
+        return getWSInformeAuditoriaBeanPort(endpoint);
     }
 
-    public ws.ventas.WSProcVentaBeanService getWSProcVentaBeanServicePort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public ws.auditoria.WSInformeAuditoriaBean getWSInformeAuditoriaBeanPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            ws.ventas.WSProcVentaBeanServiceServiceSoapBindingStub _stub = new ws.ventas.WSProcVentaBeanServiceServiceSoapBindingStub(portAddress, this);
-            _stub.setPortName(getWSProcVentaBeanServicePortWSDDServiceName());
+            ws.auditoria.WSInformeAuditoriaBeanServiceSoapBindingStub _stub = new ws.auditoria.WSInformeAuditoriaBeanServiceSoapBindingStub(portAddress, this);
+            _stub.setPortName(getWSInformeAuditoriaBeanPortWSDDServiceName());
             return _stub;
         }
         catch (org.apache.axis.AxisFault e) {
@@ -61,8 +61,8 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
         }
     }
 
-    public void setWSProcVentaBeanServicePortEndpointAddress(java.lang.String address) {
-        WSProcVentaBeanServicePort_address = address;
+    public void setWSInformeAuditoriaBeanPortEndpointAddress(java.lang.String address) {
+        WSInformeAuditoriaBeanPort_address = address;
     }
 
     /**
@@ -72,9 +72,9 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (ws.ventas.WSProcVentaBeanService.class.isAssignableFrom(serviceEndpointInterface)) {
-                ws.ventas.WSProcVentaBeanServiceServiceSoapBindingStub _stub = new ws.ventas.WSProcVentaBeanServiceServiceSoapBindingStub(new java.net.URL(WSProcVentaBeanServicePort_address), this);
-                _stub.setPortName(getWSProcVentaBeanServicePortWSDDServiceName());
+            if (ws.auditoria.WSInformeAuditoriaBean.class.isAssignableFrom(serviceEndpointInterface)) {
+                ws.auditoria.WSInformeAuditoriaBeanServiceSoapBindingStub _stub = new ws.auditoria.WSInformeAuditoriaBeanServiceSoapBindingStub(new java.net.URL(WSInformeAuditoriaBeanPort_address), this);
+                _stub.setPortName(getWSInformeAuditoriaBeanPortWSDDServiceName());
                 return _stub;
             }
         }
@@ -94,8 +94,8 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
             return getPort(serviceEndpointInterface);
         }
         java.lang.String inputPortName = portName.getLocalPart();
-        if ("WSProcVentaBeanServicePort".equals(inputPortName)) {
-            return getWSProcVentaBeanServicePort();
+        if ("WSInformeAuditoriaBeanPort".equals(inputPortName)) {
+            return getWSInformeAuditoriaBeanPort();
         }
         else  {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
@@ -105,7 +105,7 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://ventas.ws/", "WSProcVentaBeanServiceService");
+        return new javax.xml.namespace.QName("http://auditoria.ws/", "WSInformeAuditoriaBeanService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://ventas.ws/", "WSProcVentaBeanServicePort"));
+            ports.add(new javax.xml.namespace.QName("http://auditoria.ws/", "WSInformeAuditoriaBeanPort"));
         }
         return ports.iterator();
     }
@@ -123,8 +123,8 @@ public class WSProcVentaBeanServiceServiceLocator extends org.apache.axis.client
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         
-if ("WSProcVentaBeanServicePort".equals(portName)) {
-            setWSProcVentaBeanServicePortEndpointAddress(address);
+if ("WSInformeAuditoriaBeanPort".equals(portName)) {
+            setWSInformeAuditoriaBeanPortEndpointAddress(address);
         }
         else 
 { // Unknown Port Name

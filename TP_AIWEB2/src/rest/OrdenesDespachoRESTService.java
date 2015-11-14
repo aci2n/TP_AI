@@ -9,7 +9,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 import bean.OrdenesDespachoBean;
-import entity.ExceptionLog;
 
 @Stateless
 @Path("/ordenesDespacho")
@@ -29,8 +28,8 @@ public class OrdenesDespachoRESTService {
 		try {
 			ordenes.actualizarOrden(id);
 			return true;
-		} catch (Exception ex) {
-			ordenes.log(new ExceptionLog(ex));
+		} catch (Exception e) {
+			ordenes.logException(e);
 			return false;
 		}
 	}

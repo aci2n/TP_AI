@@ -1,10 +1,13 @@
 package test;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.monitor.webService.Cliente;
+import com.monitor.webService.LogDTO;
 import com.monitor.webService.VoVenta;
 
 public class TestUtil {
@@ -28,12 +31,20 @@ public class TestUtil {
 		return cliente;
 	}
 
+	public static LogDTO log() {
+		LogDTO log = new LogDTO();
+		log.setFecha(fechaString());
+		log.setIdModulo(rs());
+		log.setMensaje(rs());
+		return log;
+	}
+
 	public static Calendar fecha() {
-		try {
-			return Calendar.getInstance();
-		} catch (Exception e) {
-			return null;
-		}
+		return Calendar.getInstance();
+	}
+
+	public static String fechaString() {
+		return new SimpleDateFormat("dd-MM-yy hh:mm:ss").format(new Date());
 	}
 
 	public static String coordenada() {

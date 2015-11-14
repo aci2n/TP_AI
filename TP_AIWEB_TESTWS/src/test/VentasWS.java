@@ -8,18 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import config.Config;
-import ws.ventas.WSProcVentaBeanService;
-import ws.ventas.WSProcVentaBeanServiceProxy;
+import ws.ventas.WSProcVentaBean;
+import ws.ventas.WSProcVentaBeanProxy;
 
-@WebServlet("/TestVentasWS")
-public class TestVentasWS extends HttpServlet {
-	private static final long serialVersionUID = -6851060808069782909L;
+@WebServlet("/VentasWS")
+public class VentasWS extends HttpServlet {
+	private static final long serialVersionUID = -3167305565767619986L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().print(Config.getSetting("ventas_ws_url"));
-		WSProcVentaBeanService service = new WSProcVentaBeanServiceProxy();
+		WSProcVentaBean service = new WSProcVentaBeanProxy();
 		response.getWriter().print(service.procesarVenta(TestUtil.venta()));
 	}
 

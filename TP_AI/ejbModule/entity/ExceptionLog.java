@@ -8,24 +8,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import entity.PersistentObject;
+import util.Utilities;
 
 @Entity
 @Table(name = "ExceptionLogs")
 public class ExceptionLog extends PersistentObject {
 	private static final long serialVersionUID = 1L;
+	private static final int MAX_VARCHAR_SIZE = 65536;
 
 	@Column(name = "tipo")
 	private String tipo;
 	@Column(name = "mensaje")
 	private String mensaje;
-	@Column(name = "stack_trace")
+	@Column(name = "stack_trace", length = MAX_VARCHAR_SIZE)
 	private String stackTrace;
 	@Column(name = "fecha")
 	private Date fecha;
 
 	public ExceptionLog() {
-
+		
 	}
 
 	public ExceptionLog(Exception e) {
@@ -39,7 +40,7 @@ public class ExceptionLog extends PersistentObject {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
-		return sw.toString();
+		return Utilities.trimString(sw.toString(), MAX_VARCHAR_SIZE, "...");
 	}
 
 	public String getTipo() {

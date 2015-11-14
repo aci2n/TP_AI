@@ -36,4 +36,8 @@ public class Utilities {
 		return String.format("Error: %s", e.getMessage());
 	}
 
+	public static String trimString(String str, int max, String trail) {
+		return str.length() > max ? str.substring(0, max - trail.length()) + trail : str;
+	}
+
 }

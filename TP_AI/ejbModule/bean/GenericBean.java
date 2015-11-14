@@ -26,7 +26,7 @@ public abstract class GenericBean<T> {
 		gson = new Gson();
 	}
 
-	protected T get(Integer id) throws NoExisteException {
+	public T get(Integer id) throws NoExisteException {
 		T t = em.find(type, id);
 		if (t == null) {
 			throw new NoExisteException(
@@ -35,7 +35,7 @@ public abstract class GenericBean<T> {
 		return t;
 	}
 
-	protected Integer save(PersistentObject obj) throws PersistException {
+	public Integer save(PersistentObject obj) throws PersistException {
 		try {
 			em.persist((T) obj);
 			em.flush();
@@ -50,28 +50,29 @@ public abstract class GenericBean<T> {
 		return id;
 	}
 
-	protected List<T> getAll() {
+	public List<T> getAll() {
 		return (List<T>) em.createQuery("from " + type.getName()).getResultList();
 	}
 
-	protected List<T> executeQuery(String query) {
+	public List<T> executeQuery(String query) {
 		return (List<T>) em.createQuery(query).getResultList();
 	}
 
-	protected List<Object[]> executeTypelessQuery(String query) { // que se yo
+	public List<Object[]> executeTypelessQuery(String query) { // que se yo
 		return (List<Object[]>) em.createQuery(query).getResultList();
 	}
 
 	public void logException(Exception e) {
 		e.printStackTrace();
 		em.persist(new ExceptionLog(e));
+		em.flush();
 	}
 
-	protected String toJson(Object obj) {
+	public String toJson(Object obj) {
 		return gson.toJson(obj);
 	}
 
-	protected T fromJson(String json) {
+	public T fromJson(String json) {
 		return gson.fromJson(json, type);
 	}
 

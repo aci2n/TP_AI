@@ -17,29 +17,20 @@ import javax.naming.NamingException;
 
 import com.google.gson.Gson;
 
+import config.Config;
 import entity.Log;
 
 public class EnvioInformesProducer {
-
-	/*
-	 * CLASE PARA TESTEAR JMS, VA EN EL MODULO MONITOR HAY QUE AGREGAR LA COLA
-	 * java:/jboss/exported/jms/queue/monitorQueue con name = monitorQueue HAY
-	 * QUE AGREGAR jboss-client.jar en MODULO MONITOR
-	 * 
-	 */
-
 	private static EnvioInformesProducer instance;
 	private static final Logger log = Logger.getLogger(EnvioInformesProducer.class.getName());
 
-	// Set up all the default values
-	// private static final String DEFAULT_MESSAGE = "Hello, World!";
 	private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
 	private static final String DEFAULT_DESTINATION = "java:/jms/queue/monitorQueue";
 	private static final String DEFAULT_MESSAGE_COUNT = "1";
 	private static final String DEFAULT_USERNAME = "#";
 	private static final String DEFAULT_PASSWORD = "guest";
 	private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
-	private static final String PROVIDER_URL = "http-remoting://localhost:8180";
+	private static final String PROVIDER_URL = "http-remoting://" + Config.getSetting("queue_email_url");
 
 	public static EnvioInformesProducer getInstance() {
 

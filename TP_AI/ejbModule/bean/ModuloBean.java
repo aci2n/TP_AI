@@ -40,7 +40,7 @@ public class ModuloBean extends GenericBean<Modulo> {
 			if (count > 0)
 				m = (Modulo) em.createQuery("select m from Modulo m where m.modulo = 'Email'").getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logException(e);
 		}
 		return m;
 	}

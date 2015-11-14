@@ -35,7 +35,7 @@ public class LogBean extends GenericBean<Log> {
 			List<Log> lista = (List<Log>) em.createQuery("select m from Log m").getResultList();
 			toJson(lista);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logException(e);
 		}
 
 		return logs;
@@ -49,7 +49,7 @@ public class LogBean extends GenericBean<Log> {
 					.setParameter(1, modulo).getResultList();
 			toJson(lista);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logException(e);
 		}
 
 		return logs;

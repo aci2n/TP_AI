@@ -20,7 +20,6 @@ public class WSInformeAuditoriaBean {
 		} catch (Exception e) {
 			logBean.logException(e);
 			return false;
-			// throw new RemoteException(Utilities.generarMensajeError(e));
 		}
 	}
 }

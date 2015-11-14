@@ -38,6 +38,7 @@ public class WSProcVentaBean {
 			VentaView view = new VentaView();
 			view.setCodigo(String.valueOf(venta.getCodigoVenta()));
 			view.setFecha(venta.getFecha().toGregorianCalendar().getTime());
+			view.setPortal(Integer.toString(venta.getIdPortal()));
 
 			Cliente cliente = venta.getCliente();
 			UsuarioView usuario = new UsuarioView();

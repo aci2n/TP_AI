@@ -124,7 +124,7 @@
 					success : function(data) {
 
 						$('#tbody_conf').append('<tr><td>'+ip_dir+'</td><td>'+puerto+'</td><td>'+cola+'</td>'+
-								'<td>Email<td>'+Si+'</td><td><input type="checkbox"/></td></tr>');
+								'<td>Email<td>Si</td><td><input type="checkbox"/></td></tr>');
 					}		
 				});
 			});

@@ -3,13 +3,7 @@
 <a href="#"><strong><i class="glyphicon glyphicon-stats"></i>
 		Configuración de Modulos</strong></a>
 		<hr>
-<%
-	String ip = (String) request.getAttribute("ip");
-	String puerto = (String) request.getAttribute("puerto");
-	String cola = (String) request.getAttribute("cola");
-	String modulo = (String) request.getAttribute("modulo");
-	String activo = (String) request.getAttribute("activo");
-%>
+
 <div>
 
 	<h4>Mi configuración</h4>
@@ -20,75 +14,24 @@
 			<th>Cola</th>
 			<th>Modulo</th>
 			<th>Activo</th>
-			<th>Check</th>
 		</tr>
 		<tbody id="tbody_conf">
-			<tr>
-				<%if(ip != null) {%>
-					<td id="ip"><%= ip %></td>
-					<td id="port"><%= puerto %></td>
-					<td><%= cola %></td>
-					<td><%= modulo %></td>
-					<td><%= activo %></td>
-					<td><input type="checkbox"/></td>
-				<% }%>
-			</tr>
+			
 		</tbody>
 	</table>
 
-	<button id="agregar_conf" type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#exampleModal" data-whatever="@mdo">Agregar Configuración</button>
-	
-	<button id="eliminar_conf" type="button" class="btn btn-danger">Eliminar Configuración</button>
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="exampleModalLabel">Mi Configuración</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="ip" class="control-label">Dirección IP:</label>
-							<input type="text" class="form-control" id="ip_dir">
-						</div>
-						<div class="form-group">
-							<label for="puerto" class="control-label">Puerto:</label>
-							<input type="text" class="form-control" id="puerto">
-						</div>
-						<div class="form-group">
-							<label for="ip" class="control-label">Cola:</label>
-							<input type="text" class="form-control" id="cola">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					<button id="guardar_conf" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var ip = "<%= ip %>";
-		var puerto = <%= puerto %>;
+		var ip = "locahost"
+		var puerto = "8080"
 		
-		if(ip != null && puerto !=  null){
-			$("#agregar_conf").addClass("disabled");
-		}
+		$("#tbody_conf").append("<tr><td>"+ip+"</td><td>"+puerto+"</td><td>-</td><td>Email</td><td>Si</td></tr>")
 		
 		// ELIMINA LA CONFIGURACION ACTUAL
-		$("#eliminar_conf").click(function(){
+		/* $("#eliminar_conf").click(function(){
 			$('#tbody_conf tr').filter(':has(:checkbox:checked)').find('#ip').each(function(){
 				var ipSelected = ($(this).html());
 
@@ -122,7 +65,7 @@
 						$("#agregar_conf").addClass("disabled");
 					}		
 				});
-			});
+			}); */
 			
 		});
 	

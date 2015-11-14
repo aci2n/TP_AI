@@ -34,20 +34,6 @@ public class ConfiguracionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Modulo m = moduloBean.getMiConfiguracion();
-		if (m != null) {
-			// m = moduloBean.setMiConfiguracion(new Modulo(Modulos.Email,
-			// "localhost", "8180", null));
-
-			request.setAttribute("modulo", m.getmodulo().toString());
-			request.setAttribute("ip", m.getIp());
-			request.setAttribute("puerto", m.getPort());
-			request.setAttribute("cola", m.getCola());
-			if (m.isActivo())
-				request.setAttribute("activo", "Si");
-			else
-				request.setAttribute("activo", "No");
-		}
 		request.getRequestDispatcher("configuracion.jsp").forward(request, response);
 	}
 

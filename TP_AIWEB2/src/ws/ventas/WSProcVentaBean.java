@@ -9,8 +9,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import bean.VentasBean;
-import exception.PersistException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import util.Utilities;
 import view.ArticuloView;
 import view.CoordenadaView;
 import view.ItemArticuloView;
@@ -18,7 +18,7 @@ import view.UsuarioView;
 import view.VentaView;
 
 @WebService
-public class WSProcVentaBeanService {
+public class WSProcVentaBean {
 
 	@EJB
 	private VentasBean ventasBean;
@@ -70,10 +70,9 @@ public class WSProcVentaBeanService {
 			view.setArticulos(items);
 
 			ventasBean.guardarVenta(view);
-		} catch (PersistException e) {
-			throw new RemoteException("Problema al persistir la venta");
 		} catch (Exception e) {
-			throw new RemoteException("Parametros invalidos: " + e.getMessage());
+			ventasBean.logException(e);
+			throw new RemoteException(Utilities.generarMensajeError(e));
 		}
 		return "SUCCESS";
 

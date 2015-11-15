@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.ModuloBean;
+import bean.ModulosBean;
 
 /**
  * Servlet implementation class ServletEliminarConfiguracion
@@ -19,7 +19,7 @@ public class ServletEliminarConfiguracion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private ModuloBean moduloBean;
+	private ModulosBean moduloBean;
 
 	public ServletEliminarConfiguracion() {
 		super();

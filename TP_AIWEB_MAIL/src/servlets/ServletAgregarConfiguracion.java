@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.ModuloBean;
+import bean.ModulosBean;
 import entity.Modulo;
 import entity.Modulos;
 
@@ -21,7 +21,7 @@ public class ServletAgregarConfiguracion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private ModuloBean moduloBean;
+	private ModulosBean moduloBean;
 
 	public ServletAgregarConfiguracion() {
 		super();

@@ -17,9 +17,9 @@ import exception.PersistException;
 public abstract class GenericBean<T> {
 
 	@PersistenceContext(unitName = "CRM")
-	protected EntityManager em;
+	public EntityManager em;
 	private Class<T> type;
-	protected Gson gson;
+	public Gson gson;
 
 	protected GenericBean(Class<T> type) {
 		this.type = type;
@@ -64,7 +64,7 @@ public abstract class GenericBean<T> {
 
 	public void logException(Exception e) {
 		e.printStackTrace();
-		em.persist(new ExceptionLog(e));
+		em.persist(new ExceptionLog(e));	
 		em.flush();
 	}
 

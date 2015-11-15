@@ -29,28 +29,27 @@
 		</tbody>
 	</table>
 	
-	<button id="enviar_ranking" type="button" class="btn btn-primary">Enviar Ranking</button>
+	<form id="enviar-ranking">
+		<input type="number" name="id">
+		<button type="submit" class="btn btn-primary">Enviar Ranking</button>
+	</form>	
+	<div id="modal-enviar-ranking" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Información</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p id="modal-enviar-ranking-text"></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 </div>
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-			
-		// ENVIAR RANKING
-		$("#enviar_ranking").click(function(){
-			
-				$.ajax({
-					type : "POST",
-					data : {"ranking" : ranking},
-					url : "enviarRanking",
-					success : function(data) {
-
-						alert("Ranking enviado");
-					}		
-				});
-			});
-			
-		});
-	
-</script>
+<script src="js/bestSellers.js"></script>

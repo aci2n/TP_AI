@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.ModuloBean;
-import entity.Modulo;
+import bean.ModulosBean;
 
 /**
  * Servlet implementation class ServletRecepcionItem
@@ -20,7 +19,7 @@ public class ServletRecepcionItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private ModuloBean moduloBean;
+	private ModulosBean moduloBean;
 
 	public ServletRecepcionItem() {
 		super();

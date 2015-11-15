@@ -28,11 +28,24 @@ public class LogBean extends GenericBean<Log> {
 		log(modulo, descripcion, new Date());
 	}
 
-	public String getLogs() {
+	public String getLogsMonitor() {
 
 		String logs = null;
 		try {
 			List<Log> lista = (List<Log>) em.createQuery("select m from Log m").getResultList();
+			toJson(lista);
+		} catch (Exception e) {
+			logException(e);
+		}
+
+		return logs;
+	}
+	
+	public String getLogsMail() {
+
+		String logs = null;
+		try {
+			List<Log> lista = (List<Log>) em.createQuery("select m from LogMail m").getResultList();
 			toJson(lista);
 		} catch (Exception e) {
 			logException(e);

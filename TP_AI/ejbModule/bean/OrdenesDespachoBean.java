@@ -35,10 +35,6 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		save(orden);
 		return orden;
 	}
-
-	private List<OrdenDespacho> getOrdenesActivas() {
-		return executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
-	}
 	
 	private List<OrdenDespacho> getOrdenesSinEnviar() {
 		return executeQuery("from OrdenDespacho where enviada is null or enviada = false");
@@ -63,7 +59,7 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 	}
 
 	public List<OrdenDespachoActivaView> getOrdenesActivasView() {
-		List<OrdenDespacho> ordenesActivas = getOrdenesActivas();
+		List<OrdenDespacho> ordenesActivas = getOrdenesSinEnviar();
 		List<OrdenDespachoActivaView> ordenesActivasView = new ArrayList<>();
 
 		for (OrdenDespacho o : ordenesActivas) {

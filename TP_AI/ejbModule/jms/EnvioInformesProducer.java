@@ -17,7 +17,6 @@ import javax.naming.NamingException;
 
 import com.google.gson.Gson;
 
-import config.Config;
 import entity.Log;
 
 public class EnvioInformesProducer {

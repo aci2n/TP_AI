@@ -45,6 +45,14 @@
 	max-width: 150px;
 }
 
+#modal-asignar-despacho h4 {
+	display: inline;
+}
+
+#modal-asignar-despacho img {
+	height: 20px;
+}
+
 #modal-asignar-despacho-msg {
 	margin-bottom: 0;
 	padding-top: 10px;

@@ -22,6 +22,7 @@ import view.VentaDespachoRecomendadoView;
 import view.VentaView;
 
 @Stateless
+@SuppressWarnings("unchecked")
 public class VentasBean extends GenericBean<Venta> {
 
 	@EJB
@@ -55,7 +56,7 @@ public class VentasBean extends GenericBean<Venta> {
 			throws NoExisteException, PersistException, VentaException {
 		Venta venta = get(idVenta);
 		Despacho despacho = despachosBean.get(idDespacho);
-		
+
 		if (venta.getOrden() != null) {
 			if (venta.getOrden().getDespacho().equals(despacho)) {
 				throw new VentaException("La venta ya esta asignada al despacho ingresado.");
@@ -92,21 +93,21 @@ public class VentasBean extends GenericBean<Venta> {
 		return reporte.getPortales();
 	}
 
-	public List<ReporteView> getReportes(){
-	
+	public List<ReporteView> getReportes() {
+
 		List<ReporteView> reportes = null;
-		try{
-			List<Object[]> lista = em.createQuery("select sum(v.total), v.portal from Venta v group by v.portal").getResultList();
+		try {
+			List<Object[]> lista = em.createQuery("select sum(v.total), v.portal from Venta v group by v.portal")
+					.getResultList();
 			reportes = new ArrayList<ReporteView>();
-			
-			for(int i = 0; i < lista.size(); i++){
+
+			for (int i = 0; i < lista.size(); i++) {
 				reportes.add(new ReporteView((String) lista.get(i)[0], (double) lista.get(i)[1]));
 			}
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			em.persist(new ExceptionLog(e));
 		}
 		return reportes;
 	}
 }
-	

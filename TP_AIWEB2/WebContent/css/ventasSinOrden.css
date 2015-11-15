@@ -19,7 +19,7 @@
 	padding: 7px 0px !important;
 }
 
-#cambiar-despacho-loading {
+#cambiar-despacho-loading, #enviar-ordenes-loading {
 	display: none;
 }
 
@@ -43,4 +43,9 @@
 
 #modal-cambiar-despacho-msg {
 	margin-bottom: 0;
+	padding-top: 10px;
+}
+
+#enviar-ordenes {
+	margin-top: 60px;
 }

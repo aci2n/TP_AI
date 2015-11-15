@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -29,6 +31,10 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		OrdenDespacho orden = new OrdenDespacho(despacho, Estado.ACTIVO);
 		save(orden);
 		return orden;
+	}
+
+	public List<OrdenDespacho> getOrdenesActivas() {
+		return executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
 	}
 
 }

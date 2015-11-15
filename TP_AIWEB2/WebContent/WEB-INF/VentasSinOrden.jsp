@@ -62,7 +62,32 @@
 	        <img id="cambiar-despacho-loading" src="img/loading.gif">
 	        <button id="cambiar-despacho-submit" type="submit" class="btn btn-primary" disabled>Asignar</button>
 	      </form>
-	      <div id="modal-cambiar-despacho-msg" class="alert"></div>
+	      <p id="modal-cambiar-despacho-msg"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="enviar-ordenes">
+	<form id='enviar-ordenes-form' class="form-inline">
+		<label>
+			Enviar Ordenes de Despacho activas
+			<button type="submit" class="btn btn-default">Enviar</button>
+		</label>
+		<img id="enviar-ordenes-loading" src="img/loading.gif">
+	</form>
+</div>
+<div id="modal-enviar-ordenes" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enviar ordenes</h4>
+      </div>
+      <div class="modal-body">
+	      <div id="modal-enviar-ordenes-msg"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

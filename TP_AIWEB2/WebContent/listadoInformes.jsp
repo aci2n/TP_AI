@@ -19,7 +19,7 @@
 				
 		</tbody>
 	</table>
-	
+	<hr>
 	<button id="enviar_informes" type="button" class="btn btn-primary">Enviar Informes</button>
 </div>
 

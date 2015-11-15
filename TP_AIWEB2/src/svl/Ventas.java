@@ -25,7 +25,7 @@ public class Ventas extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("ventas", ventas.getAllViews());
-		request.getRequestDispatcher("/WEB-INF/Ventas.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/ListadoVentas.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

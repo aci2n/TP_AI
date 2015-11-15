@@ -55,32 +55,36 @@ function asignarDespacho(idVenta, idDespacho) {
 
 function initEnviarOrdenes() {
 	var enviarOrdenesForm = $('#enviar-ordenes-form');
+	var mensajeModal = $('#modal-enviar-ordenes-msg').html('');
 	var loading = $('#enviar-ordenes-loading');
 
 	enviarOrdenesForm.submit(function(e) {
 		loading.show();
 		e.preventDefault();
-		$.post('rest/OrdenDeDespacho/enviar', function(response) {
-			loading.hide();
-
-			var mensajeModal = $('#modal-enviar-ordenes-msg').html('');
-			mensajeModal.append($('<h4>').text(response.mensaje));
-
-			var listaOrdenes = $('<ul>');
-			var ordenes = $.parseJSON(response.ordenes);
-			for(var i = 0; i < ordenes.length; i++) {
-				var orden = ordenes[i];
-				listaOrdenes
-					.append($('<li>').text('ID Orden Despacho: ' + orden.id)
-						.append($('<ul>')
-							.append($('<li>').text('Codigo venta: ' + orden.venta.codigo))
-							.append($('<li>').text('Despacho: ' + orden.despacho.nombre))
-						)
-					);
-			}
-			mensajeModal.append(listaOrdenes);
-
-			$('#modal-enviar-ordenes').modal('show');
-		});
+		$.post('rest/OrdenDeDespacho/enviar')
+			.done(function(response) {
+				mensajeModal.html('').append($('<h4>').text(response.mensaje));
+	
+				var listaOrdenes = $('<ul>');
+				var ordenes = response.ordenes;
+				for(var i = 0; i < ordenes.length; i++) {
+					var orden = ordenes[i];
+					listaOrdenes
+						.append($('<li>').text('Orden Despacho: ' + orden.id)
+							.append($('<ul>')
+								.append($('<li>').text('Venta: ' + orden.codigoVenta))
+								.append($('<li>').text('Despacho: ' + orden.nombreDespacho))
+							)
+						);
+				}
+				mensajeModal.append(listaOrdenes);
+			})
+			.fail(function(response) {
+				mensajeModal.html('').append($('<h4>').text(response.responseText));
+			})
+			.always(function() {
+				loading.hide();
+				$('#modal-enviar-ordenes').modal('show');
+			});
 	});
 }

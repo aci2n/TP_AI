@@ -9,13 +9,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import view.OrdenDespachoActivaView;
 import view.OrdenDespachoView;
 
 @Entity
 @Table(name = "OrdenesDespacho")
 public class OrdenDespacho extends PersistentObject implements ViewGenerator<OrdenDespachoView> {
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_despacho")
 	private Despacho despacho;
@@ -33,12 +34,9 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 		this.despacho = despacho;
 		this.estado = estado;
 	}
-	
+
 	public OrdenDespacho(OrdenDespachoView view) {
-		this(
-			view.getDespacho() != null ? new Despacho(view.getDespacho()) : null,
-			view.getEstado()
-		);
+		this(view.getDespacho() != null ? new Despacho(view.getDespacho()) : null, view.getEstado());
 	}
 
 	public Despacho getDespacho() {
@@ -62,5 +60,10 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 		odv.setDespacho(ViewUtil.getViewChecked(despacho));
 		odv.setEstado(estado);
 		return odv;
+	}
+
+	public OrdenDespachoActivaView getOrdenDespachoActivaView() {
+		return new OrdenDespachoActivaView(id, venta != null ? venta.getCodigo() : null,
+				despacho != null ? despacho.getNombre() : null);
 	}
 }

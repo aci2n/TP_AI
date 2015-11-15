@@ -1,5 +1,6 @@
 package bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,6 +11,8 @@ import entity.Estado;
 import entity.OrdenDespacho;
 import exception.NoExisteException;
 import exception.PersistException;
+import response.EnviarOrdenesResponse;
+import view.OrdenDespachoActivaView;
 
 @Stateless
 public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
@@ -33,8 +36,21 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		return orden;
 	}
 
-	public List<OrdenDespacho> getOrdenesActivas() {
-		return executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
-	}
+	public EnviarOrdenesResponse enviarOrdenesActivas() {
+		List<OrdenDespacho> ordenesActivas = executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
+		List<OrdenDespachoActivaView> ordenesActivasView = new ArrayList<>();
+		String mensaje = "Ordenes activas enviadas correctamente.";
 
+		for (OrdenDespacho o : ordenesActivas) {
+			ordenesActivasView.add(o.getOrdenDespachoActivaView());
+			// enviar por ws a portal, setear mensaje
+			o.setEstado(Estado.ENTREGADO);
+			em.merge(o);
+		}
+
+		if(ordenesActivasView.isEmpty()) {
+			mensaje = "No hay ordenes activas para enviar en este momento.";
+		}
+		return new EnviarOrdenesResponse(ordenesActivasView, mensaje);
+	}
 }

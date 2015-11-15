@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 
 import entity.Coordenada;
 import entity.Despacho;
-import entity.ExceptionLog;
 import entity.OrdenDespacho;
 import entity.Reporte;
 import entity.Usuario;
@@ -67,7 +66,7 @@ public class VentasBean extends GenericBean<Venta> {
 			venta.setOrden(ordenesBean.generarOrdenDespacho(despacho));
 			em.merge(venta);
 		}
-		
+
 		return venta.getView();
 	}
 
@@ -99,7 +98,7 @@ public class VentasBean extends GenericBean<Venta> {
 
 		List<ReporteView> reportes = null;
 		try {
-			List<Object[]> lista = em.createQuery("select sum(v.total), v.portal from Venta v group by v.portal")
+			List<Object[]> lista = em.createQuery("select v.portal, sum(v.total) from Venta v group by v.portal")
 					.getResultList();
 			reportes = new ArrayList<ReporteView>();
 
@@ -108,7 +107,7 @@ public class VentasBean extends GenericBean<Venta> {
 			}
 
 		} catch (Exception e) {
-			em.persist(new ExceptionLog(e));
+			logException(e);
 		}
 		return reportes;
 	}

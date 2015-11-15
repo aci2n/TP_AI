@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import bean.ArticulosBean;
 import bean.ModulosBean;
+import response.BestSellersResponse;
 import util.Utilities;
 import view.BestSellerView;
 
@@ -48,7 +49,7 @@ public class ArticulosRESTService {
 			if (urlString.charAt(urlString.length() - 1) != '/') {
 				urlString += '/';
 			}
-			urlString += "PortalWEB_Web/rest/articulo";
+			urlString += "PortalWEB/rest/articulo";
 
 			URL url = new URL(urlString);
 
@@ -59,7 +60,7 @@ public class ArticulosRESTService {
 			connection.setRequestProperty(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON);
 
 			OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
-			out.write(articulos.toJson(articulos.getBestSellers()));
+			out.write(articulos.toJson(new BestSellersResponse(articulos.getBestSellers())));
 			out.flush();
 			out.close();
 			connection.getInputStream();

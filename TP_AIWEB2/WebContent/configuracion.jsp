@@ -123,8 +123,8 @@
 					url : "configuracion",
 					success : function(data) {
 
-						$('#tbody_conf').append('<tr><td>'+ip_dir+'</td><td>'+puerto+'</td><td>'+cola+'</td>'+
-								'<td>Email<td>Si</td><td><input type="checkbox"/></td></tr>');
+						$('#tbody_conf').append('<tr><td>'+$("#ip_dir").val()+'</td><td>'+$("#puerto").val()+'</td><td>'+$("#cola").val()+'</td>'+
+								'<td>'+$("#modulo").val()+'<td>Si</td><td><input type="checkbox"/></td></tr>');
 					}		
 				});
 			});

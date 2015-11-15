@@ -53,10 +53,9 @@ public class TestBean extends GenericBean<PersistentObject> {
 		v.setPortal(rs());
 		v.setTotal(rd());
 		v.setUsuario(usuario());
-		for (int i = 0; i < ri(5); i++) {
+		List<Articulo> articulos = getRandom(Articulo.class, ri(20));
+		for (Articulo articulo : articulos) {
 			try {
-				Articulo articulo = articulo();
-				save(articulo);
 				v.agregarItemArticulo(articulo, ri());
 			} catch (Exception e) {
 				logException(e);

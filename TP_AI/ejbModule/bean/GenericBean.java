@@ -1,6 +1,8 @@
 package bean;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -70,5 +72,17 @@ public abstract class GenericBean<T> {
 
 	public T fromJson(String json) {
 		return gson.fromJson(json, type);
+	}
+
+	public <E> List<E> getRandom(Class<E> clazz, int amount) {
+		List<E> list = (List<E>) em.createQuery("from " + clazz.getName()).getResultList();
+		List<E> listToReturn = new ArrayList<>();
+		int itemsToReturn = Math.min(list.size(), amount);
+		for (int i = 0; i < itemsToReturn; i++) {
+			int index = ThreadLocalRandom.current().nextInt(0, list.size());
+			listToReturn.add(list.get(index));
+			list.remove(index);
+		}
+		return listToReturn;
 	}
 }

@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import entity.Despacho;
 import entity.Estado;
 import entity.OrdenDespacho;
-import entity.Venta;
 import exception.NoExisteException;
 import exception.PersistException;
 
@@ -26,10 +25,10 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		em.merge(orden);
 	}
 
-	public void asignarOrdenDespacho(Venta venta, Despacho despacho) throws PersistException {
+	public OrdenDespacho generarOrdenDespacho(Despacho despacho) throws PersistException {
 		OrdenDespacho orden = new OrdenDespacho(despacho, Estado.ACTIVO);
 		save(orden);
-		venta.setOrden(orden);
+		return orden;
 	}
 
 }

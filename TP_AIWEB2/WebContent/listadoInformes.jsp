@@ -36,7 +36,6 @@
 					data : {"ranking" : ranking},
 					url : "enviarRanking",
 					success : function(data) {
-
 						alert("Ranking enviado");
 					}		
 				});

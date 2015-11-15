@@ -7,11 +7,9 @@ import javax.ejb.Stateless;
 
 import entity.Coordenada;
 import entity.Despacho;
-import entity.ExceptionLog;
 import entity.Venta;
-import exception.DespachoException;
 import view.DespachoView;
-import view.DistanciaADespachoView;
+import view.VentaDespachoRecomendadoView;
 
 @Stateless
 public class DespachosBean extends GenericBean<Despacho> {
@@ -19,48 +17,37 @@ public class DespachosBean extends GenericBean<Despacho> {
 	public DespachosBean() {
 		super(Despacho.class);
 	}
-	
-	public DespachoView obtenerDespachoRecomendado(Venta venta) throws DespachoException {
-		List<Despacho> despachos = getAll();
-		
-		if (despachos.isEmpty()) {
-			throw new DespachoException("No hay despachos activos.");
-		}
-		
-		Coordenada destino = venta.getDestino();
-		Despacho cercano = null;
-		
-		for (Despacho despacho : despachos) {
-			if (cercano == null || despacho.obtenerDistanciaACoordenada(destino) < cercano.obtenerDistanciaACoordenada(destino)) {
-				cercano = despacho;
+
+	public List<VentaDespachoRecomendadoView> getVentasDespachoRecomendado(List<Venta> ventas) {
+		List<VentaDespachoRecomendadoView> ventasDespachoRecomendado = new ArrayList<>();
+		List<Despacho> despachos = executeQuery("from Despacho where coordenada is not null");
+
+		if (!despachos.isEmpty()) {
+			for (Venta venta : ventas) {
+				Coordenada destino = venta.getDestino();
+				Despacho cercano = null;
+
+				for (Despacho despacho : despachos) {
+					if (cercano == null || despacho.obtenerDistanciaACoordenada(destino) < cercano
+							.obtenerDistanciaACoordenada(destino)) {
+						cercano = despacho;
+					}
+				}
+
+				ventasDespachoRecomendado.add(new VentaDespachoRecomendadoView(venta.getView(), cercano.getView()));
 			}
 		}
-		
-		if (cercano != null) {
-			return cercano.getView();
-		}
-		
-		return null;
+
+		return ventasDespachoRecomendado;
 	}
 
-	private List<DistanciaADespachoView> obtenerDistanciasADespachos(Coordenada coordenada) throws DespachoException {
-		List<Despacho> despachos = executeQuery("from Despacho where activo = true");
-		if (despachos.size() == 0) {
-			throw new DespachoException("No hay despachos activos.");
+	public List<DespachoView> getAllViews() {
+		List<Despacho> despachos = getAll();
+		List<DespachoView> despachosView = new ArrayList<>();
+		for (Despacho d : despachos) {
+			despachosView.add(d.getView());
 		}
-
-		List<DistanciaADespachoView> distanciasADespacho = new ArrayList<>();
-		for (Despacho despacho : despachos) {
-			try {
-				distanciasADespacho.add(despacho.getDistanciaADespachoView(coordenada));
-			} catch (DespachoException e) {
-				em.persist(new ExceptionLog(e));
-			}
-		}
-
-		distanciasADespacho.sort((a, b) -> (int) Math.ceil(a.getDistancia() - b.getDistancia()));
-
-		return distanciasADespacho;
+		return despachosView;
 	}
 
 }

@@ -3,6 +3,7 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import entity.Coordenada;
@@ -13,11 +14,18 @@ import entity.Usuario;
 import entity.Venta;
 import exception.NoExisteException;
 import exception.PersistException;
+import exception.VentaException;
 import view.PortalView;
+import view.VentaDespachoRecomendadoView;
 import view.VentaView;
 
 @Stateless
 public class VentasBean extends GenericBean<Venta> {
+
+	@EJB
+	private DespachosBean despachosBean;
+	@EJB
+	private OrdenesDespachoBean ordenesBean;
 
 	public VentasBean() {
 		super(Venta.class);
@@ -41,21 +49,20 @@ public class VentasBean extends GenericBean<Venta> {
 		return null;
 	}
 
-	public void asignarDespachoAVenta(Integer idVenta, Despacho despacho) throws NoExisteException {
+	public void asignarDespachoAVenta(Integer idVenta, Integer idDespacho)
+			throws NoExisteException, PersistException, VentaException {
 		Venta venta = get(idVenta);
-		venta.asignarDespacho(despacho);
+		Despacho despacho = despachosBean.get(idDespacho);
+		if (venta.getOrden() != null && venta.getOrden().getDespacho().equals(despacho)) {
+			throw new VentaException("La venta ya esta asignada al despacho ingresado.");
+		}
+		ordenesBean.asignarOrdenDespacho(venta, despacho);
 		em.merge(venta);
 	}
 
-	public List<VentaView> obtenerVentasSinOrdenDespacho() {
-		List<Venta> ventasSinOrden = executeQuery("select v from Venta as v left join v.orden as od where od is null");
-		List<VentaView> ventasSinOrdenView = new ArrayList<>();
-
-		for (Venta v : ventasSinOrden) {
-			ventasSinOrdenView.add(v.getView());
-		}
-
-		return ventasSinOrdenView;
+	public List<VentaDespachoRecomendadoView> obtenerVentasSinOrdenDespacho() {
+		return despachosBean.getVentasDespachoRecomendado(
+				executeQuery("select v from Venta v left join v.orden od where od is null and v.destino is not null"));
 	}
 
 	public List<VentaView> getAllViews() {

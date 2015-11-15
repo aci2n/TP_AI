@@ -24,7 +24,7 @@ public class BestSellers extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("bestSellers", articulosBean.getBestSellers());
-		request.getRequestDispatcher("/bestSellers.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/bestSellers.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

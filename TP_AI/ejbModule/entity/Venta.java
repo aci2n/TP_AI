@@ -41,22 +41,18 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	private Usuario usuario;
 
 	public Venta() {
-		
-	}
-	
-	public Venta(VentaView view) {
-		this(
-			view.getCodigo(),
-			view.getFecha(),
-			view.getPortal(),
-			view.getTotal(),
-			view.getDestino() != null ? new Coordenada(view.getDestino()) : null,
-			view.getUsuario() != null ? new Usuario(view.getUsuario()) : null,
-			view.getOrden() != null ? new OrdenDespacho(view.getOrden()) : null
-		);
+
 	}
 
-	public Venta(String codigo, Date fecha, String portal, double total, Coordenada destino, Usuario usuario, OrdenDespacho orden) {
+	public Venta(VentaView view) {
+		this(view.getCodigo(), view.getFecha(), view.getPortal(), view.getTotal(),
+				view.getDestino() != null ? new Coordenada(view.getDestino()) : null,
+				view.getUsuario() != null ? new Usuario(view.getUsuario()) : null,
+				view.getOrden() != null ? new OrdenDespacho(view.getOrden()) : null);
+	}
+
+	public Venta(String codigo, Date fecha, String portal, double total, Coordenada destino, Usuario usuario,
+			OrdenDespacho orden) {
 		this.fecha = fecha;
 		this.portal = portal;
 		this.total = total;
@@ -119,7 +115,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
@@ -128,12 +124,9 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 		this.codigo = codigo;
 	}
 
-	public void asignarDespacho(Despacho despacho) {
-		this.orden = new OrdenDespacho(despacho, Estado.ACTIVO);
-	}
-
 	public VentaView getView() {
 		VentaView vv = new VentaView();
+		vv.setId(id);
 		vv.setArticulos(new ArrayList<>());
 		for (ItemArticulo a : articulos) {
 			vv.getArticulos().add(ViewUtil.getViewChecked(a));

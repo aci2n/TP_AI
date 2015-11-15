@@ -30,19 +30,15 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 		this.nombre = nombre;
 		this.activo = activo;
 	}
-	
+
 	public Despacho(DespachoView view) {
-		this(
-			view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null,
-			view.getNombre(),
-			view.isActivo()
-		);
+		this(view.getCoordenada() != null ? new Coordenada(view.getCoordenada()) : null, view.getNombre(),
+				view.isActivo());
 	}
 
 	public DistanciaADespachoView getDistanciaADespachoView(Coordenada c) throws DespachoException {
 		if (coordenada == null) {
-			throw new DespachoException(
-					String.format("El despacho %d no tiene una coordenada asignada.", id));
+			throw new DespachoException(String.format("El despacho %d no tiene una coordenada asignada.", id));
 		}
 
 		DistanciaADespachoView distanciaADespacho = new DistanciaADespachoView();
@@ -52,12 +48,8 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 
 		return distanciaADespacho;
 	}
-	
-	public double obtenerDistanciaACoordenada(Coordenada c) throws DespachoException {
-		if (coordenada == null) {
-			throw new DespachoException(String.format("El despacho %d no tiene una coordenada asignada.", id));
-		}
 
+	public double obtenerDistanciaACoordenada(Coordenada c) {
 		return coordenada.calcularDistanciaEnKilometros(c);
 	}
 
@@ -87,6 +79,7 @@ public class Despacho extends PersistentObject implements ViewGenerator<Despacho
 
 	public DespachoView getView() {
 		DespachoView dv = new DespachoView();
+		dv.setId(id);
 		dv.setActivo(activo);
 		dv.setCoordenada(ViewUtil.getViewChecked(coordenada));
 		dv.setNombre(nombre);

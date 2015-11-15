@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class VentaView {
+	private int id;
 	private List<ItemArticuloView> articulos;
 	private String codigo;
 	private Date fecha;
@@ -78,6 +79,14 @@ public class VentaView {
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

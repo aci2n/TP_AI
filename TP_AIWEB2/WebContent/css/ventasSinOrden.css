@@ -1,0 +1,46 @@
+#ventas-sin-orden td {
+	text-align: center;
+}
+
+#ventas-sin-orden-head {
+	background-color: #E4F1FE;
+}
+
+#ventas-sin-orden-head td {
+	font-weight: bold;
+	border-left: solid 2px;
+}
+
+#ventas-sin-orden-body td {
+	padding: 15px 0 0;
+}
+
+.btn-asignar-despacho {
+	padding: 7px 0px !important;
+}
+
+#cambiar-despacho-loading {
+	display: none;
+}
+
+#cambiar-despacho-form {
+	width: 80%;
+	margin: auto;
+}
+
+#cambiar-despacho-form>*+* {
+	margin-left: 15px;
+}
+
+#cambiar-despacho-id-venta {
+	width: 40px;
+	text-align: center;
+}
+
+#cambiar-despacho-submit {
+	float: right;
+}
+
+#modal-cambiar-despacho-msg {
+	margin-bottom: 0;
+}

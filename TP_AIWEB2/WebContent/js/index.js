@@ -27,6 +27,10 @@ $('#linkListadoInformes').click(function() {
 	cargarContenido('informes');
 });
 
+$('#linkVentasSinOrden').click(function() {
+	cargarContenido('VentasSinOrden');
+})
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

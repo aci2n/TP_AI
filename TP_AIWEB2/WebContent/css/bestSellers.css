@@ -1,3 +1,7 @@
 #enviar-ranking {
 	margin-top: 50px;
 }
+
+#enviar-ranking > button {
+	margin-bottom: 5px;
+}

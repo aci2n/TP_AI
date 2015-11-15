@@ -21,7 +21,6 @@
 	</table>
 	
 	<button id="enviar_ranking" type="button" class="btn btn-primary">Enviar Infomes</button>
-
 </div>
 
 

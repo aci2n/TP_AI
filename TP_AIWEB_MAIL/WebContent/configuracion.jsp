@@ -1,6 +1,6 @@
 
 
-<a href="#"><strong><i class="glyphicon glyphicon-stats"></i>
+<a href="#"><strong><i class="glyphicon glyphicon-cog"></i>
 		Configuración de Modulos</strong></a>
 		<hr>
 

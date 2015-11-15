@@ -30,7 +30,7 @@ public class EnvioInformesProducer {
 	private static final String DEFAULT_USERNAME = "#";
 	private static final String DEFAULT_PASSWORD = "guest";
 	private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
-	private static final String PROVIDER_URL = "http-remoting://" + Config.getSetting("queue_email_url");
+	private static final String PROVIDER_URL = "http-remoting://localhost:8180";
 
 	public static EnvioInformesProducer getInstance() {
 

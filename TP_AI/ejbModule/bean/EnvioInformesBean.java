@@ -36,11 +36,11 @@ public class EnvioInformesBean {
 	public void enviarInformes(List<Log> logs) {
 
 		String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
-		String DEFAULT_DESTINATION = "java:/jms/queue/monitorQueue";
+		String DEFAULT_DESTINATION = "java:/jms/queue/EmailQueue";
 		String DEFAULT_USERNAME = "#";
 		String DEFAULT_PASSWORD = "guest";
 		String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
-		String PROVIDER_URL = "http-remoting://" + Config.getSetting("queue_email_url");
+		String PROVIDER_URL = "http-remoting://localhost:8080";
 
 		ConnectionFactory connectionFactory = null;
 		Connection connection = null;

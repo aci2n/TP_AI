@@ -1,6 +1,6 @@
 
 
-<a href="#"><strong><i class="glyphicon glyphicon-stats"></i>
+<a href="#"><strong><i class="glyphicon glyphicon-briefcase"></i>
 		Recepción de Items de Auditoría</strong></a>
 <hr>
 

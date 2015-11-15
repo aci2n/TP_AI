@@ -53,13 +53,11 @@
 		$(".detalles").click(function(){
 			
 				$.ajax({
-					type : "POST",
+					type : "GET",
 					data : {"codigo" : $(this).attr("id")},
-					url : "configuracion",
+					url : "verDetalles",
 					success : function(data) {
-
-						$('#tbody_conf').append('<tr><td>'+$("#ip_dir").val()+'</td><td>'+$("#puerto").val()+'</td><td>'+$("#cola").val()+'</td>'+
-								'<td>'+$("#modulo").val()+'<td>Si</td><td><input type="checkbox"/></td></tr>');
+						$("contenido").load("verDetalles");
 					}		
 				});
 			});

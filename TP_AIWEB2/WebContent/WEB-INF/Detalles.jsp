@@ -53,16 +53,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		// AGREGA UNA NUEVA CONFIGURACION DE EMAIL 
-		$(".detalles").click(function(){
+		$("#volver").click(function(){
 			
 				$.ajax({
-					type : "GET",
-					data : {"codigo" : $(this).attr("id")},
+					type : "POST",
 					url : "verDetalles",
 					success : function(data) {
 
-						$("contenido").load('verDetalles');
+						$("contenido").load('Ventas');
 					}		
 				});
 			});

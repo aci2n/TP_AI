@@ -44,7 +44,7 @@ public class TestUtil {
 	}
 
 	public static String fechaString() {
-		return new SimpleDateFormat("dd-MM-yy hh:mm:ss").format(new Date());
+		return new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(new Date());
 	}
 
 	public static String coordenada() {

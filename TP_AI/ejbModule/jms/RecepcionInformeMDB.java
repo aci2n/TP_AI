@@ -14,6 +14,7 @@ import com.google.gson.reflect.TypeToken;
 
 import bean.GenericBean;
 import entity.Log;
+import entity.LogMail;
 
 @MessageDriven(name = "RecepcionDeInformesMDB", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
@@ -30,12 +31,12 @@ public class RecepcionInformeMDB extends GenericBean<Log> implements MessageList
 		TextMessage json = (TextMessage) message;
 		try {
 			// Convert JSON String to List
-			Type type = new TypeToken<List<Log>>() {
+			Type type = new TypeToken<List<LogMail>>() {
 			}.getType();
-			List<Log> logs = gson.fromJson(json.getText(), type);
+			List<LogMail> logs = gson.fromJson(json.getText(), type);
 			Logger.getAnonymousLogger().info("Informes recibidos: " + logs.size());
 
-			for (Log l : logs) {
+			for (LogMail l : logs) {
 				save(l);
 			}
 		} catch (Exception e) {

@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import view.LogView;
 
 @Entity
-@Table(name = "Logs_Monitor")
-public class Log extends PersistentObject implements ViewGenerator<LogView> {
+@Table(name = "Logs_Mail")
+public class LogMail extends PersistentObject implements ViewGenerator<LogView> {
 	private static final long serialVersionUID = -4075787279248040309L;
 
 	@Column(name = "modulo")
@@ -20,17 +20,17 @@ public class Log extends PersistentObject implements ViewGenerator<LogView> {
 	@Column(name = "fecha")
 	private Date fecha;
 
-	public Log() {
+	public LogMail() {
 
 	}
 
-	public Log(String modulo, String descripcion, Date fecha) {
+	public LogMail(String modulo, String descripcion, Date fecha) {
 		this.modulo = modulo;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 	}
 
-	public Log(LogView log) {
+	public LogMail(LogView log) {
 		this(log.getModulo(), log.getDescripcion(), log.getFecha());
 	}
 

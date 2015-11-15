@@ -28,7 +28,7 @@ public class TestBean extends GenericBean<PersistentObject> {
 		public T generateRandom();
 	}
 
-	public <T> List<T> generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist)
+	public <T> String generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist)
 			throws PersistException {
 		List<T> list = new ArrayList<>();
 		for (int i = 0; i < cantidad; i++) {
@@ -38,7 +38,7 @@ public class TestBean extends GenericBean<PersistentObject> {
 				save((PersistentObject) o);
 			}
 		}
-		return list;
+		return toJson(list);
 	}
 
 	public Articulo articulo() {

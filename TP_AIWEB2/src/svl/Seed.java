@@ -21,10 +21,11 @@ public class Seed extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			test.generateRandomList(() -> test.articulo(), 20, true);
-			test.generateRandomList(() -> test.venta(), 5, true);
-			test.generateRandomList(() -> test.despacho(), 3, true);
-			response.getWriter().print("listo");
+			response.getWriter().print(
+					test.generateRandomList(() -> test.articulo(), 20, true)
+					+ test.generateRandomList(() -> test.venta(), 5, true)
+					+ test.generateRandomList(() -> test.despacho(), 3, true)
+			);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

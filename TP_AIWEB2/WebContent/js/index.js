@@ -35,6 +35,10 @@ $('#linkReporte').click(function() {
 	cargarContenido('reportes');
 })
 
+$('#linkSeed').click(function() {
+	cargarContenido('Seed');
+});
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

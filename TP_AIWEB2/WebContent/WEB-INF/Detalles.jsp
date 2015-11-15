@@ -8,38 +8,28 @@
 
 
 <div>
-	<h4>Listado de Ventas</h4>
+	<h4>Detalles de la compra</h4>
 	<table id="table_conf" class="table">
 		<tr>
 			<th>Codigo</th>
-			<th>Fecha</th>
-			<th>Total</th>
-			<th>Portal</th>
-			<th>Coodenadas Cliente</th>
-			<th>Orden de Despacho</th>
-			<th>Estado Orden</th>
-			<th>Detalles</th>
+			<th>Nombre</th>
+			<th>Descripcion</th>
+			<th>Marca</th>
+			<th>Precio</th>
+			<th>Origen</th>
+			<th>Cantidad</th>
 		</tr>
 		<tbody id="tbody_conf">
 			<tr>
 				<c:forEach var="venta" items="${actual}">
 					<tr>
-						<td>${venta.codigo}</td>
-						<td>${venta.fecha}</td>
-						<td>${venta.total}</td>
-						<td>${venta.portal}</td>
-						<td>[${venta.usuario.coordenada.latitud},
-							${venta.usuario.coordenada.longitud}]</td>
-						<c:if test="${venta.orden != null}">
-							<td>${venta.orden.despacho.id}</td>
-							<td>${venta.orden.estado}</td>
-						</c:if>
-						<c:if test="${venta.orden == null}">
-							<td>-</td>
-							<td>-</td>
-						</c:if>
-						<td><button class="btn btn-primary detalles"
-								id="${venta.codigo}">Ver Detalles</button></td>
+						<td>${venta.articulos.articulo.codigo}</td>
+						<td>${venta.articulos.articulo.nombre}</td>
+						<td>${venta.articulos.articulo.descripcion}</td>
+						<td>${venta.articulos.articulo.marca}</td>
+						<td>${venta.articulos.articulo.precio}</td>
+						<td>${venta.articulos.articulo.origen}</td>
+						<td>${venta.articulos.articulo.cantidad}</td>
 					</tr>
 				</c:forEach>
 			</tr>

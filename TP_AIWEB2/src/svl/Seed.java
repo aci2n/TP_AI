@@ -1,4 +1,4 @@
-package test;
+package svl;
 
 import java.io.IOException;
 
@@ -24,6 +24,7 @@ public class Seed extends HttpServlet {
 			test.generateRandomList(() -> test.articulo(), 20, true);
 			test.generateRandomList(() -> test.venta(), 5, true);
 			test.generateRandomList(() -> test.despacho(), 3, true);
+			response.getWriter().print("listo");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

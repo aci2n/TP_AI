@@ -1,117 +1,44 @@
-var ventasSinOrden = {
-	despachosCargados : false
-};
-
 $(function() {
-	initAsignarDespacho();
-	cargarOrdenesActivas();
-	initEnviarOrdenes();
+	cargarDropdownDespachos();
+	$('.btn-asignar-despacho > button').click(asignarDespachoClick);
+	$('#asignar-despacho-form').submit(asignarDespachoSubmit);
 });
 
-function initAsignarDespacho() {
-	var asignarDespachoForm = $('#asignar-despacho-form');
-	var loading = $('#asignar-despacho-loading');
+function asignarDespachoClick(e) {
+	var target = $(e.target);
+	var idVenta = target.attr('data-venta');
+	var idDespachoRecomendado = target.attr('data-despacho');
 	
-	$('.btn-asignar-despacho > button').click(function(e) {
-		var target = $(e.target);
-		var idVenta = target.attr('data-venta');
-		var idDespacho = target.attr('data-despacho');
-		asignarDespacho(idVenta, idDespacho);
-	});
-
-	asignarDespachoForm.submit(function(e) {
-		loading.show();
-		e.preventDefault();
-		$.post('rest/ventas', asignarDespachoForm.serialize())
-			.done(function(response) {
-				$('#venta-' + $('#asignar-despacho-id-venta').val()).remove();
-				cargarOrdenesActivas();
-			})
-			.always(function(response) {
-				loading.hide();
-				$('#modal-asignar-despacho-msg').text(response.responseText || response);
-			});
-	});
-}
-
-function asignarDespacho(idVenta, idDespacho) {
 	$('#modal-asignar-despacho').modal('show');
 	$('#modal-asignar-despacho-msg').text('');
 	$('#asignar-despacho-id-venta').val(idVenta);
-	var despachosDropdown = $('#asignar-despacho-dropdown-despachos');
+	$('#asignar-despacho-dropdown-despachos').val(idDespachoRecomendado);
+}
 
-	if (!ventasSinOrden.despachosCargados) {
-		var loading = $('#asignar-despacho-loading');
-		loading.show();
-		despachosDropdown.empty();
-
-		$.get('rest/despachos', function(response) {
-			ventasSinOrden.despachosCargados = true;
-			despachosDropdown.val(idDespacho);
-			$('#asignar-despacho-submit').removeAttr('disabled');
+function asignarDespachoSubmit(e) {
+	var loading = $('#asignar-despacho-loading').show();
+	e.preventDefault();
+	$.post('rest/ventas', $('#asignar-despacho-form').serialize())
+		.done(function(response) {
+			$('#venta-' + $('#asignar-despacho-id-venta').val()).remove();
+		})
+		.always(function(response) {
 			loading.hide();
-			response.forEach(function(despacho) {
-				despachosDropdown.append($('<option>', {
-					value : despacho.id,
-					text : despacho.nombre
-				}));
-			});
+			$('#modal-asignar-despacho-msg').text(response.responseText || response);
 		});
-	} else {
-		despachosDropdown.val(idDespacho);
-	}
 }
 
-function initEnviarOrdenes() {
-	var enviarOrdenesForm = $('#enviar-ordenes-form');
-	var mensajeModal = $('#modal-enviar-ordenes-msg');
-	var loading = $('#enviar-ordenes-loading');
-
-	enviarOrdenesForm.submit(function(e) {
-		loading.show();
-		e.preventDefault();
-		$.post('rest/OrdenDeDespacho/enviar')
-			.done(function(response) {
-				mensajeModal.html('').append($('<h4>').text(response.mensaje));
-	
-				var listaOrdenes = $('<ul>');
-				var ordenes = response.ordenes;
-				for(var i = 0; i < ordenes.length; i++) {
-					var orden = ordenes[i];
-					listaOrdenes
-						.append($('<li>').text('Orden Despacho: ' + orden.id)
-							.append($('<ul>')
-								.append($('<li>').text('Venta: ' + orden.codigoVenta))
-								.append($('<li>').text('Despacho: ' + orden.nombreDespacho))
-							)
-						);
-				}
-				mensajeModal.append(listaOrdenes);
-			})
-			.fail(function(response) {
-				mensajeModal.html('').append($('<h4>').text(response.responseText));
-			})
-			.always(function() {
-				loading.hide();
-				cargarOrdenesActivas();
-				$('#modal-enviar-ordenes').modal('show');
-			});
-	});
-}
-
-function cargarOrdenesActivas() {
-	var tabla = $('#ordenes-activas-body').html('');
-	var loading = $('#ordenes-activas-loading').show();
-	
-	$.get('rest/OrdenDeDespacho/ordenesActivas', function(response) {
+function cargarDropdownDespachos() {
+	var loading = $('#asignar-despacho-loading').show();
+	var despachosDropdown = $('#asignar-despacho-dropdown-despachos');
+	$.get('rest/despachos', function(response) {
+		$('#asignar-despacho-submit').removeAttr('disabled');
 		loading.hide();
-		for (var i = 0; i < response.length; i++) {
-			var orden = response[i];
-			tabla.append($('<tr>')
-					.append($('<td>').text(orden.id))
-					.append($('<td>').text(orden.codigoVenta))
-					.append($('<td>').text(orden.nombreDespacho))
-				);
-		}
+		response.forEach(function(despacho) {
+			despachosDropdown.append($('<option>', {
+				value : despacho.id,
+				text : despacho.nombre
+			}));
+		});
 	});
 }

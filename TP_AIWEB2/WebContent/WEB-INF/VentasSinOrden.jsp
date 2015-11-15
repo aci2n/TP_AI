@@ -71,39 +71,4 @@
   </div>
 </div>
 
-<div id="enviar-ordenes">
-	<h4>Ordenes Activas</h4>
-	<img id="ordenes-activas-loading" src="img/loading.gif">
-	<table id="ordenes-activas" class="table table-striped">
-		<thead>
-			<tr>
-				<td>Orden Despacho</td>
-				<td>Venta</td>
-				<td>Despacho</td>
-			</tr>
-		</thead>
-		<tbody id="ordenes-activas-body"></tbody>
-	</table>
-	<form id='enviar-ordenes-form' class="form-inline">
-		<button type="submit" class="btn btn-default">Enviar</button>
-		<img id="enviar-ordenes-loading" src="img/loading.gif">
-	</form>
-</div>
-
-<div id="modal-enviar-ordenes" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Enviar ordenes</h4>
-      </div>
-      <div class="modal-body">
-	      <div id="modal-enviar-ordenes-msg"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script src="js/ventasSinOrden.js"></script>

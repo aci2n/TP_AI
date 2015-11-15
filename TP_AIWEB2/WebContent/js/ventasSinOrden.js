@@ -2,15 +2,22 @@ var ventasSinOrden = {
 	despachosCargados : false
 };
 
-(function() {
+$(function() {
 	initAsignarDespacho();
 	cargarOrdenesActivas();
 	initEnviarOrdenes();
-})();
+});
 
 function initAsignarDespacho() {
 	var asignarDespachoForm = $('#asignar-despacho-form');
 	var loading = $('#asignar-despacho-loading');
+	
+	$('.btn-asignar-despacho > button').click(function(e) {
+		var target = $(e.target);
+		var idVenta = target.attr('data-venta');
+		var idDespacho = target.attr('data-despacho');
+		asignarDespacho(idVenta, idDespacho);
+	});
 
 	asignarDespachoForm.submit(function(e) {
 		loading.show();

@@ -1,4 +1,4 @@
-(function() {
+$(function() {
 	var enviarRankingForm = $('#enviar-ranking');
 
 	enviarRankingForm.submit(function(e) {
@@ -9,4 +9,4 @@
 				$('#modal-enviar-ranking').modal('show');
 			});
 	});
-})();
+});

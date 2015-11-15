@@ -37,7 +37,7 @@
 				<td>${vdr.despacho.nombre}</td>
 				<td>${vdr.despacho.coordenada.latitud}, ${vdr.despacho.coordenada.longitud}</td>
 				<td class="btn-asignar-despacho">
-					<button class="btn btn-primary" onclick="asignarDespacho(${vdr.venta.id}, ${vdr.despacho.id})">Asignar</button>
+					<button class="btn btn-primary" data-venta="${vdr.venta.id}" data-despacho="${vdr.despacho.id}">Asignar</button>
 				</td>
 			</tr>
 		</c:forEach>

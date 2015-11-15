@@ -15,7 +15,9 @@
 				<li>${venta.portal}</li>
 				<li>${venta.usuario.coordenada.latitud}</li>
 				<li>${venta.usuario.coordenada.longitud}</li>
-				<li>${venta.orden.estado}</li>
+				<c:if test="${venta.orden != null}">
+					<li>${venta.orden.estado}</li>
+				</c:if>
 			</ul>
 		</li>
 	</c:forEach>

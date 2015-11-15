@@ -20,15 +20,15 @@
 		</tbody>
 	</table>
 	
-	<button id="enviar_ranking" type="button" class="btn btn-primary">Enviar Infomes</button>
+	<button id="enviar_informes" type="button" class="btn btn-primary">Enviar Informes</button>
 </div>
 
 
 <script type="text/javascript">
 	$(document).ready(function() {
 			
-		// ENVIAR RANKING
-		$("#enviar_ranking").click(function(){
+		// ENVIAR INFORMES
+		$("#enviar_informes").click(function(){
 			
 				$.ajax({
 					type : "POST",

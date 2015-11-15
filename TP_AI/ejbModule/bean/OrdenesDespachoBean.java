@@ -36,8 +36,12 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		return orden;
 	}
 
+	private List<OrdenDespacho> getOrdenesActivas() {
+		return executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
+	}
+
 	public EnviarOrdenesResponse enviarOrdenesActivas() {
-		List<OrdenDespacho> ordenesActivas = executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
+		List<OrdenDespacho> ordenesActivas = getOrdenesActivas();
 		List<OrdenDespachoActivaView> ordenesActivasView = new ArrayList<>();
 		String mensaje = "Ordenes activas enviadas correctamente.";
 
@@ -48,9 +52,20 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 			em.merge(o);
 		}
 
-		if(ordenesActivasView.isEmpty()) {
+		if (ordenesActivasView.isEmpty()) {
 			mensaje = "No hay ordenes activas para enviar en este momento.";
 		}
 		return new EnviarOrdenesResponse(ordenesActivasView, mensaje);
+	}
+
+	public List<OrdenDespachoActivaView> getOrdenesActivasView() {
+		List<OrdenDespacho> ordenesActivas = getOrdenesActivas();
+		List<OrdenDespachoActivaView> ordenesActivasView = new ArrayList<>();
+
+		for (OrdenDespacho o : ordenesActivas) {
+			ordenesActivasView.add(o.getOrdenDespachoActivaView());
+		}
+
+		return ordenesActivasView;
 	}
 }

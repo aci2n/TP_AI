@@ -49,3 +49,11 @@
 #enviar-ordenes {
 	margin-top: 60px;
 }
+
+#ordenes-activas td {
+	text-align: center;
+}
+
+#ordenes-activas > thead > tr {
+	border-bottom: solid 1px #ECECEC;
+}

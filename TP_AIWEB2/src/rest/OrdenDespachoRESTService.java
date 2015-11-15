@@ -3,6 +3,7 @@ package rest;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -39,5 +40,16 @@ public class OrdenDespachoRESTService {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
 		}
 	}
-
+	
+	@GET
+	@Path("/ordenesActivas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getOrdenesActivas() {
+		try {
+			return Response.status(200).entity(ordenesDespachoBean.getOrdenesActivasView()).build();
+		} catch (Exception e) {
+			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
+		}
+	}
+	
 }

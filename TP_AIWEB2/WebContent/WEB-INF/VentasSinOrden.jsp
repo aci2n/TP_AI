@@ -19,9 +19,9 @@
 			<td>Portal</td>
 			<td>Fecha</td>
 			<td>Total</td>
-			<td>Coordenada</td>
+			<td>Destino</td>
 			<td>Nombre</td>
-			<td>Coordenada</td>
+			<td>Ubicación</td>
 			<td></td>
 		</tr>
 	</thead>
@@ -72,14 +72,24 @@
 </div>
 
 <div id="enviar-ordenes">
+	<h4>Ordenes Activas</h4>
+	<img id="ordenes-activas-loading" src="img/loading.gif">
+	<table id="ordenes-activas" class="table table-striped">
+		<thead>
+			<tr>
+				<td>Orden Despacho</td>
+				<td>Venta</td>
+				<td>Despacho</td>
+			</tr>
+		</thead>
+		<tbody id="ordenes-activas-body"></tbody>
+	</table>
 	<form id='enviar-ordenes-form' class="form-inline">
-		<label>
-			Enviar Ordenes de Despacho activas
-			<button type="submit" class="btn btn-default">Enviar</button>
-		</label>
+		<button type="submit" class="btn btn-default">Enviar</button>
 		<img id="enviar-ordenes-loading" src="img/loading.gif">
 	</form>
 </div>
+
 <div id="modal-enviar-ordenes" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -4,6 +4,7 @@ var ventasSinOrden = {
 
 (function() {
 	initAsignarDespacho();
+	cargarOrdenesActivas();
 	initEnviarOrdenes();
 })();
 
@@ -14,14 +15,15 @@ function initAsignarDespacho() {
 	asignarDespachoForm.submit(function(e) {
 		loading.show();
 		e.preventDefault();
-		$.post('rest/ventas', asignarDespachoForm.serialize()).always(
-				function(response) {
-					loading.hide();
-					$('#modal-asignar-despacho-msg').text(
-							response.responseText || response);
-					$('#venta-' + $('#asignar-despacho-id-venta').val())
-							.remove();
-				});
+		$.post('rest/ventas', asignarDespachoForm.serialize())
+			.done(function(response) {
+				$('#venta-' + $('#asignar-despacho-id-venta').val()).remove();
+				cargarOrdenesActivas();
+			})
+			.always(function(response) {
+				loading.hide();
+				$('#modal-asignar-despacho-msg').text(response.responseText || response);
+			});
 	});
 }
 
@@ -55,7 +57,7 @@ function asignarDespacho(idVenta, idDespacho) {
 
 function initEnviarOrdenes() {
 	var enviarOrdenesForm = $('#enviar-ordenes-form');
-	var mensajeModal = $('#modal-enviar-ordenes-msg').html('');
+	var mensajeModal = $('#modal-enviar-ordenes-msg');
 	var loading = $('#enviar-ordenes-loading');
 
 	enviarOrdenesForm.submit(function(e) {
@@ -84,7 +86,25 @@ function initEnviarOrdenes() {
 			})
 			.always(function() {
 				loading.hide();
+				cargarOrdenesActivas();
 				$('#modal-enviar-ordenes').modal('show');
 			});
+	});
+}
+
+function cargarOrdenesActivas() {
+	var tabla = $('#ordenes-activas-body').html('');
+	var loading = $('#ordenes-activas-loading').show();
+	
+	$.get('rest/OrdenDeDespacho/ordenesActivas', function(response) {
+		loading.hide();
+		for (var i = 0; i < response.length; i++) {
+			var orden = response[i];
+			tabla.append($('<tr>')
+					.append($('<td>').text(orden.id))
+					.append($('<td>').text(orden.codigoVenta))
+					.append($('<td>').text(orden.nombreDespacho))
+				);
+		}
 	});
 }

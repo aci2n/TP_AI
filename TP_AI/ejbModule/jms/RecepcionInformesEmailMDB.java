@@ -16,13 +16,13 @@ import bean.GenericBean;
 import entity.Log;
 import entity.LogMail;
 
-@MessageDriven(name = "RecepcionDeInformesMDB", activationConfig = {
+@MessageDriven(name = "RecepcionInformesEmailMDB", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/MailQueue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-public class RecepcionInformeMDB extends GenericBean<Log> implements MessageListener {
+public class RecepcionInformesEmailMDB extends GenericBean<Log> implements MessageListener {
 
-	public RecepcionInformeMDB() {
+	public RecepcionInformesEmailMDB() {
 		super(Log.class);
 	}
 

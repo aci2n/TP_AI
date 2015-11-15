@@ -9,6 +9,7 @@ import entity.Articulo;
 import view.BestSellerView;
 
 @Stateless
+@SuppressWarnings("unchecked")
 public class ArticulosBean extends GenericBean<Articulo> {
 
 	public ArticulosBean() {
@@ -16,14 +17,16 @@ public class ArticulosBean extends GenericBean<Articulo> {
 	}
 
 	public List<BestSellerView> getBestSellers() {
-		List<Object[]> cantidadesVendidas = executeTypelessQuery(
-				"select a.id from ItemArticulo iv inner join iv.articulo a group by a.id order by sum(iv.cantidad) desc");
-		
+		List<Integer> cantidadesVendidas = (List<Integer>) em
+				.createQuery(
+						"select a.id from ItemArticulo iv inner join iv.articulo a group by a.id order by sum(iv.cantidad) desc")
+				.getResultList();
+
 		List<BestSellerView> bestSellers = new ArrayList<>();
 		for (int i = 0; i < cantidadesVendidas.size(); i++) {
-			bestSellers.add(new BestSellerView(i, (Integer) cantidadesVendidas.get(i)[0]));
+			bestSellers.add(new BestSellerView(i, cantidadesVendidas.get(i)));
 		}
-		
+
 		return bestSellers;
 	}
 

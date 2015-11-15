@@ -33,12 +33,16 @@
 }
 
 #asignar-despacho-id-venta {
-	width: 40px;
+	width: 50px;
 	text-align: center;
 }
 
 #asignar-despacho-submit {
 	float: right;
+}
+
+#asignar-despacho-dropdown-despachos {
+	max-width: 150px;
 }
 
 #modal-asignar-despacho-msg {
@@ -54,6 +58,10 @@
 	text-align: center;
 }
 
-#ordenes-activas > thead > tr {
+#ordenes-activas>thead>tr {
 	border-bottom: solid 1px #ECECEC;
+}
+
+#ordenes-activas>thead>tr>td {
+	font-weight: bold;
 }

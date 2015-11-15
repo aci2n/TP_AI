@@ -48,6 +48,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Asignar despacho</h4>
+        <img id="asignar-despacho-loading" src="img/loading.gif">
       </div>
       <div class="modal-body">
 	      <form id="asignar-despacho-form" class="form-inline">
@@ -59,7 +60,6 @@
 	      		Despacho:
 	        	<select id="asignar-despacho-dropdown-despachos" name="idDespacho"></select>
 	        </label>
-	        <img id="asignar-despacho-loading" src="img/loading.gif">
 	        <button id="asignar-despacho-submit" type="submit" class="btn btn-primary" disabled>Asignar</button>
 	      </form>
 	      <p id="modal-asignar-despacho-msg"></p>

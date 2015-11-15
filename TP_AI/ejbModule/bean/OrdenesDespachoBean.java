@@ -68,4 +68,9 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 
 		return ordenesActivasView;
 	}
+
+	public void actualizarOrden(OrdenDespacho orden, Despacho despacho) {
+		orden.setDespacho(despacho);
+		em.merge(orden);
+	}
 }

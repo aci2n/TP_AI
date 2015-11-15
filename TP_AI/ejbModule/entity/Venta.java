@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -21,8 +22,8 @@ import view.VentaView;
 public class Venta extends PersistentObject implements ViewGenerator<VentaView> {
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany
-	@JoinColumn(name = "id_articulo")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_venta")
 	private List<ItemArticulo> articulos;
 	@Column(name = "fecha")
 	private Date fecha;
@@ -41,7 +42,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 	private Usuario usuario;
 
 	public Venta() {
-
+		articulos = new ArrayList<>();
 	}
 
 	public Venta(VentaView view) {
@@ -58,6 +59,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 		this.total = total;
 		this.destino = destino;
 		this.usuario = usuario;
+		articulos = new ArrayList<>();
 	}
 
 	public List<ItemArticulo> getArticulos() {
@@ -126,6 +128,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 
 	public VentaView getView() {
 		VentaView vv = new VentaView();
+		vv.setCodigo(codigo);
 		vv.setId(id);
 		vv.setArticulos(new ArrayList<>());
 		for (ItemArticulo a : articulos) {
@@ -138,6 +141,10 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 		vv.setTotal(total);
 		vv.setUsuario(ViewUtil.getViewChecked(usuario));
 		return vv;
+	}
+
+	public void agregarItemArticulo(Articulo articulo, int cantidad) {
+		this.articulos.add(new ItemArticulo(articulo, cantidad));
 	}
 
 }

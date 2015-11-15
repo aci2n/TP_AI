@@ -72,6 +72,8 @@ public class Usuario implements ViewGenerator<UsuarioView> {
 
 	public UsuarioView getView() {
 		UsuarioView uv = new UsuarioView();
+		uv.setNombre(nombre);
+		uv.setApellido(apellido);
 		uv.setCoordenada(ViewUtil.getViewChecked(coordenada));
 		uv.setDni(dni);
 		return uv;

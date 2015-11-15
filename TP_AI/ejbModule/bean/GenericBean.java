@@ -58,13 +58,9 @@ public abstract class GenericBean<T> {
 		return (List<T>) em.createQuery(query).getResultList();
 	}
 
-	public List<Object[]> executeTypelessQuery(String query) { // que se yo
-		return (List<Object[]>) em.createQuery(query).getResultList();
-	}
-
 	public void logException(Exception e) {
 		e.printStackTrace();
-		em.persist(new ExceptionLog(e));	
+		em.persist(new ExceptionLog(e));
 		em.flush();
 	}
 
@@ -75,5 +71,4 @@ public abstract class GenericBean<T> {
 	public T fromJson(String json) {
 		return gson.fromJson(json, type);
 	}
-
 }

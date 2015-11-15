@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -13,7 +14,7 @@ import view.ItemArticuloView;
 public class ItemArticulo extends PersistentObject implements ViewGenerator<ItemArticuloView> {
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_articulo")
 	private Articulo articulo;
 	@Column(name = "cantidad")

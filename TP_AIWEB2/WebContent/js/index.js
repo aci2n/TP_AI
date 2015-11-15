@@ -19,6 +19,10 @@ $('#configuracion').click(function() {
 	cargarContenido('configuracion');
 });
 
+$('#linkBestSellers').click(function() {
+	cargarContenido('BestSellers');
+});
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

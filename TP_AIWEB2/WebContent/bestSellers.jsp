@@ -11,22 +11,21 @@
 
 	<h4>Lista de Best Sellers</h4>
 	<table id="table_conf" class="table">
-		<tr>
-			<th>Ranking</th>
-			<th>Id Artículo</th>
-			<th>Cantidad</th>
-		</tr>
-		<tbody id="tbody_conf">	
-				<tr>
-				<%if(ranking.size() > 0) {
-					for(BestSellerView b : ranking){%>
-					<tr>
-					<td><%= b.getRanking() %></td>
-						<td><%= b.getIdArticulo() %></td>
-						<td><%= b.getCantidad() %></td><tr>
-				<% }
-				}%>
+		<thead>
+			<tr>
+				<th>Ranking</th>
+				<th>Id Artículo</th>
 			</tr>
+		</thead>
+		<tbody id="tbody_conf">	
+			<%if(ranking.size() > 0) {
+				for(BestSellerView b : ranking){%>
+				<tr>
+					<td><%= b.getRanking() %></td>
+					<td><%= b.getIdArticulo() %></td>
+				<tr>
+			<% }
+			}%>
 		</tbody>
 	</table>
 	

@@ -35,9 +35,10 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		save(orden);
 		return orden;
 	}
-	
+
 	private List<OrdenDespacho> getOrdenesSinEnviar() {
-		return executeQuery("from OrdenDespacho where enviada is null or enviada = false");
+		return executeQuery(
+				"from OrdenDespacho od join fetch od.venta join fetch od.despacho where enviada is null or enviada = false");
 	}
 
 	public EnviarOrdenesResponse enviarOrdenesActivas() {

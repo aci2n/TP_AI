@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import view.VentaSinArticulosView;
 import view.VentaView;
 
 @Entity
@@ -145,6 +146,19 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 
 	public void agregarItemArticulo(Articulo articulo, int cantidad) {
 		this.articulos.add(new ItemArticulo(articulo, cantidad));
+	}
+
+	public VentaSinArticulosView getVentaSinOrdenView() {
+		VentaSinArticulosView vsov = new VentaSinArticulosView();
+		vsov.setCodigo(codigo);
+		vsov.setId(id);
+		vsov.setDestino(ViewUtil.getViewChecked(destino));
+		vsov.setFecha(fecha);
+		vsov.setOrden(ViewUtil.getViewChecked(orden));
+		vsov.setPortal(portal);
+		vsov.setTotal(total);
+		vsov.setUsuario(ViewUtil.getViewChecked(usuario));
+		return vsov;
 	}
 
 }

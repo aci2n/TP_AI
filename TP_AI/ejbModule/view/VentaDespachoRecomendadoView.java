@@ -1,19 +1,19 @@
 package view;
 
 public class VentaDespachoRecomendadoView {
-	private VentaView venta;
+	private VentaSinArticulosView venta;
 	private DespachoView despacho;
 
-	public VentaDespachoRecomendadoView(VentaView venta, DespachoView despacho) {
+	public VentaDespachoRecomendadoView(VentaSinArticulosView venta, DespachoView despacho) {
 		this.venta = venta;
 		this.despacho = despacho;
 	}
 
-	public VentaView getVenta() {
+	public VentaSinArticulosView getVenta() {
 		return venta;
 	}
 
-	public void setVenta(VentaView venta) {
+	public void setVenta(VentaSinArticulosView venta) {
 		this.venta = venta;
 	}
 

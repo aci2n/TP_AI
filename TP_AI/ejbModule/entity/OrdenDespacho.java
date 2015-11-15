@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,6 +26,9 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 	private Estado estado;
 	@OneToOne(mappedBy = "orden")
 	private Venta venta;
+	@Basic
+	@Column(name = "enviada")
+	private Boolean enviada;
 
 	public OrdenDespacho() {
 
@@ -53,6 +57,14 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	
+	public Boolean getEnviada() {
+		return enviada;
+	}
+
+	public void setEnviada(Boolean enviada) {
+		this.enviada = enviada;
 	}
 
 	public OrdenDespachoView getView() {

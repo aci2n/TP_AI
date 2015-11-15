@@ -39,16 +39,20 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 	private List<OrdenDespacho> getOrdenesActivas() {
 		return executeQuery("from OrdenDespacho where estado = entity.Estado.ACTIVO");
 	}
+	
+	private List<OrdenDespacho> getOrdenesSinEnviar() {
+		return executeQuery("from OrdenDespacho where enviada is null or enviada = false");
+	}
 
 	public EnviarOrdenesResponse enviarOrdenesActivas() {
-		List<OrdenDespacho> ordenesActivas = getOrdenesActivas();
+		List<OrdenDespacho> ordenesActivas = getOrdenesSinEnviar();
 		List<OrdenDespachoActivaView> ordenesActivasView = new ArrayList<>();
 		String mensaje = "Ordenes activas enviadas correctamente.";
 
 		for (OrdenDespacho o : ordenesActivas) {
 			ordenesActivasView.add(o.getOrdenDespachoActivaView());
 			// enviar por ws a portal, setear mensaje
-			o.setEstado(Estado.ENTREGADO);
+			o.setEnviada(true);
 			em.merge(o);
 		}
 

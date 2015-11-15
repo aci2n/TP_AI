@@ -15,7 +15,7 @@
 			<th>Fecha</th>
 			<th>Total</th>
 			<th>Portal</th>
-			<th>Coodenadas Cliente</th>
+			<th>Coordenadas del cliente</th>
 			<th>Orden de Despacho</th>
 			<th>Estado Orden</th>
 			<th>Detalles</th>

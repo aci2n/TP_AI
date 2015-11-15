@@ -1,17 +1,7 @@
 package test;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-
-import com.monitor.webService.Cliente;
-import com.monitor.webService.LogDTO;
-import com.monitor.webService.VoVenta;
-
 public class TestUtil {
-	public static VoVenta venta() {
+	/*public static VoVenta venta() {
 		VoVenta venta = new VoVenta();
 		venta.setCodigoVenta(ri());
 		venta.setEstado("ACTIVO");
@@ -61,5 +51,5 @@ public class TestUtil {
 
 	private static double rd() {
 		return ri() + Math.random();
-	}
+	}*/
 }

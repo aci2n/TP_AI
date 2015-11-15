@@ -51,17 +51,8 @@
 		
 		// AGREGA UNA NUEVA CONFIGURACION DE EMAIL 
 		$(".detalles").click(function(){
-			
-				$.ajax({
-					type : "GET",
-					data : {"codigo" : $(this).attr("id")},
-					url : "verDetalles",
-					success : function(data) {
-						$("contenido").load("verDetalles");
-					}		
-				});
-			});
-			
+			cargarContenido('verDetalles');			
 		});
+	});
 	
 </script>

@@ -39,6 +39,7 @@
 			</label>
 		</div>
 		<button type="submit" class="btn btn-primary">Enviar Ranking</button>
+		<img id="enviar-ranking-loading" src="img/loading.gif">
 	</form>
 	
 	<div id="modal-enviar-ranking" class="modal fade">

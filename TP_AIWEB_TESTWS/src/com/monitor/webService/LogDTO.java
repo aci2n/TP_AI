@@ -1,194 +1,114 @@
-/**
- * LogDTO.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package com.monitor.webService;
 
-public class LogDTO  implements java.io.Serializable {
-    private java.lang.String fecha;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
-    private java.lang.String idModulo;
 
-    private java.lang.String mensaje;
+/**
+ * <p>Clase Java para logDTO complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
+ * <pre>
+ * &lt;complexType name="logDTO"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="idModulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="mensaje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "logDTO", propOrder = {
+    "fecha",
+    "idModulo",
+    "mensaje"
+})
+public class LogDTO {
 
-    public LogDTO() {
-    }
-
-    public LogDTO(
-           java.lang.String fecha,
-           java.lang.String idModulo,
-           java.lang.String mensaje) {
-           this.fecha = fecha;
-           this.idModulo = idModulo;
-           this.mensaje = mensaje;
-    }
-
+    protected String fecha;
+    protected String idModulo;
+    protected String mensaje;
 
     /**
-     * Gets the fecha value for this LogDTO.
+     * Obtiene el valor de la propiedad fecha.
      * 
-     * @return fecha
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-
     /**
-     * Sets the fecha value for this LogDTO.
+     * Define el valor de la propiedad fecha.
      * 
-     * @param fecha
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setFecha(java.lang.String fecha) {
-        this.fecha = fecha;
+    public void setFecha(String value) {
+        this.fecha = value;
     }
 
-
     /**
-     * Gets the idModulo value for this LogDTO.
+     * Obtiene el valor de la propiedad idModulo.
      * 
-     * @return idModulo
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getIdModulo() {
+    public String getIdModulo() {
         return idModulo;
     }
 
-
     /**
-     * Sets the idModulo value for this LogDTO.
+     * Define el valor de la propiedad idModulo.
      * 
-     * @param idModulo
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setIdModulo(java.lang.String idModulo) {
-        this.idModulo = idModulo;
+    public void setIdModulo(String value) {
+        this.idModulo = value;
     }
 
-
     /**
-     * Gets the mensaje value for this LogDTO.
+     * Obtiene el valor de la propiedad mensaje.
      * 
-     * @return mensaje
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getMensaje() {
+    public String getMensaje() {
         return mensaje;
     }
 
-
     /**
-     * Sets the mensaje value for this LogDTO.
+     * Define el valor de la propiedad mensaje.
      * 
-     * @param mensaje
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setMensaje(java.lang.String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof LogDTO)) return false;
-        LogDTO other = (LogDTO) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.fecha==null && other.getFecha()==null) || 
-             (this.fecha!=null &&
-              this.fecha.equals(other.getFecha()))) &&
-            ((this.idModulo==null && other.getIdModulo()==null) || 
-             (this.idModulo!=null &&
-              this.idModulo.equals(other.getIdModulo()))) &&
-            ((this.mensaje==null && other.getMensaje()==null) || 
-             (this.mensaje!=null &&
-              this.mensaje.equals(other.getMensaje())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getFecha() != null) {
-            _hashCode += getFecha().hashCode();
-        }
-        if (getIdModulo() != null) {
-            _hashCode += getIdModulo().hashCode();
-        }
-        if (getMensaje() != null) {
-            _hashCode += getMensaje().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(LogDTO.class, true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://webService.monitor.com/", "logDTO"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("fecha");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "fecha"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idModulo");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "idModulo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("mensaje");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "mensaje"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+    public void setMensaje(String value) {
+        this.mensaje = value;
     }
 
 }

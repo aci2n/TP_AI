@@ -6,7 +6,11 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.xml.ws.RequestWrapper;
+import javax.xml.ws.ResponseWrapper;
 
 import bean.VentasBean;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -17,19 +21,25 @@ import view.ItemArticuloView;
 import view.UsuarioView;
 import view.VentaView;
 
-@WebService
+@WebService(targetNamespace = "http://webService.monitor.com/", name = "WSProcVentaBean")
 public class WSProcVentaBean {
 
 	@EJB
 	private VentasBean ventasBean;
 
 	@WebMethod
-	public String procesarCarrito(VoCarrito carrito) {
+	@RequestWrapper(localName = "procesarCarrito", targetNamespace = "http://webService.monitor.com/", className = "ws.ventas.ProcesarCarrito")
+    @ResponseWrapper(localName = "procesarCarritoResponse", targetNamespace = "http://webService.monitor.com/", className = "ws.ventas.ProcesarCarritoResponse")
+    @WebResult(name = "return", targetNamespace = "")
+	public String procesarCarrito(@WebParam(name = "arg0", targetNamespace = "") VoCarrito carrito) {
 		throw new NotImplementedException();
 	}
 
 	@WebMethod
-	public String procesarVenta(VoVenta venta) throws RemoteException {
+    @RequestWrapper(localName = "procesarVenta", targetNamespace = "http://webService.monitor.com/", className = "ws.ventas.ProcesarVenta")
+    @ResponseWrapper(localName = "procesarVentaResponse", targetNamespace = "http://webService.monitor.com/", className = "ws.ventas.ProcesarVentaResponse")
+    @WebResult(name = "return", targetNamespace = "")
+	public String procesarVenta(@WebParam(name = "arg0", targetNamespace = "") VoVenta venta) throws RemoteException {
 		if (venta == null) {
 			throw new RemoteException("La venta no puede ser null");
 		}

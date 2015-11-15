@@ -5,3 +5,7 @@
 #enviar-ranking > button {
 	margin-bottom: 5px;
 }
+
+#enviar-ranking-loading {
+	display: none;
+}

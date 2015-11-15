@@ -16,6 +16,7 @@ import entity.Venta;
 import exception.NoExisteException;
 import exception.PersistException;
 import exception.VentaException;
+import view.OrdenDespachoView;
 import view.PortalView;
 import view.ReporteView;
 import view.VentaDespachoRecomendadoView;
@@ -52,7 +53,7 @@ public class VentasBean extends GenericBean<Venta> {
 		return null;
 	}
 
-	public void asignarDespachoAVenta(Integer idVenta, Integer idDespacho)
+	public VentaView asignarDespachoAVenta(Integer idVenta, Integer idDespacho)
 			throws NoExisteException, PersistException, VentaException {
 		Venta venta = get(idVenta);
 		Despacho despacho = despachosBean.get(idDespacho);
@@ -67,6 +68,8 @@ public class VentasBean extends GenericBean<Venta> {
 			venta.setOrden(ordenesBean.generarOrdenDespacho(despacho));
 			em.merge(venta);
 		}
+		
+		return venta.getView();
 	}
 
 	public List<VentaDespachoRecomendadoView> obtenerVentasSinOrdenDespacho() {

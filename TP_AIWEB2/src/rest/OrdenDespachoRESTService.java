@@ -37,7 +37,7 @@ public class OrdenDespachoRESTService {
 		try {
 			return Response.status(200).entity(ordenesDespachoBean.enviarOrdenesActivas()).build();
 		} catch (Exception e) {
-			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
+			return Response.status(500).entity(Utilities.generarMensajeError(e)).build();
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class OrdenDespachoRESTService {
 		try {
 			return Response.status(200).entity(ordenesDespachoBean.getOrdenesActivasView()).build();
 		} catch (Exception e) {
-			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
+			return Response.status(500).entity(Utilities.generarMensajeError(e)).build();
 		}
 	}
 	

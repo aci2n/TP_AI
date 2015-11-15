@@ -15,8 +15,8 @@
 	<table id="table_conf" class="table">
 		<thead>
 			<tr>
+				<th>ID Artículo</th>
 				<th>Ranking</th>
-				<th>Id Artículo</th>
 			</tr>
 		</thead>
 		<tbody id="tbody_conf">	

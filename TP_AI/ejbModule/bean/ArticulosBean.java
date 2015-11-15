@@ -24,7 +24,7 @@ public class ArticulosBean extends GenericBean<Articulo> {
 
 		List<BestSellerView> bestSellers = new ArrayList<>();
 		for (int i = 0; i < cantidadesVendidas.size(); i++) {
-			bestSellers.add(new BestSellerView(i, cantidadesVendidas.get(i)));
+			bestSellers.add(new BestSellerView(i + 1, cantidadesVendidas.get(i)));
 		}
 
 		return bestSellers;

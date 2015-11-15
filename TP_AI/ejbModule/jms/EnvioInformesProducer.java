@@ -25,7 +25,7 @@ public class EnvioInformesProducer {
 	private static final Logger log = Logger.getLogger(EnvioInformesProducer.class.getName());
 
 	private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
-	private static final String DEFAULT_DESTINATION = "java:/jms/queue/monitorQueue";
+	private static final String DEFAULT_DESTINATION = "java:/jms/queue/EmailQueue";
 	private static final String DEFAULT_MESSAGE_COUNT = "1";
 	private static final String DEFAULT_USERNAME = "#";
 	private static final String DEFAULT_PASSWORD = "guest";

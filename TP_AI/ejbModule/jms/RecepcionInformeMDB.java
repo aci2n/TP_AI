@@ -17,7 +17,7 @@ import entity.Log;
 
 @MessageDriven(name = "RecepcionDeInformesMDB", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/EmailQueue"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/MailQueue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class RecepcionInformeMDB extends GenericBean<Log> implements MessageListener {
 

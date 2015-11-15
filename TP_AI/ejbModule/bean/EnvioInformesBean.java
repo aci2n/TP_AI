@@ -36,7 +36,7 @@ public class EnvioInformesBean {
 	public void enviarInformes(List<Log> logs) {
 
 		String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
-		String DEFAULT_DESTINATION = "java:/jms/queue/EmailQueue";
+		String DEFAULT_DESTINATION = "java:/jms/queue/MailQueue";
 		String DEFAULT_USERNAME = "#";
 		String DEFAULT_PASSWORD = "guest";
 		String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";

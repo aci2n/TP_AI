@@ -3,43 +3,43 @@ var ventasSinOrden = {
 };
 
 (function() {
-	initCambiarDespacho();
+	initAsignarDespacho();
 	initEnviarOrdenes();
 })();
 
-function initCambiarDespacho() {
-	var cambiarDespachoForm = $('#cambiar-despacho-form');
-	var loading = $('#cambiar-despacho-loading');
+function initAsignarDespacho() {
+	var asignarDespachoForm = $('#asignar-despacho-form');
+	var loading = $('#asignar-despacho-loading');
 
-	cambiarDespachoForm.submit(function(e) {
+	asignarDespachoForm.submit(function(e) {
 		loading.show();
 		e.preventDefault();
-		$.post('rest/ventas', cambiarDespachoForm.serialize()).always(
+		$.post('rest/ventas', asignarDespachoForm.serialize()).always(
 				function(response) {
 					loading.hide();
-					$('#modal-cambiar-despacho-msg').text(
+					$('#modal-asignar-despacho-msg').text(
 							response.responseText || response);
-					$('#venta-' + $('#cambiar-despacho-id-venta').val())
+					$('#venta-' + $('#asignar-despacho-id-venta').val())
 							.remove();
 				});
 	});
 }
 
 function asignarDespacho(idVenta, idDespacho) {
-	$('#modal-cambiar-despacho').modal('show');
-	$('#modal-cambiar-despacho-msg').text('');
-	$('#cambiar-despacho-id-venta').val(idVenta);
-	var despachosDropdown = $('#cambiar-despacho-dropdown-despachos');
+	$('#modal-asignar-despacho').modal('show');
+	$('#modal-asignar-despacho-msg').text('');
+	$('#asignar-despacho-id-venta').val(idVenta);
+	var despachosDropdown = $('#asignar-despacho-dropdown-despachos');
 
 	if (!ventasSinOrden.despachosCargados) {
-		var loading = $('#cambiar-despacho-loading');
+		var loading = $('#asignar-despacho-loading');
 		loading.show();
 		despachosDropdown.empty();
 
 		$.get('rest/despachos', function(response) {
 			ventasSinOrden.despachosCargados = true;
 			despachosDropdown.val(idDespacho);
-			$('#cambiar-despacho-submit').removeAttr('disabled');
+			$('#asignar-despacho-submit').removeAttr('disabled');
 			loading.hide();
 			response.forEach(function(despacho) {
 				despachosDropdown.append($('<option>', {
@@ -63,7 +63,7 @@ function initEnviarOrdenes() {
 		$.post('rest/OrdenDeDespacho/enviar', function(response) {
 			loading.hide();
 
-			var mensajeModal = $('#modal-enviar-ordenes-msg');
+			var mensajeModal = $('#modal-enviar-ordenes-msg').html('');
 			mensajeModal.append($('<h4>').text(response.mensaje));
 
 			var listaOrdenes = $('<ul>');

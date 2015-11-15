@@ -19,29 +19,29 @@
 	padding: 7px 0px !important;
 }
 
-#cambiar-despacho-loading, #enviar-ordenes-loading {
+#asignar-despacho-loading, #enviar-ordenes-loading {
 	display: none;
 }
 
-#cambiar-despacho-form {
+#asignar-despacho-form {
 	width: 80%;
 	margin: auto;
 }
 
-#cambiar-despacho-form>*+* {
+#asignar-despacho-form>*+* {
 	margin-left: 15px;
 }
 
-#cambiar-despacho-id-venta {
+#asignar-despacho-id-venta {
 	width: 40px;
 	text-align: center;
 }
 
-#cambiar-despacho-submit {
+#asignar-despacho-submit {
 	float: right;
 }
 
-#modal-cambiar-despacho-msg {
+#modal-asignar-despacho-msg {
 	margin-bottom: 0;
 	padding-top: 10px;
 }

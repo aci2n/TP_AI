@@ -11,7 +11,7 @@
 	<thead>
 		<tr id="ventas-sin-orden-head" >
 			<td colspan="6">Venta</td>
-			<td colspan="3">Despacho</td>
+			<td colspan="3">Despacho más cercano</td>
 		</tr>
 		<tr>
 			<td>Codigo</td>
@@ -43,26 +43,26 @@
 		</c:forEach>
 	</tbody>
 </table>
-<div id="modal-cambiar-despacho" class="modal fade">
+<div id="modal-asignar-despacho" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Cambiar despacho</h4>
+        <h4 class="modal-title">Asignar despacho</h4>
       </div>
       <div class="modal-body">
-	      <form id="cambiar-despacho-form" class="form-inline">
+	      <form id="asignar-despacho-form" class="form-inline">
 	      	<label>
 	      		ID venta:
-	        	<input id="cambiar-despacho-id-venta" readonly type="number" name="idVenta"></input>
+	        	<input id="asignar-despacho-id-venta" readonly type="number" name="idVenta"></input>
 	        </label>
 	        <label>
 	      		Despacho:
-	        	<select id="cambiar-despacho-dropdown-despachos" name="idDespacho"></select>
+	        	<select id="asignar-despacho-dropdown-despachos" name="idDespacho"></select>
 	        </label>
-	        <img id="cambiar-despacho-loading" src="img/loading.gif">
-	        <button id="cambiar-despacho-submit" type="submit" class="btn btn-primary" disabled>Asignar</button>
+	        <img id="asignar-despacho-loading" src="img/loading.gif">
+	        <button id="asignar-despacho-submit" type="submit" class="btn btn-primary" disabled>Asignar</button>
 	      </form>
-	      <p id="modal-cambiar-despacho-msg"></p>
+	      <p id="modal-asignar-despacho-msg"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

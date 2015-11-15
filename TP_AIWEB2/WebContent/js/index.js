@@ -11,9 +11,9 @@ $('#linkVentas').click(function() {
 	cargarContenido('Ventas');
 });
 
-$('#linkReporte').click(function() {
-	cargarContenido('Reporte');
-});
+//$('#linkReporte').click(function() {
+//	cargarContenido('Reporte');
+//});
 
 $('#configuracion').click(function() {
 	cargarContenido('configuracion');
@@ -29,6 +29,10 @@ $('#linkListadoInformes').click(function() {
 
 $('#linkVentasSinOrden').click(function() {
 	cargarContenido('VentasSinOrden');
+})
+
+$('#linkReporte').click(function() {
+	cargarContenido('reportes');
 })
 
 function cargarContenido(url) {

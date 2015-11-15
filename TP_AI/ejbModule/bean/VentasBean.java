@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 
 import entity.Coordenada;
 import entity.Despacho;
+import entity.ExceptionLog;
 import entity.OrdenDespacho;
 import entity.Reporte;
 import entity.Usuario;
@@ -16,6 +17,7 @@ import exception.NoExisteException;
 import exception.PersistException;
 import exception.VentaException;
 import view.PortalView;
+import view.ReporteView;
 import view.VentaDespachoRecomendadoView;
 import view.VentaView;
 
@@ -84,4 +86,21 @@ public class VentasBean extends GenericBean<Venta> {
 		return reporte.getPortales();
 	}
 
+	public List<ReporteView> getReportes(){
+	
+		List<ReporteView> reportes = null;
+		try{
+			List<Object[]> lista = em.createQuery("select sum(v.total), v.portal from Venta v group by v.portal").getResultList();
+			reportes = new ArrayList<ReporteView>();
+			
+			for(int i = 0; i < lista.size(); i++){
+				reportes.add(new ReporteView((String) lista.get(i)[0], (double) lista.get(i)[1]));
+			}
+			
+		}catch(Exception e){
+			em.persist(new ExceptionLog(e));
+		}
+		return reportes;
+	}
 }
+	

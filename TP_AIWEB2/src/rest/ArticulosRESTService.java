@@ -22,7 +22,6 @@ import util.Utilities;
 import view.BestSellerView;
 
 @Stateless
-@Produces({ MediaType.APPLICATION_JSON })
 @Path("/articulos")
 public class ArticulosRESTService {
 
@@ -45,8 +44,14 @@ public class ArticulosRESTService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response enviarBestSellers(@FormParam("id") int id) {
 		try {
-			String urlString = String.format("%s/PortalWEB_Web/rest/articulo", modulos.getUrlPortal(id));
+			String urlString = modulos.getUrlPortal(id);
+			if (urlString.charAt(urlString.length() - 1) != '/') {
+				urlString += '/';
+			}
+			urlString += "PortalWEB_Web/rest/articulo";
+
 			URL url = new URL(urlString);
+
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("PUT");

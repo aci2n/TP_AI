@@ -1,6 +1,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="view.*" %>
 
+<link href="css/bestSellers.css" rel="stylesheet">
+
 <a href="#"><strong><i class="glyphicon glyphicon-signal"></i>
 		Ranking Best Sellers</strong></a>
 		<hr>
@@ -29,10 +31,16 @@
 		</tbody>
 	</table>
 	
-	<form id="enviar-ranking">
-		<input type="number" name="id">
+	<form id="enviar-ranking" class="form-inline">
+		<div class="form-group">
+			<label>
+				ID del portal:
+				<input class="form-control" type="text" name="id">
+			</label>
+		</div>
 		<button type="submit" class="btn btn-primary">Enviar Ranking</button>
-	</form>	
+	</form>
+	
 	<div id="modal-enviar-ranking" class="modal fade">
 	  <div class="modal-dialog">
 	    <div class="modal-content">

@@ -23,6 +23,10 @@ $('#linkBestSellers').click(function() {
 	cargarContenido('BestSellers');
 });
 
+$('#linkListadoInformes').click(function() {
+	cargarContenido('informes');
+});
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

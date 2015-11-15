@@ -9,7 +9,7 @@
 %>
 <div>
 
-	<h4>Mi configuración</h4>
+	<h4>Lista de Best Sellers</h4>
 	<table id="table_conf" class="table">
 		<tr>
 			<th>Ranking</th>

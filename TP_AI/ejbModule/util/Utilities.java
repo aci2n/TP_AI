@@ -1,5 +1,7 @@
 package util;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +19,7 @@ public class Utilities {
 			try {
 				return new SimpleDateFormat(format).parse(date);
 			} catch (Exception e) {
-				// hello
+				e.printStackTrace();
 			}
 		}
 		throw new ParseException(String.format("No se pudo parsear la fecha: %s", date), 0);
@@ -40,12 +42,21 @@ public class Utilities {
 		int hour = calendar.get(Calendar.HOUR_OF_DAY);
 		int minute = calendar.get(Calendar.MINUTE);
 		int second = calendar.get(Calendar.SECOND);
-		return DatatypeFactory.newInstance()
-				.newXMLGregorianCalendar(new GregorianCalendar(year, month, day, hour, minute, second));
+		return DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar(year, month, day, hour, minute, second));
 	}
 
 	public static String normalizarUrl(String url) {
 		return url.charAt(url.length() - 1) != '/' ? url += '/' : url;
+	}
+
+	public static synchronized void guardarATexto(String texto, String path) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(path, true));
+			bw.write(texto);
+			bw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -14,6 +14,7 @@ import entity.ExceptionLog;
 import entity.PersistentObject;
 import exception.NoExisteException;
 import exception.PersistException;
+import util.Utilities;
 
 @SuppressWarnings("unchecked")
 public abstract class GenericBean<T> {
@@ -31,8 +32,7 @@ public abstract class GenericBean<T> {
 	public T get(Integer id) throws NoExisteException {
 		T t = em.find(type, id);
 		if (t == null) {
-			throw new NoExisteException(
-					String.format("No existe el objeto del tipo %s con el ID %s.", type.getName(), id));
+			throw new NoExisteException(String.format("No existe el objeto del tipo %s con el ID %s.", type.getName(), id));
 		}
 		return t;
 	}
@@ -62,7 +62,9 @@ public abstract class GenericBean<T> {
 
 	public void logException(Exception e) {
 		e.printStackTrace();
-		em.persist(new ExceptionLog(e));
+		ExceptionLog log = new ExceptionLog(e);
+		Utilities.guardarATexto(toJson(log), "exception_logs.txt");
+		em.persist(log);
 		em.flush();
 	}
 

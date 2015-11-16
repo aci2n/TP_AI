@@ -1,6 +1,7 @@
 package svl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,11 +22,10 @@ public class Seed extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			response.getWriter().print(
-					test.generateRandomList(() -> test.articulo(), 20, true)
-					+ test.generateRandomList(() -> test.venta(), 5, true)
-					+ test.generateRandomList(() -> test.despacho(), 3, true)
-			);
+			PrintWriter out = response.getWriter();
+			//out.println(test.generateRandomList(() -> test.articulo(), 20, true));
+			out.println(test.generateRandomList(() -> test.venta(), 10, true));
+			//out.println(test.generateRandomList(() -> test.despacho(), 3, true));
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

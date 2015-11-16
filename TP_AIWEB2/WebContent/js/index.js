@@ -39,6 +39,10 @@ $('#linkSeed').click(function() {
 	cargarContenido('Seed');
 });
 
+$('#linkSeedReal').click(function() {
+	cargarContenido('rest/Seed');
+});
+
 function cargarContenido(url) {
 	var loading = $('#loading');
 	loading.show();

@@ -22,17 +22,17 @@
 			</tr>
 		</thead>
 		<tbody id="tbody_conf">
-			<tr>
-				<c:forEach var="articulo" items="${actual.articulos}">
-					<td>${articulo.articulo.codigo}</td>
-					<td>${articulo.articulo.nombre}</td>
-					<td>${articulo.articulo.descripcion}</td>
-					<td>${articulo.articulo.marca}</td>
-					<td>${articulo.articulo.precio}</td>
-					<td>${articulo.articulo.origen}</td>
-					<td>${articulo.cantidad}</td>
-				</c:forEach>
-			</tr>
+			<c:forEach var="articulo" items="${actual.articulos}">
+				<tr>
+						<td>${articulo.articulo.codigo}</td>
+						<td>${articulo.articulo.nombre}</td>
+						<td>${articulo.articulo.descripcion}</td>
+						<td>${articulo.articulo.marca}</td>
+						<td>${articulo.articulo.precio}</td>
+						<td>${articulo.articulo.origen}</td>
+						<td>${articulo.cantidad}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
@@ -41,16 +41,9 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(function() {
 		$("#volver").click(function(){
-			$.ajax({
-				type : "POST",
-				url : "verDetalles",
-				success : function(data) {
-	
-					$("contenido").load('Ventas');
-				}		
-			});
+			cargarContenido('Ventas');
 		});
 	});
 </script>

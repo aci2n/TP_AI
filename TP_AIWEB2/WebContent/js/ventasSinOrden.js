@@ -9,10 +9,10 @@ function asignarDespachoClick(e) {
 	var idVenta = target.attr('data-venta');
 	var idDespachoRecomendado = target.attr('data-despacho');
 	
-	$('#modal-asignar-despacho').modal('show');
 	$('#modal-asignar-despacho-msg').text('');
 	$('#asignar-despacho-id-venta').val(idVenta);
 	$('#asignar-despacho-dropdown-despachos').val(idDespachoRecomendado);
+	$('#modal-asignar-despacho').modal('show');
 }
 
 function asignarDespachoSubmit(e) {

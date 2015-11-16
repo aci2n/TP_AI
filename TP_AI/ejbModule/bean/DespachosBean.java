@@ -35,7 +35,7 @@ public class DespachosBean extends GenericBean<Despacho> {
 				}
 
 				ventasDespachoRecomendado
-						.add(new VentaDespachoRecomendadoView(venta.getVentaSinOrdenView(), cercano.getView()));
+						.add(new VentaDespachoRecomendadoView(venta.getVentaSinArticulosView(), cercano.getView()));
 			}
 		}
 

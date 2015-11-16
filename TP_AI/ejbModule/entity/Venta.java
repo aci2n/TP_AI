@@ -148,7 +148,7 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 		this.articulos.add(new ItemArticulo(articulo, cantidad));
 	}
 
-	public VentaSinArticulosView getVentaSinOrdenView() {
+	public VentaSinArticulosView getVentaSinArticulosView() {
 		VentaSinArticulosView vsov = new VentaSinArticulosView();
 		vsov.setCodigo(codigo);
 		vsov.setId(id);

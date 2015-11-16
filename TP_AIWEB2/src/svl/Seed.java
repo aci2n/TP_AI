@@ -24,7 +24,7 @@ public class Seed extends HttpServlet {
 		try {
 			PrintWriter out = response.getWriter();
 			//out.println(test.generateRandomList(() -> test.articulo(), 20, true));
-			out.println(test.generateRandomList(() -> test.venta(), 10, true));
+			out.println(test.generateRandomList(() -> test.venta(), 20, true));
 			//out.println(test.generateRandomList(() -> test.despacho(), 3, true));
 		} catch (Exception e) {
 			throw new ServletException(e);

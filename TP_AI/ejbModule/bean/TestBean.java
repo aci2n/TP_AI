@@ -28,8 +28,7 @@ public class TestBean extends GenericBean<PersistentObject> {
 		public T generateRandom();
 	}
 
-	public <T> String generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist)
-			throws PersistException {
+	public <T> String generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist) throws PersistException {
 		List<T> list = new ArrayList<>();
 		for (int i = 0; i < cantidad; i++) {
 			T o = generator.generateRandom();
@@ -50,10 +49,10 @@ public class TestBean extends GenericBean<PersistentObject> {
 		v.setCodigo(rs());
 		v.setDestino(coordenada());
 		v.setFecha(new Date());
-		v.setPortal(rs());
+		v.setPortal(ris());
 		v.setTotal(rd());
 		v.setUsuario(usuario());
-		List<Articulo> articulos = getRandom(Articulo.class, ri(20));
+		List<Articulo> articulos = getRandom(Articulo.class, ri(10));
 		for (Articulo articulo : articulos) {
 			try {
 				v.agregarItemArticulo(articulo, ri());
@@ -94,6 +93,10 @@ public class TestBean extends GenericBean<PersistentObject> {
 
 	private double rd() {
 		return ri() + Math.random();
+	}
+
+	private String ris() {
+		return Integer.toString(ri());
 	}
 
 }

@@ -18,6 +18,7 @@ import exception.VentaException;
 import view.PortalView;
 import view.ReporteView;
 import view.VentaDespachoRecomendadoView;
+import view.VentaSinArticulosView;
 import view.VentaView;
 
 @Stateless
@@ -51,8 +52,7 @@ public class VentasBean extends GenericBean<Venta> {
 		return null;
 	}
 
-	public VentaView asignarDespachoAVenta(Integer idVenta, Integer idDespacho)
-			throws NoExisteException, PersistException, VentaException {
+	public VentaView asignarDespachoAVenta(Integer idVenta, Integer idDespacho) throws NoExisteException, PersistException, VentaException {
 		Venta venta = get(idVenta);
 		Despacho despacho = despachosBean.get(idDespacho);
 
@@ -67,14 +67,14 @@ public class VentasBean extends GenericBean<Venta> {
 	}
 
 	public List<VentaDespachoRecomendadoView> obtenerVentasSinOrdenDespacho() {
-		return despachosBean.getVentasDespachoRecomendado(
-				executeQuery("select v from Venta v left join v.orden od where od is null and v.destino is not null"));
+		return despachosBean
+				.getVentasDespachoRecomendado(executeQuery("select v from Venta v left join v.orden od where od is null and v.destino is not null"));
 	}
 
-	public List<VentaView> getAllViews() {
-		List<VentaView> ventasView = new ArrayList<>();
+	public List<VentaSinArticulosView> getAllSinArticulosViews() {
+		List<VentaSinArticulosView> ventasView = new ArrayList<>();
 		for (Venta v : getAll()) {
-			ventasView.add(v.getView());
+			ventasView.add(v.getVentaSinArticulosView());
 		}
 
 		return ventasView;
@@ -94,8 +94,7 @@ public class VentasBean extends GenericBean<Venta> {
 
 		List<ReporteView> reportes = null;
 		try {
-			List<Object[]> lista = em.createQuery("select v.portal, sum(v.total) from Venta v group by v.portal")
-					.getResultList();
+			List<Object[]> lista = em.createQuery("select v.portal, sum(v.total) from Venta v group by v.portal").getResultList();
 			reportes = new ArrayList<ReporteView>();
 
 			for (int i = 0; i < lista.size(); i++) {
@@ -106,5 +105,13 @@ public class VentasBean extends GenericBean<Venta> {
 			logException(e);
 		}
 		return reportes;
+	}
+
+	public VentaView getView(String codigo) throws NoExisteException {
+		List<Venta> results = em.createQuery("from Venta where codigo = :codigo").setParameter("codigo", codigo).getResultList();
+		if (!results.isEmpty()) {
+			return results.get(0).getView();
+		}
+		throw new NoExisteException(String.format("No se encontro venta con el codigo %s.", codigo));
 	}
 }

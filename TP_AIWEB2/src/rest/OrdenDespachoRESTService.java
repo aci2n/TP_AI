@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,10 +25,8 @@ import ws.orden.IRecibirOrdenDespachoWs;
 import ws.orden.IRecibirOrdenDespachoWsProxy;
 import ws.orden.Item;
 import ws.orden.OrdenDespacho;
-import ws.orden.RespuestaGenerica;
 
 @Stateless
-@Consumes(MediaType.APPLICATION_JSON)
 @Path("/OrdenDeDespacho")
 public class OrdenDespachoRESTService {
 
@@ -37,6 +36,7 @@ public class OrdenDespachoRESTService {
 	private VentasBean ventasBean;
 
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void recibirCambioEstado(OrdenesDespachoArray ordenes) throws NoExisteException {
 		for (OrdenDespachoJson orden : ordenes.getOrdenes()) {
@@ -47,8 +47,10 @@ public class OrdenDespachoRESTService {
 	@POST
 	@Path("/enviar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response enviarOrden(Integer idVenta, Integer idDespacho) {
+	public Response enviarOrden(@FormParam("idVenta") Integer idVenta, @FormParam("idDespacho") Integer idDespacho) {
 		try {
+			idVenta = 1;
+			idDespacho = 3;
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);
 			
 			List<Item> wsItems = new ArrayList<Item>();
@@ -62,10 +64,10 @@ public class OrdenDespachoRESTService {
 				venta.getOrden().getId(),
 				"16",
 				Calendar.getInstance(),
-				(Item[]) wsItems.toArray()
+				wsItems.toArray(new Item[wsItems.size()])
 			);
 			
-			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy();
+			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy("http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs");
 			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
 		} catch (Exception e) {
 			return Response.status(500).entity(Utilities.generarMensajeError(e)).build();

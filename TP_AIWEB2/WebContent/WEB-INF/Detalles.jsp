@@ -23,13 +23,15 @@
 		</thead>
 		<tbody id="tbody_conf">
 			<tr>
-				<td>${actual.articulos.articulo.codigo}</td>
-				<td>${actual.articulos.articulo.nombre}</td>
-				<td>${actual.articulos.articulo.descripcion}</td>
-				<td>${actual.articulos.articulo.marca}</td>
-				<td>${actual.articulos.articulo.precio}</td>
-				<td>${actual.articulos.articulo.origen}</td>
-				<td>${actual.articulos.articulo.cantidad}</td>
+				<c:forEach var="articulo" items="${actual.articulos}">
+					<td>${articulo.articulo.codigo}</td>
+					<td>${articulo.articulo.nombre}</td>
+					<td>${articulo.articulo.descripcion}</td>
+					<td>${articulo.articulo.marca}</td>
+					<td>${articulo.articulo.precio}</td>
+					<td>${articulo.articulo.origen}</td>
+					<td>${articulo.cantidad}</td>
+				</c:forEach>
 			</tr>
 		</tbody>
 	</table>

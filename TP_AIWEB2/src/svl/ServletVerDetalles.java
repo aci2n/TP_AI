@@ -55,8 +55,7 @@ public class ServletVerDetalles extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("Ventas").forward(request, response);
+		doGet(request, response);
 	}
 
 }

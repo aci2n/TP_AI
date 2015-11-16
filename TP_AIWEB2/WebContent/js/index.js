@@ -43,12 +43,12 @@ $('#linkSeedReal').click(function() {
 	cargarContenido('rest/Seed');
 });
 
-function cargarContenido(url) {
+function cargarContenido(url, data) {
 	var loading = $('#loading');
 	loading.show();
 	var contenido = $('#contenido');
 	contenido.html('');
-	contenido.load(url, function() {
+	contenido.load(url, data, function() {
 		loading.hide();
 	});
 }

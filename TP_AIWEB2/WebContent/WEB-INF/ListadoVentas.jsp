@@ -51,7 +51,7 @@
 		
 		// AGREGA UNA NUEVA CONFIGURACION DE EMAIL 
 		$(".detalles").click(function(){
-			cargarContenido('verDetalles');			
+			cargarContenido('verDetalles', {codigo: $(this).attr('id')});			
 		});
 	});
 	

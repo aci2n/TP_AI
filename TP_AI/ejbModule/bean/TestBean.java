@@ -12,6 +12,7 @@ import entity.Articulo;
 import entity.Coordenada;
 import entity.Despacho;
 import entity.Detalle;
+import entity.Log;
 import entity.PersistentObject;
 import entity.Usuario;
 import entity.Venta;
@@ -28,7 +29,8 @@ public class TestBean extends GenericBean<PersistentObject> {
 		public T generateRandom();
 	}
 
-	public <T> String generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist) throws PersistException {
+	public <T> String generateRandomList(RandomGenerator<T> generator, int cantidad, boolean persist)
+			throws PersistException {
 		List<T> list = new ArrayList<>();
 		for (int i = 0; i < cantidad; i++) {
 			T o = generator.generateRandom();
@@ -42,6 +44,10 @@ public class TestBean extends GenericBean<PersistentObject> {
 
 	public Articulo articulo() {
 		return new Articulo(rs(), ri(), rs(), rs(), rd(), rs(), rs());
+	}
+
+	public Log log() {
+		return new Log(rs(), rs(), new Date());
 	}
 
 	public Venta venta() {

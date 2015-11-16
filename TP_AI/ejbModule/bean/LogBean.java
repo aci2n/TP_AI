@@ -92,4 +92,8 @@ public class LogBean extends GenericBean<Log> {
 		return logs;
 	}
 
+	public void borrarInformes() {
+		em.createNativeQuery("truncate table Logs_Monitor").executeUpdate();		
+	}
+
 }

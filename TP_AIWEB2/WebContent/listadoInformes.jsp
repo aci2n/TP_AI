@@ -40,6 +40,7 @@
 					url : "informes",
 					success : function(data) {
 						alert("Informes enviados");
+						$("#tbody").empty();
 					}		
 				});
 			});

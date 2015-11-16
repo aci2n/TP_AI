@@ -53,6 +53,7 @@ public class ServletInformesAuditoria extends HttpServlet {
 			List<LogMail> logs = new Gson().fromJson(informes, type);
 			
 			envioInformesBean.enviarInformes(logs);
+			envioInformesBean.borrarInformes();
 		}
 	}
 

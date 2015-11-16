@@ -28,7 +28,7 @@
 						<td>${articulo.articulo.nombre}</td>
 						<td>${articulo.articulo.descripcion}</td>
 						<td>${articulo.articulo.marca}</td>
-						<td>${articulo.articulo.precio}</td>
+						<td>$${articulo.articulo.precio}</td>
 						<td>${articulo.articulo.origen}</td>
 						<td>${articulo.cantidad}</td>
 				</tr>

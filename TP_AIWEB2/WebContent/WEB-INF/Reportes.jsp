@@ -21,7 +21,7 @@
 					for(ReporteView r : reportes){%>
 					<tr>
 					<td><%= r.getPortal() %></td>
-					<td><%= r.getTotal() %></td>
+					<td>$<%= r.getTotal() %></td>
 					<tr>
 				<% }
 				}%>

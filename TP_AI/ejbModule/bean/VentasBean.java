@@ -92,18 +92,14 @@ public class VentasBean extends GenericBean<Venta> {
 
 	public List<ReporteView> getReportes() {
 
-		List<ReporteView> reportes = null;
-		try {
-			List<Object[]> lista = em.createQuery("select v.portal, sum(v.total) from Venta v group by v.portal").getResultList();
-			reportes = new ArrayList<ReporteView>();
+		List<ReporteView> reportes = new ArrayList<ReporteView>();
+		List<Object[]> lista = em.createQuery("select v.portal, sum(v.total) from Venta v group by v.portal order by sum(v.total) desc")
+				.getResultList();
 
-			for (int i = 0; i < lista.size(); i++) {
-				reportes.add(new ReporteView((String) lista.get(i)[0], (double) lista.get(i)[1]));
-			}
-
-		} catch (Exception e) {
-			logException(e);
+		for (int i = 0; i < lista.size(); i++) {
+			reportes.add(new ReporteView((String) lista.get(i)[0], (double) lista.get(i)[1]));
 		}
+
 		return reportes;
 	}
 

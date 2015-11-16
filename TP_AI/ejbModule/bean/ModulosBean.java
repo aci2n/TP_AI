@@ -25,14 +25,14 @@ public class ModulosBean extends GenericBean<Modulo> {
 		em.remove(m);
 	}
 
-	public String getUrlModulo(int id, Modulos modulo) throws NoExisteException {
-		List<Object> results = em.createQuery("select ip from Modulo where modulo = :modulo and id = :id")
-				.setParameter("id", id).setParameter("modulo", modulo).getResultList();
+	public String getUrlModulo(String codigo, Modulos modulo) throws NoExisteException {
+		List<Object> results = em.createQuery("select ip from Modulo where modulo = :modulo and codigo = :codigo")
+				.setParameter("codigo", codigo).setParameter("modulo", modulo).getResultList();
 		if (!results.isEmpty()) {
 			return (String) results.get(0);
 		} else {
 			throw new NoExisteException(
-					String.format("No se encontro la url del modulo del tipo %s con el ID %d.", modulo.toString(), id));
+					String.format("No se encontro la url del modulo del tipo %s con el codigo %s.", modulo.toString(), codigo));
 		}
 	}
 

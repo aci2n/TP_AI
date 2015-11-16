@@ -28,14 +28,12 @@ public class DespachosBean extends GenericBean<Despacho> {
 				Despacho cercano = null;
 
 				for (Despacho despacho : despachos) {
-					if (cercano == null || despacho.obtenerDistanciaACoordenada(destino) < cercano
-							.obtenerDistanciaACoordenada(destino)) {
+					if (cercano == null || despacho.obtenerDistanciaACoordenada(destino) < cercano.obtenerDistanciaACoordenada(destino)) {
 						cercano = despacho;
 					}
 				}
 
-				ventasDespachoRecomendado
-						.add(new VentaDespachoRecomendadoView(venta.getVentaSinArticulosView(), cercano.getView()));
+				ventasDespachoRecomendado.add(new VentaDespachoRecomendadoView(venta.getVentaSinArticulosView(), cercano.getView()));
 			}
 		}
 

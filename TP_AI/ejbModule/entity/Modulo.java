@@ -9,25 +9,27 @@ import javax.persistence.Table;
 @Table(name = "Modulos")
 public class Modulo extends PersistentObject {
 	private static final long serialVersionUID = 2005073305585910024L;
-	
-	@Enumerated (EnumType.STRING)
+
+	@Enumerated(EnumType.STRING)
 	private Modulos modulo;
 	private String ip;
 	private String port;
 	private String cola;
 	private boolean activo;
+	private String codigo;
 
 	public Modulo() {
 
 	}
 
-	public Modulo(Modulos modulo, String ip, String port, String cola) {
+	public Modulo(Modulos modulo, String ip, String port, String cola, String codigo) {
 
 		this.modulo = modulo;
 		this.ip = ip;
 		this.port = port;
 		this.cola = cola;
 		this.activo = true;
+		this.codigo = codigo;
 	}
 
 	public Integer getId() {
@@ -76,6 +78,22 @@ public class Modulo extends PersistentObject {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public Modulos getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(Modulos modulo) {
+		this.modulo = modulo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 }

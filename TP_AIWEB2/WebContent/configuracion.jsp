@@ -16,6 +16,7 @@
 			<th>Puerto</th>
 			<th>Cola</th>
 			<th>Modulo</th>
+			<th>Codigo</th>
 			<th>Activo</th>
 			<th>Check</th>
 		</tr>
@@ -28,6 +29,7 @@
 					<td id="port"><%= m.getPort() %></td>
 					<td><%= m.getCola() %></td>
 					<td><%= m.getmodulo().toString() %></td>
+					<td><%= m.getCodigo() %></td>
 					<td><%= m.isActivo() %></td>
 					<td><input type="checkbox" class="check_sel" name="sel"/></td><tr>
 				<% }
@@ -56,7 +58,7 @@
 					<form>
 						<div class="form-group">
 							<label for="ip" class="control-label">Dirección IP:</label>
-							<input type="text" class="form-control" id="ip_dir">
+							<input type="text" class="form-control" value="http://" id="ip_dir">
 						</div>
 						<div class="form-group">
 							<label for="puerto" class="control-label">Puerto:</label>
@@ -73,6 +75,10 @@
 								<option>Despacho</option>
 								<option>Deposito</option>
 							</select>
+						</div>
+						<div class="form-group">
+							<label for="codigo" class="control-label">Codigo:</label>
+							<input type="text" class="form-control" id="codigo">
 						</div>
 					</form>
 				</div>
@@ -118,13 +124,14 @@
 			
 				$.ajax({
 					type : "POST",
-					data : {"ip_dir" : $("#ip_dir").val(), "puerto": $("#puerto").val(), "cola": $("#cola").val(), "modulo": $("#modulo").val()},
+					data : {"ip_dir" : $("#ip_dir").val(), "puerto": $("#puerto").val(), "cola": $("#cola").val(), "modulo": $("#modulo").val(), 
+						"codigo" : $("#codigo").val()},
 					//dataType : "json",
 					url : "configuracion",
 					success : function(data) {
 
 						$('#tbody_conf').append('<tr><td>'+$("#ip_dir").val()+'</td><td>'+$("#puerto").val()+'</td><td>'+$("#cola").val()+'</td>'+
-								'<td>'+$("#modulo").val()+'<td>Si</td><td><input type="checkbox"/></td></tr>');
+								'<td>'+$("#modulo").val()+'<td>'+$('#codigo').val()+'</td><td>Si</td><td><input type="checkbox"/></td></tr>');
 					}		
 				});
 			});

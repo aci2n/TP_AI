@@ -45,10 +45,7 @@ public class Utilities {
 	}
 
 	public static String normalizarUrl(String url) {
-		if (url.charAt(url.length() - 1) != '/') {
-			url += '/';
-		}
-		return url;
+		return url.charAt(url.length() - 1) != '/' ? url += '/' : url;
 	}
 
 }

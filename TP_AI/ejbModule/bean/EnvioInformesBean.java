@@ -17,6 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 import entity.Log;
+import entity.LogMail;
 
 /**
  * Session Bean implementation class EnvioInformesBean
@@ -32,7 +33,7 @@ public class EnvioInformesBean {
 
 	}
 
-	public void enviarInformes(List<Log> logs) {
+	public void enviarInformes(List<LogMail> logs) {
 
 		String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
 		String DEFAULT_DESTINATION = "java:/jms/queue/MailQueue";

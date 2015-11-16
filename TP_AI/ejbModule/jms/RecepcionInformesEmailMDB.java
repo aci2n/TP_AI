@@ -9,7 +9,11 @@ import javax.ejb.MessageDriven;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.security.auth.login.LoginException;
 
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import bean.GenericBean;
@@ -20,10 +24,13 @@ import entity.LogMail;
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/MailQueue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-public class RecepcionInformesEmailMDB extends GenericBean<Log> implements MessageListener {
+public class RecepcionInformesEmailMDB implements MessageListener {
 
+	@PersistenceContext(unitName = "CRM")
+	private EntityManager em; 
+	
 	public RecepcionInformesEmailMDB() {
-		super(Log.class);
+		
 	}
 
 	public void onMessage(Message message) {
@@ -33,14 +40,15 @@ public class RecepcionInformesEmailMDB extends GenericBean<Log> implements Messa
 			// Convert JSON String to List
 			Type type = new TypeToken<List<LogMail>>() {
 			}.getType();
-			List<LogMail> logs = gson.fromJson(json.getText(), type);
+			List<LogMail> logs = new Gson().fromJson(json.getText(), type);
 			Logger.getAnonymousLogger().info("Informes recibidos: " + logs.size());
 
 			for (LogMail l : logs) {
-				save(l);
+				em.merge(l);
+				em.flush();
 			}
 		} catch (Exception e) {
-			logException(e);
+			e.printStackTrace();
 		}
 
 	}

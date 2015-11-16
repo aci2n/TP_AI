@@ -33,7 +33,7 @@ public class LogBean extends GenericBean<Log> {
 		String logs = null;
 		try {
 			List<Log> lista = (List<Log>) em.createQuery("select m from Log m").getResultList();
-			toJson(lista);
+			logs = toJson(lista);
 		} catch (Exception e) {
 			logException(e);
 		}
@@ -46,7 +46,7 @@ public class LogBean extends GenericBean<Log> {
 		String logs = null;
 		try {
 			List<Log> lista = (List<Log>) em.createQuery("select m from LogMail m").getResultList();
-			toJson(lista);
+			logs = toJson(lista);
 		} catch (Exception e) {
 			logException(e);
 		}

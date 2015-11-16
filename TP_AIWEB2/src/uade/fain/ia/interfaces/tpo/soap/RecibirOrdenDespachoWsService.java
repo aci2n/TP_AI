@@ -22,8 +22,8 @@ public class RecibirOrdenDespachoWsService extends Service {
 
     public final static URL WSDL_LOCATION;
 
-    public final static QName SERVICE = new QName("http://soap.tpo.interfaces.ia.fain.uade/", "RecibirOrdenDespachoWsService");
-    public final static QName RecibirOrdenDespachoWsPort = new QName("http://soap.tpo.interfaces.ia.fain.uade/", "RecibirOrdenDespachoWsPort");
+    public final static QName SERVICE = new QName("http://logistica.interfaces/", "RecibirOrdenDespachoWsService");
+    public final static QName RecibirOrdenDespachoWsPort = new QName("http://logistica.interfaces/", "RecibirOrdenDespachoWsPort");
     static {
         URL url = null;
         try {

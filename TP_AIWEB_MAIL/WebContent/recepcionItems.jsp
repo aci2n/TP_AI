@@ -51,7 +51,7 @@
 				$.ajax({
 					type : "GET",
 					dataType : "json",
-					url : "http://"+ip+":"+puerto+"/TP_AIWEB_MAIL/rest/logsMail/all",
+					url : "http://"+ip+":"+puerto+"/TP_AIWEB_MAIL/rest/logEmail/all",
 					success : function(data) {
 
 						var cantidadFilas = $('#tbody tr').length;

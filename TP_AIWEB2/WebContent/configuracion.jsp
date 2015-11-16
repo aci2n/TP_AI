@@ -1,8 +1,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="entity.*" %>
 
-<a href="#"><strong><i class="glyphicon glyphicon-stats"></i>
-		Configuración de Modulos</strong></a>
+<a href="#"><strong><i class="glyphicon glyphicon-cog"></i>
+		Configuración de Módulos</strong></a>
 		<hr>
 <%
 	List<Modulo> modulos = (List<Modulo>) request.getAttribute("modulos");
@@ -15,8 +15,8 @@
 			<th>Ip</th>
 			<th>Puerto</th>
 			<th>Cola</th>
-			<th>Modulo</th>
-			<th>Codigo</th>
+			<th>Módulo</th>
+			<th>Código</th>
 			<th>Activo</th>
 			<th>Check</th>
 		</tr>
@@ -37,7 +37,7 @@
 			</tr>
 		</tbody>
 	</table>
-
+	<hr>
 	<button id="agregar_conf" type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#exampleModal" data-whatever="@mdo">Agregar Configuración</button>
 	

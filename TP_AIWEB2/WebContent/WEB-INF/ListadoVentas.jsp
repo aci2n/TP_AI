@@ -8,10 +8,10 @@
 
 
 <div>
-	<h4>Listado de Ventas</h4>
+	<h4>Listado de las ventas recibidas</h4>
 	<table id="table_conf" class="table">
 		<tr>
-			<th>Codigo</th>
+			<th>Código</th>
 			<th>Fecha</th>
 			<th>Total</th>
 			<th>Portal</th>

@@ -4,7 +4,7 @@
 
 <link href="css/ventasSinOrden.css" rel="stylesheet">
 
-<a href="#"><strong><i class="glyphicon glyphicon-list"></i> Listado de Ventas sin Orden</strong></a>
+<a href="#"><strong><i class="glyphicon glyphicon-send"></i> Ventas sin Orden</strong></a>
 <hr>
 
 <table id="ventas-sin-orden" class="table table-striped">
@@ -14,7 +14,7 @@
 			<th colspan="3">Despacho más cercano</th>
 		</tr>
 		<tr>
-			<th>Codigo</th>
+			<th>Código</th>
 			<th>Usuario</th>
 			<th>Portal</th>
 			<th>Fecha</th>

@@ -30,7 +30,7 @@
 			}%>
 		</tbody>
 	</table>
-	
+	<hr>
 	<form id="enviar-ranking" class="form-inline">
 		<div class="form-group">
 			<label>

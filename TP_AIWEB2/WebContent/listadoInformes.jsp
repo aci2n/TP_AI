@@ -1,7 +1,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="view.*" %>
 
-<a href="#"><strong><i class="glyphicon glyphicon-signal"></i>
+<a href="#"><strong><i class="glyphicon glyphicon-envelope"></i>
 		Listado de Informes</strong></a>
 		<hr>
 

@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import bean.ModulosBean;
 import bean.OrdenesDespachoBean;
 import bean.VentasBean;
+import entity.Estado;
 import entity.Modulos;
 import exception.NoExisteException;
 import response.RecibirCambioEstadoResponse;
@@ -27,6 +28,7 @@ import ws.orden.IRecibirOrdenDespachoWs;
 import ws.orden.IRecibirOrdenDespachoWsProxy;
 import ws.orden.Item;
 import ws.orden.OrdenDespacho;
+import ws.orden.RespuestaGenerica;
 
 @Stateless
 @Path("/OrdenDeDespacho")
@@ -48,7 +50,7 @@ public class OrdenDespachoRESTService {
 
 		for (OrdenDespachoJson orden : ordenes.getOrdenes()) {
 			try {
-				ordenesDespachoBean.actualizarOrden(orden.getIdOrdenDeDespacho());
+				ordenesDespachoBean.actualizarOrden(orden.getIdOrdenDeDespacho(), Estado.ENTREGADO);
 				response.add(
 						new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(), "Orden de despacho actualizada correctamente."));
 			} catch (NoExisteException e) {
@@ -80,7 +82,11 @@ public class OrdenDespachoRESTService {
 			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16", Calendar.getInstance(),
 					wsItems.toArray(new Item[wsItems.size()]));
 
-			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
+			RespuestaGenerica respuesta = ws.recibirOrdenDespacho(wsOrden);
+			if (respuesta.getEstado().equals("200") || respuesta.getEstado().equalsIgnoreCase("SUCCESS")) {
+				ordenesDespachoBean.actualizarOrden(venta.getOrden().getId(), Estado.ACTIVO);
+			}
+			return Response.status(200).entity(respuesta).build();
 		} catch (Exception e) {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
 		}

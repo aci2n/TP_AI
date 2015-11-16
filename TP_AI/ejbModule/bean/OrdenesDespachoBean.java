@@ -24,9 +24,9 @@ public class OrdenesDespachoBean extends GenericBean<OrdenDespacho> {
 		super(OrdenDespacho.class);
 	}
 
-	public void actualizarOrden(Integer id) throws NoExisteException {
+	public void actualizarOrden(Integer id, Estado estado) throws NoExisteException {
 		OrdenDespacho orden = get(id);
-		orden.setEstado(Estado.ENTREGADO);
+		orden.setEstado(estado);
 		em.merge(orden);
 	}
 

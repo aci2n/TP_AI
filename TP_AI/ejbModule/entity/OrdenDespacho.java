@@ -31,7 +31,7 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 	private Boolean enviada;
 
 	public OrdenDespacho() {
-
+		this.estado = Estado.NO_ACTIVO;
 	}
 
 	public OrdenDespacho(Despacho despacho, Estado estado) {

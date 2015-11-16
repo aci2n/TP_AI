@@ -90,8 +90,4 @@ public class EnvioInformesBean {
 
 	}
 
-	public void borrarInformes() {
-		logBean.borrarInformes();		
-	}
-
 }

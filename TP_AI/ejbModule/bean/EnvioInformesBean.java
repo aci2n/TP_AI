@@ -16,7 +16,6 @@ import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import entity.Log;
 import entity.LogMail;
 
 /**

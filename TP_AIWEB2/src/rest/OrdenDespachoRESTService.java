@@ -67,6 +67,10 @@ public class OrdenDespachoRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response enviarOrden(@FormParam("idVenta") int idVenta, @FormParam("idDespacho") int idDespacho) {
 		try {
+			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho))
+					+ "DespachoWeb/RecibirOrdenDespachoWs";
+			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(url);
+
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);
 
 			List<Item> wsItems = new ArrayList<Item>();
@@ -78,9 +82,6 @@ public class OrdenDespachoRESTService {
 			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16",
 					Calendar.getInstance(), wsItems.toArray(new Item[wsItems.size()]));
 
-			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho));
-			url += "DespachoWeb/RecibirOrdenDespachoWs";
-			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(url);
 			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
 		} catch (Exception e) {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();

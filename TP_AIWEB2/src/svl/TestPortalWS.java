@@ -1,8 +1,7 @@
 package svl;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,14 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.BindingProvider;
 
 import bean.TestBean;
-import interfaces.logistica.IRecibirOrdenDespachoWs;
-import interfaces.logistica.OrdenDespacho;
-import interfaces.logistica.RespuestaGenerica;
-import uade.fain.ia.interfaces.tpo.soap.RecibirOrdenDespachoWsService;
-import util.Utilities;
+import ws.orden.IRecibirOrdenDespachoWs;
+import ws.orden.IRecibirOrdenDespachoWsProxy;
+import ws.orden.Item;
+import ws.orden.OrdenDespacho;
+import ws.orden.RespuestaGenerica;
 
 @WebServlet("/TestPortalWS")
 public class TestPortalWS extends HttpServlet {
@@ -30,17 +28,11 @@ public class TestPortalWS extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String endpoint = "http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs";
-			URL url = new URL(endpoint + "?wsdl");
-			IRecibirOrdenDespachoWs port = new RecibirOrdenDespachoWsService(url).getRecibirOrdenDespachoWsPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpoint);
+			IRecibirOrdenDespachoWs port = new IRecibirOrdenDespachoWsProxy(endpoint);
 
-			OrdenDespacho orden = new OrdenDespacho();
-			orden.setIdLogistica("test");
-			orden.setIdOrdenCompra(22);
-			orden.setIdOrdenDespacho("50");
-			orden.setFecha(Utilities.dateToXmlGregorianCalendar(new Date()));
-			RespuestaGenerica respuesta = port.recibirOrdenDespacho(orden);
+			OrdenDespacho wsOrden = new OrdenDespacho("2", 27, "16", Calendar.getInstance(), new Item[0]);
 
+			RespuestaGenerica respuesta = port.recibirOrdenDespacho(wsOrden);
 			response.getWriter()
 					.print(String.format("Estado: %s, Mensaje: %s", respuesta.getEstado(), respuesta.getMensaje()));
 		} catch (Exception e) {

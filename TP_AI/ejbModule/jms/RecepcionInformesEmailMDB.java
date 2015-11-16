@@ -5,19 +5,18 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.security.auth.login.LoginException;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import bean.GenericBean;
-import entity.Log;
+import bean.LogBean;
 import entity.LogMail;
 
 @MessageDriven(name = "RecepcionInformesEmailMDB", activationConfig = {
@@ -28,6 +27,9 @@ public class RecepcionInformesEmailMDB implements MessageListener {
 
 	@PersistenceContext(unitName = "CRM")
 	private EntityManager em; 
+	
+	@EJB
+	private LogBean logBean;
 	
 	public RecepcionInformesEmailMDB() {
 		
@@ -43,10 +45,17 @@ public class RecepcionInformesEmailMDB implements MessageListener {
 			List<LogMail> logs = new Gson().fromJson(json.getText(), type);
 			Logger.getAnonymousLogger().info("Informes recibidos: " + logs.size());
 
-			for (LogMail l : logs) {
-				em.merge(l);
-				em.flush();
+			Integer cantLogsMonitor = logBean.getListLogsMonitor().size();
+			Integer cantLogsMail = logBean.getListLogsMail().size();
+			
+			if(cantLogsMonitor > cantLogsMail){
+			
+				for(int i = cantLogsMail; i < logs.size(); i++){
+					em.merge(logs.get(i));
+					em.flush();
+				}
 			}
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

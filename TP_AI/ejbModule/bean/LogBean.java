@@ -41,6 +41,30 @@ public class LogBean extends GenericBean<Log> {
 		return logs;
 	}
 	
+	public List<Log> getListLogsMonitor() {
+
+		List<Log> logs = null;
+		try {
+			logs = (List<Log>) em.createQuery("select m from Log m").getResultList();
+		} catch (Exception e) {
+			logException(e);
+		}
+
+		return logs;
+	}
+	
+	public List<Log> getListLogsMail() {
+
+		List<Log> logs = null;
+		try {
+			logs = (List<Log>) em.createQuery("select m from LogMail m").getResultList();
+		} catch (Exception e) {
+			logException(e);
+		}
+
+		return logs;
+	}
+	
 	public String getLogsMail() {
 
 		String logs = null;

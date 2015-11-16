@@ -14,8 +14,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import bean.ModulosBean;
 import bean.OrdenesDespachoBean;
 import bean.VentasBean;
+import entity.Modulos;
 import exception.NoExisteException;
 import response.RecibirCambioEstadoResponse;
 import util.Utilities;
@@ -34,6 +36,8 @@ public class OrdenDespachoRESTService {
 	private OrdenesDespachoBean ordenesDespachoBean;
 	@EJB
 	private VentasBean ventasBean;
+	@EJB
+	private ModulosBean modulosBean;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -74,12 +78,13 @@ public class OrdenDespachoRESTService {
 			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16",
 					Calendar.getInstance(), wsItems.toArray(new Item[wsItems.size()]));
 
-			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(
-					"http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs");
+			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho));
+			url += "DespachoWeb/RecibirOrdenDespachoWs";
+			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(url);
 			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
 		} catch (Exception e) {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
 		}
 	}
-	
+
 }

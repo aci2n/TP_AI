@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import bean.ArticulosBean;
 import bean.ModulosBean;
+import entity.Modulos;
 import response.BestSellersResponse;
 import util.Utilities;
 import view.BestSellerView;
@@ -45,11 +46,8 @@ public class ArticulosRESTService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response enviarBestSellers(@FormParam("id") int id) {
 		try {
-			String urlString = modulos.getUrlPortal(id);
-			if (urlString.charAt(urlString.length() - 1) != '/') {
-				urlString += '/';
-			}
-			urlString += "PortalWEB/rest/articulo";
+			String urlString = Utilities.normalizarUrl(modulos.getUrlModulo(id, Modulos.Portal))
+					+ "PortalWEB/rest/articulo";
 
 			URL url = new URL(urlString);
 

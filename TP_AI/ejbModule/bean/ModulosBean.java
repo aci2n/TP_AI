@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.PersistenceException;
 
 import entity.Modulo;
+import entity.Modulos;
 import exception.NoExisteException;
 import exception.PersistException;
 
@@ -52,13 +53,14 @@ public class ModulosBean extends GenericBean<Modulo> {
 		return id;
 	}
 
-	public String getUrlPortal(int id) throws NoExisteException {
-		List<Object> results = em.createQuery("select ip from Modulo where modulo = entity.Modulos.Portal and id = :id")
-				.setParameter("id", id).getResultList();
-		if (results.size() > 0) {
+	public String getUrlModulo(int id, Modulos modulo) throws NoExisteException {
+		List<Object> results = em.createQuery("select ip from Modulo where modulo = :modulo and id = :id")
+				.setParameter("id", id).setParameter("modulo", modulo).getResultList();
+		if (!results.isEmpty()) {
 			return (String) results.get(0);
 		} else {
-			throw new NoExisteException(String.format("No se encontro la url del portal %d.", id));
+			throw new NoExisteException(
+					String.format("No se encontro la url del modulo del tipo %s con el ID %d.", modulo.toString(), id));
 		}
 	}
 

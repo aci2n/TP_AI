@@ -43,4 +43,12 @@ public class Utilities {
 		return DatatypeFactory.newInstance()
 				.newXMLGregorianCalendar(new GregorianCalendar(year, month, day, hour, minute, second));
 	}
+
+	public static String normalizarUrl(String url) {
+		if (url.charAt(url.length() - 1) != '/') {
+			url += '/';
+		}
+		return url;
+	}
+
 }

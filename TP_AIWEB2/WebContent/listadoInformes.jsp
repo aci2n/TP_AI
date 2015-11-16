@@ -48,7 +48,7 @@
 			$.ajax({
 				type : "GET",
 				dataType : "json",
-				url : "http://"+ip+":"+puerto+"/TP_AIWEB/rest/logsMonitor/all",
+				url : "rest/logsMonitor/all",
 				success : function(data) {
 					
 					var cantidadFilas = $('#tbody tr').length;

@@ -9,11 +9,11 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="TP_AIWEB_TESTWS.war" deploy-path="/" handle="module:/resource/TP_AIWEB_TESTWS/TP_AIWEB_TESTWS">
+        <dependent-module archiveName="TP_AIWEB_MAIL.war" deploy-path="/" handle="module:/resource/TP_AIWEB_MAIL/TP_AIWEB_MAIL">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="TP_AIWEB_MAIL.war" deploy-path="/" handle="module:/resource/TP_AIWEB_MAIL/TP_AIWEB_MAIL">
+        <dependent-module archiveName="TP_AIWEB_TESTWS.war" deploy-path="/" handle="module:/resource/TP_AIWEB_TESTWS/TP_AIWEB_TESTWS">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>

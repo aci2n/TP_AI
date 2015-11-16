@@ -46,7 +46,7 @@ public class ServletVerDetalles extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		request.setAttribute("venta", actual);
+		request.setAttribute("actual", actual);
 		request.getRequestDispatcher("/WEB-INF/Detalles.jsp").forward(request, response);
 		
 	}

@@ -39,7 +39,7 @@ public class PruebaMDB extends HttpServlet {
 		List<Log> logs = new ArrayList<Log>();
 		logs.add(new Log("Monitor", "La wea", new Date()));
 		
-		envioInformesBean.enviarInformes(logs);
+//		envioInformesBean.enviarInformes(logs);
 	}
 
 	/**

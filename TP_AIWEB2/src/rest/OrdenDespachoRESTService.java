@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,6 +17,7 @@ import javax.ws.rs.core.Response;
 import bean.OrdenesDespachoBean;
 import bean.VentasBean;
 import exception.NoExisteException;
+import response.RecibirCambioEstadoResponse;
 import util.Utilities;
 import view.ItemArticuloView;
 import view.VentaView;
@@ -38,50 +38,47 @@ public class OrdenDespachoRESTService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void recibirCambioEstado(OrdenesDespachoArray ordenes) throws NoExisteException {
+	public Response recibirCambioEstado(OrdenesDespachoArray ordenes) {
+		int status = 200;
+		List<RecibirCambioEstadoResponse> response = new ArrayList<>();
+
 		for (OrdenDespachoJson orden : ordenes.getOrdenes()) {
-			ordenesDespachoBean.actualizarOrden(orden.getIdOrdenDeDespacho());
+			try {
+				ordenesDespachoBean.actualizarOrden(orden.getIdOrdenDeDespacho());
+				response.add(new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(),
+						"Orden de despacho actualizada correctamente."));
+			} catch (NoExisteException e) {
+				status = 400;
+				response.add(new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(),
+						"No existe la orden de despacho enviada."));
+				ordenesDespachoBean.logException(e);
+			}
 		}
+
+		return Response.status(status).entity(response).build();
 	}
 
 	@POST
 	@Path("/enviar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response enviarOrden(@FormParam("idVenta") Integer idVenta, @FormParam("idDespacho") Integer idDespacho) {
+	public Response enviarOrden(@FormParam("idVenta") int idVenta, @FormParam("idDespacho") int idDespacho) {
 		try {
-			idVenta = 1;
-			idDespacho = 3;
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);
-			
+
 			List<Item> wsItems = new ArrayList<Item>();
 			for (ItemArticuloView ia : venta.getArticulos()) {
 				Item i = new Item(String.valueOf(ia.getArticulo().getCodigo()), ia.getCantidad());
 				wsItems.add(i);
 			}
-			
-			OrdenDespacho wsOrden = new OrdenDespacho(
-				idDespacho.toString(),
-				venta.getOrden().getId(),
-				"16",
-				Calendar.getInstance(),
-				wsItems.toArray(new Item[wsItems.size()])
-			);
-			
-			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy("http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs");
+
+			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16",
+					Calendar.getInstance(), wsItems.toArray(new Item[wsItems.size()]));
+
+			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(
+					"http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs");
 			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
 		} catch (Exception e) {
-			return Response.status(500).entity(Utilities.generarMensajeError(e)).build();
-		}
-	}
-	
-	@GET
-	@Path("/ordenesActivas")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getOrdenesActivas() {
-		try {
-			return Response.status(200).entity(ordenesDespachoBean.getOrdenesActivasView()).build();
-		} catch (Exception e) {
-			return Response.status(500).entity(Utilities.generarMensajeError(e)).build();
+			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
 		}
 	}
 	

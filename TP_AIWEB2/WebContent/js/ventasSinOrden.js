@@ -18,13 +18,13 @@ function asignarDespachoClick(e) {
 function asignarDespachoSubmit(e) {
 	var loading = $('#asignar-despacho-loading').show();
 	e.preventDefault();
-	$.post('rest/ventas', $('#asignar-despacho-form').serialize())
-		.done(function(response) {
+	$.post('rest/OrdenDeDespacho/enviar', $('#asignar-despacho-form').serialize())
+		.done(function() {
 			$('#venta-' + $('#asignar-despacho-id-venta').val()).remove();
 		})
 		.always(function(response) {
 			loading.hide();
-			$('#modal-asignar-despacho-msg').text(response.responseText || response);
+			$('#modal-asignar-despacho-msg').text(response.estado ? response.estado + ' - ' + response.mensaje : response.responseText);
 		});
 }
 

@@ -57,11 +57,7 @@ public class VentasBean extends GenericBean<Venta> {
 		Despacho despacho = despachosBean.get(idDespacho);
 
 		if (venta.getOrden() != null) {
-			if (venta.getOrden().getDespacho().equals(despacho)) {
-				throw new VentaException("La venta ya esta asignada al despacho ingresado.");
-			} else {
-				ordenesBean.actualizarOrden(venta.getOrden(), despacho);
-			}
+			throw new VentaException("La venta ya tiene asignada una orden.");
 		} else {
 			venta.setOrden(ordenesBean.generarOrdenDespacho(despacho));
 			em.merge(venta);

@@ -58,7 +58,7 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
+
 	public Boolean getEnviada() {
 		return enviada;
 	}
@@ -69,6 +69,7 @@ public class OrdenDespacho extends PersistentObject implements ViewGenerator<Ord
 
 	public OrdenDespachoView getView() {
 		OrdenDespachoView odv = new OrdenDespachoView();
+		odv.setId(id);
 		odv.setDespacho(ViewUtil.getViewChecked(despacho));
 		odv.setEstado(estado);
 		return odv;

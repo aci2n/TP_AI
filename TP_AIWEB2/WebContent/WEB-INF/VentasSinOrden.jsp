@@ -10,19 +10,19 @@
 <table id="ventas-sin-orden" class="table table-striped">
 	<thead>
 		<tr id="ventas-sin-orden-head" >
-			<td colspan="6">Venta</td>
-			<td colspan="3">Despacho más cercano</td>
+			<th colspan="6">Venta</th>
+			<th colspan="3">Despacho más cercano</th>
 		</tr>
 		<tr>
-			<td>Codigo</td>
-			<td>Usuario</td>
-			<td>Portal</td>
-			<td>Fecha</td>
-			<td>Total</td>
-			<td>Destino</td>
-			<td>Nombre</td>
-			<td>Ubicación</td>
-			<td></td>
+			<th>Codigo</th>
+			<th>Usuario</th>
+			<th>Portal</th>
+			<th>Fecha</th>
+			<th>Total</th>
+			<th>Destino</th>
+			<th>Nombre</th>
+			<th>Ubicación</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody id="ventas-sin-orden-body">

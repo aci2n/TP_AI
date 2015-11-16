@@ -49,12 +49,11 @@ public class OrdenDespachoRESTService {
 		for (OrdenDespachoJson orden : ordenes.getOrdenes()) {
 			try {
 				ordenesDespachoBean.actualizarOrden(orden.getIdOrdenDeDespacho());
-				response.add(new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(),
-						"Orden de despacho actualizada correctamente."));
+				response.add(
+						new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(), "Orden de despacho actualizada correctamente."));
 			} catch (NoExisteException e) {
 				status = 400;
-				response.add(new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(),
-						"No existe la orden de despacho enviada."));
+				response.add(new RecibirCambioEstadoResponse(orden.getIdOrdenDeDespacho().toString(), "No existe la orden de despacho enviada."));
 				ordenesDespachoBean.logException(e);
 			}
 		}
@@ -67,8 +66,7 @@ public class OrdenDespachoRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response enviarOrden(@FormParam("idVenta") int idVenta, @FormParam("idDespacho") int idDespacho) {
 		try {
-			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(Integer.toString(idDespacho), Modulos.Despacho))
-					+ "DespachoWeb/RecibirOrdenDespachoWs";
+			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho)) + "DespachoWeb/RecibirOrdenDespachoWs";
 			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(url);
 
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);
@@ -79,8 +77,8 @@ public class OrdenDespachoRESTService {
 				wsItems.add(i);
 			}
 
-			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16",
-					Calendar.getInstance(), wsItems.toArray(new Item[wsItems.size()]));
+			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16", Calendar.getInstance(),
+					wsItems.toArray(new Item[wsItems.size()]));
 
 			return Response.status(200).entity(ws.recibirOrdenDespacho(wsOrden)).build();
 		} catch (Exception e) {

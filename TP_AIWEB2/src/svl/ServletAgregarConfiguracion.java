@@ -55,7 +55,7 @@ public class ServletAgregarConfiguracion extends HttpServlet {
 		String puerto = request.getParameter("puerto");
 		String cola = request.getParameter("cola");
 		String modulo = request.getParameter("modulo");
-		String codigo = request.getParameter("codigo");
+		Integer codigo = Integer.parseInt(request.getParameter("codigo"));
 
 		if (ip != null && puerto != null && modulo != null) {
 

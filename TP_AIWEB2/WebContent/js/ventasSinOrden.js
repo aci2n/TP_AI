@@ -37,7 +37,7 @@ function cargarDropdownDespachos() {
 		response.forEach(function(despacho) {
 			despachosDropdown.append($('<option>', {
 				value : despacho.id,
-				text : despacho.nombre
+				text : despacho.nombre + ' (' + despacho.id + ')'
 			}));
 		});
 	});

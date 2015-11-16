@@ -1,4 +1,4 @@
-#ventas-sin-orden td {
+#ventas-sin-orden td, #ventas-sin-orden th {
 	text-align: center;
 }
 
@@ -6,8 +6,7 @@
 	background-color: #E4F1FE;
 }
 
-#ventas-sin-orden-head td {
-	font-weight: bold;
+#ventas-sin-orden-head th {
 	border-left: solid 2px;
 }
 

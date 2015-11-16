@@ -16,13 +16,13 @@ public class Modulo extends PersistentObject {
 	private String port;
 	private String cola;
 	private boolean activo;
-	private String codigo;
+	private Integer codigo;
 
 	public Modulo() {
 
 	}
 
-	public Modulo(Modulos modulo, String ip, String port, String cola, String codigo) {
+	public Modulo(Modulos modulo, String ip, String port, String cola, Integer codigo) {
 
 		this.modulo = modulo;
 		this.ip = ip;
@@ -88,11 +88,11 @@ public class Modulo extends PersistentObject {
 		this.modulo = modulo;
 	}
 
-	public String getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

@@ -78,7 +78,7 @@
 						</div>
 						<div class="form-group">
 							<label for="codigo" class="control-label">Codigo:</label>
-							<input type="text" class="form-control" id="codigo">
+							<input type="number" class="form-control" id="codigo">
 						</div>
 					</form>
 				</div>

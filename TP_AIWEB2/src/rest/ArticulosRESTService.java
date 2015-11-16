@@ -46,8 +46,7 @@ public class ArticulosRESTService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response enviarBestSellers(@FormParam("id") int id) {
 		try {
-			String urlString = Utilities.normalizarUrl(modulos.getUrlModulo(Integer.toString(id), Modulos.Portal))
-					+ "PortalWEB/rest/articulo";
+			String urlString = Utilities.normalizarUrl(modulos.getUrlModulo(id, Modulos.Portal)) + "PortalWEB/rest/articulo";
 
 			URL url = new URL(urlString);
 
@@ -63,8 +62,7 @@ public class ArticulosRESTService {
 			out.close();
 			connection.getInputStream();
 
-			return Response.status(200)
-					.entity(String.format("Ranking de articulos enviados correctamente a %s", urlString)).build();
+			return Response.status(200).entity(String.format("Ranking de articulos enviados correctamente a %s", urlString)).build();
 		} catch (Exception e) {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
 		}

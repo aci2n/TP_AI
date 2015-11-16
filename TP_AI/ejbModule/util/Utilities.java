@@ -12,8 +12,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 public class Utilities {
 
-	public static Date stringToDate(String date, String format) throws ParseException {
-		return new SimpleDateFormat(format).parse(date);
+	public static Date stringToDate(String date, String... formats) throws ParseException {
+		for (String format : formats) {
+			try {
+				return new SimpleDateFormat(format).parse(date);
+			} catch (Exception e) {
+				// hello
+			}
+		}
+		throw new ParseException(String.format("No se pudo parsear la fecha: %s", date), 0);
 	}
 
 	public static String generarMensajeError(Exception e) {

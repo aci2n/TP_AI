@@ -23,7 +23,7 @@ public class WSInformeAuditoriaBean {
 	public boolean agregarInforme(@WebParam(name = "arg0", targetNamespace = "") LogDTO log) {
 		try {
 			logBean.log(log.getIdModulo(), log.getMensaje(),
-					Utilities.stringToDate(log.getFecha(), "dd-MM-yyyy hh:mm:ss"));
+					Utilities.stringToDate(log.getFecha(), "dd-MM-yyyy hh:mm:ss", "yyyy-MM-dd'T'hh:mm:ss.SSSZ"));
 			return true;
 		} catch (Exception e) {
 			logBean.logException(e);

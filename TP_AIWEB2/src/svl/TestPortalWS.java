@@ -32,9 +32,7 @@ public class TestPortalWS extends HttpServlet {
 			String endpoint = "http://74938c8f.ngrok.io/DespachoWeb/RecibirOrdenDespachoWs";
 			URL url = new URL(endpoint + "?wsdl");
 			IRecibirOrdenDespachoWs port = new RecibirOrdenDespachoWsService(url).getRecibirOrdenDespachoWsPort();
-
-			BindingProvider bp = (BindingProvider) port;
-			bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpoint);
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpoint);
 
 			OrdenDespacho orden = new OrdenDespacho();
 			orden.setIdLogistica("test");

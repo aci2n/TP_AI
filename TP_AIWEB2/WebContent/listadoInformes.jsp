@@ -29,16 +29,17 @@
 	$(document).ready(function() {
 
 		var ip = "localhost";
-		var puerto = "8080";	
+		var puerto = "8080";
+		var json;	
 		
 		$("#enviar_informes").click(function(){
 			
 				$.ajax({
 					type : "POST",
-					data : {"ranking" : ranking},
-					url : "enviarRanking",
+					data : {"informes" : JSON.stringify(json)},
+					url : "informes",
 					success : function(data) {
-						alert("Ranking enviado");
+						alert("Informes enviados");
 					}		
 				});
 			});
@@ -49,9 +50,9 @@
 				dataType : "json",
 				url : "http://"+ip+":"+puerto+"/TP_AIWEB/rest/logsMonitor/all",
 				success : function(data) {
-
+					
 					var cantidadFilas = $('#tbody tr').length;
-
+					json = data;
 					if(data.length > cantidadFilas){
 							
 						$("#tbody").empty();

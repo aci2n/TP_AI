@@ -39,7 +39,7 @@ public class RecibirOrdenDespachoWsServiceLocator extends org.apache.axis.client
         RecibirOrdenDespachoWsPortWSDDServiceName = name;
     }
 
-    public ws.orden.IRecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort() throws javax.xml.rpc.ServiceException {
+    public ws.orden.RecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(RecibirOrdenDespachoWsPort_address);
@@ -50,7 +50,7 @@ public class RecibirOrdenDespachoWsServiceLocator extends org.apache.axis.client
         return getRecibirOrdenDespachoWsPort(endpoint);
     }
 
-    public ws.orden.IRecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public ws.orden.RecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
             ws.orden.RecibirOrdenDespachoWsServiceSoapBindingStub _stub = new ws.orden.RecibirOrdenDespachoWsServiceSoapBindingStub(portAddress, this);
             _stub.setPortName(getRecibirOrdenDespachoWsPortWSDDServiceName());
@@ -72,7 +72,7 @@ public class RecibirOrdenDespachoWsServiceLocator extends org.apache.axis.client
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (ws.orden.IRecibirOrdenDespachoWs.class.isAssignableFrom(serviceEndpointInterface)) {
+            if (ws.orden.RecibirOrdenDespachoWs.class.isAssignableFrom(serviceEndpointInterface)) {
                 ws.orden.RecibirOrdenDespachoWsServiceSoapBindingStub _stub = new ws.orden.RecibirOrdenDespachoWsServiceSoapBindingStub(new java.net.URL(RecibirOrdenDespachoWsPort_address), this);
                 _stub.setPortName(getRecibirOrdenDespachoWsPortWSDDServiceName());
                 return _stub;
@@ -105,7 +105,7 @@ public class RecibirOrdenDespachoWsServiceLocator extends org.apache.axis.client
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://soap.tpo.interfaces.ia.fain.uade/", "RecibirOrdenDespachoWsService");
+        return new javax.xml.namespace.QName("http://logistica.interfaces/", "RecibirOrdenDespachoWsService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class RecibirOrdenDespachoWsServiceLocator extends org.apache.axis.client
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://soap.tpo.interfaces.ia.fain.uade/", "RecibirOrdenDespachoWsPort"));
+            ports.add(new javax.xml.namespace.QName("http://logistica.interfaces/", "RecibirOrdenDespachoWsPort"));
         }
         return ports.iterator();
     }

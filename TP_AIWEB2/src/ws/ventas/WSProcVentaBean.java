@@ -72,7 +72,7 @@ public class WSProcVentaBean {
 
 				ArticuloView a = new ArticuloView();
 				a.setPrecio(iv.getProducto().getPrecio());
-				a.setCodigo(Long.valueOf(iv.getProducto().getCodigo()).intValue());
+				a.setCodigo(String.valueOf(iv.getProducto().getCodigo()));
 				ia.setArticulo(a);
 
 				items.add(ia);

@@ -1,5 +1,5 @@
 /**
- * Item.java
+ * RecibirOrdenDespachoResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
@@ -7,65 +7,41 @@
 
 package ws.orden;
 
-public class Item  implements java.io.Serializable {
-    private java.lang.String idArticulo;
+public class RecibirOrdenDespachoResponse  implements java.io.Serializable {
+    private ws.orden.RespuestaGenerica _return;
 
-    private int cantidad;
-
-    public Item() {
+    public RecibirOrdenDespachoResponse() {
     }
 
-    public Item(
-           java.lang.String idArticulo,
-           int cantidad) {
-           this.idArticulo = idArticulo;
-           this.cantidad = cantidad;
+    public RecibirOrdenDespachoResponse(
+           ws.orden.RespuestaGenerica _return) {
+           this._return = _return;
     }
 
 
     /**
-     * Gets the idArticulo value for this Item.
+     * Gets the _return value for this RecibirOrdenDespachoResponse.
      * 
-     * @return idArticulo
+     * @return _return
      */
-    public java.lang.String getIdArticulo() {
-        return idArticulo;
+    public ws.orden.RespuestaGenerica get_return() {
+        return _return;
     }
 
 
     /**
-     * Sets the idArticulo value for this Item.
+     * Sets the _return value for this RecibirOrdenDespachoResponse.
      * 
-     * @param idArticulo
+     * @param _return
      */
-    public void setIdArticulo(java.lang.String idArticulo) {
-        this.idArticulo = idArticulo;
-    }
-
-
-    /**
-     * Gets the cantidad value for this Item.
-     * 
-     * @return cantidad
-     */
-    public int getCantidad() {
-        return cantidad;
-    }
-
-
-    /**
-     * Sets the cantidad value for this Item.
-     * 
-     * @param cantidad
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void set_return(ws.orden.RespuestaGenerica _return) {
+        this._return = _return;
     }
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Item)) return false;
-        Item other = (Item) obj;
+        if (!(obj instanceof RecibirOrdenDespachoResponse)) return false;
+        RecibirOrdenDespachoResponse other = (RecibirOrdenDespachoResponse) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -74,10 +50,9 @@ public class Item  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.idArticulo==null && other.getIdArticulo()==null) || 
-             (this.idArticulo!=null &&
-              this.idArticulo.equals(other.getIdArticulo()))) &&
-            this.cantidad == other.getCantidad();
+            ((this._return==null && other.get_return()==null) || 
+             (this._return!=null &&
+              this._return.equals(other.get_return())));
         __equalsCalc = null;
         return _equals;
     }
@@ -89,31 +64,24 @@ public class Item  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getIdArticulo() != null) {
-            _hashCode += getIdArticulo().hashCode();
+        if (get_return() != null) {
+            _hashCode += get_return().hashCode();
         }
-        _hashCode += getCantidad();
         __hashCodeCalc = false;
         return _hashCode;
     }
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(Item.class, true);
+        new org.apache.axis.description.TypeDesc(RecibirOrdenDespachoResponse.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "item"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespachoResponse"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idArticulo");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "id-articulo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setFieldName("_return");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "return"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "respuestaGenerica"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("cantidad");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "cantidad"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
     }

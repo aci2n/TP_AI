@@ -7,7 +7,7 @@
 
 package ws.orden;
 
-public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axis.client.Stub implements ws.orden.IRecibirOrdenDespachoWs {
+public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axis.client.Stub implements ws.orden.RecibirOrdenDespachoWs {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -24,14 +24,13 @@ public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axi
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("recibirOrdenDespacho");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "despacho"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://logistica.interfaces/", "orden-despacho"), ws.orden.OrdenDespacho.class, false, false);
-        param.setOmittable(true);
+        oper.setName("RecibirOrdenDespacho");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespacho"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespacho"), ws.orden.RecibirOrdenDespacho.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://logistica.interfaces/", "respuestaGenerica"));
-        oper.setReturnClass(ws.orden.RespuestaGenerica.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setReturnType(new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespachoResponse"));
+        oper.setReturnClass(ws.orden.RecibirOrdenDespachoResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespachoResponse"));
+        oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[0] = oper;
 
@@ -73,9 +72,23 @@ public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axi
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://logistica.interfaces/", "orden-despacho");
+            qName = new javax.xml.namespace.QName("http://logistica.interfaces/", "ordenDespacho");
             cachedSerQNames.add(qName);
             cls = ws.orden.OrdenDespacho.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespacho");
+            cachedSerQNames.add(qName);
+            cls = ws.orden.RecibirOrdenDespacho.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespachoResponse");
+            cachedSerQNames.add(qName);
+            cls = ws.orden.RecibirOrdenDespachoResponse.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -153,7 +166,7 @@ public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axi
         }
     }
 
-    public ws.orden.RespuestaGenerica recibirOrdenDespacho(ws.orden.OrdenDespacho despacho) throws java.rmi.RemoteException {
+    public ws.orden.RecibirOrdenDespachoResponse recibirOrdenDespacho(ws.orden.RecibirOrdenDespacho parameters) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -165,11 +178,11 @@ public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axi
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://logistica.interfaces/", "recibirOrdenDespacho"));
+        _call.setOperationName(new javax.xml.namespace.QName("", "RecibirOrdenDespacho"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {despacho});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {parameters});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -177,9 +190,9 @@ public class RecibirOrdenDespachoWsServiceSoapBindingStub extends org.apache.axi
         else {
             extractAttachments(_call);
             try {
-                return (ws.orden.RespuestaGenerica) _resp;
+                return (ws.orden.RecibirOrdenDespachoResponse) _resp;
             } catch (java.lang.Exception _exception) {
-                return (ws.orden.RespuestaGenerica) org.apache.axis.utils.JavaUtils.convert(_resp, ws.orden.RespuestaGenerica.class);
+                return (ws.orden.RecibirOrdenDespachoResponse) org.apache.axis.utils.JavaUtils.convert(_resp, ws.orden.RecibirOrdenDespachoResponse.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

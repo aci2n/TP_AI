@@ -43,7 +43,7 @@ public class TestBean extends GenericBean<PersistentObject> {
 	}
 
 	public Articulo articulo() {
-		return new Articulo(rs(), ri(), rs(), rs(), rd(), rs(), rs());
+		return new Articulo(rs(), rs(), rs(), rs(), rd(), rs(), rs());
 	}
 
 	public Log log() {

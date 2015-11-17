@@ -10,11 +10,11 @@ package ws.orden;
 public class OrdenDespacho  implements java.io.Serializable {
     private java.lang.String id_orden_despacho;
 
-    private java.lang.Integer id_orden_compra;
+    private int id_orden_compra;
 
     private java.lang.String id_logistica;
 
-    private java.util.Calendar fecha;
+    private java.lang.String fecha;
 
     private ws.orden.Item[] items;
 
@@ -23,9 +23,9 @@ public class OrdenDespacho  implements java.io.Serializable {
 
     public OrdenDespacho(
            java.lang.String id_orden_despacho,
-           java.lang.Integer id_orden_compra,
+           int id_orden_compra,
            java.lang.String id_logistica,
-           java.util.Calendar fecha,
+           java.lang.String fecha,
            ws.orden.Item[] items) {
            this.id_orden_despacho = id_orden_despacho;
            this.id_orden_compra = id_orden_compra;
@@ -60,7 +60,7 @@ public class OrdenDespacho  implements java.io.Serializable {
      * 
      * @return id_orden_compra
      */
-    public java.lang.Integer getId_orden_compra() {
+    public int getId_orden_compra() {
         return id_orden_compra;
     }
 
@@ -70,7 +70,7 @@ public class OrdenDespacho  implements java.io.Serializable {
      * 
      * @param id_orden_compra
      */
-    public void setId_orden_compra(java.lang.Integer id_orden_compra) {
+    public void setId_orden_compra(int id_orden_compra) {
         this.id_orden_compra = id_orden_compra;
     }
 
@@ -100,7 +100,7 @@ public class OrdenDespacho  implements java.io.Serializable {
      * 
      * @return fecha
      */
-    public java.util.Calendar getFecha() {
+    public java.lang.String getFecha() {
         return fecha;
     }
 
@@ -110,7 +110,7 @@ public class OrdenDespacho  implements java.io.Serializable {
      * 
      * @param fecha
      */
-    public void setFecha(java.util.Calendar fecha) {
+    public void setFecha(java.lang.String fecha) {
         this.fecha = fecha;
     }
 
@@ -157,9 +157,7 @@ public class OrdenDespacho  implements java.io.Serializable {
             ((this.id_orden_despacho==null && other.getId_orden_despacho()==null) || 
              (this.id_orden_despacho!=null &&
               this.id_orden_despacho.equals(other.getId_orden_despacho()))) &&
-            ((this.id_orden_compra==null && other.getId_orden_compra()==null) || 
-             (this.id_orden_compra!=null &&
-              this.id_orden_compra.equals(other.getId_orden_compra()))) &&
+            this.id_orden_compra == other.getId_orden_compra() &&
             ((this.id_logistica==null && other.getId_logistica()==null) || 
              (this.id_logistica!=null &&
               this.id_logistica.equals(other.getId_logistica()))) &&
@@ -183,9 +181,7 @@ public class OrdenDespacho  implements java.io.Serializable {
         if (getId_orden_despacho() != null) {
             _hashCode += getId_orden_despacho().hashCode();
         }
-        if (getId_orden_compra() != null) {
-            _hashCode += getId_orden_compra().hashCode();
-        }
+        _hashCode += getId_orden_compra();
         if (getId_logistica() != null) {
             _hashCode += getId_logistica().hashCode();
         }
@@ -212,7 +208,7 @@ public class OrdenDespacho  implements java.io.Serializable {
         new org.apache.axis.description.TypeDesc(OrdenDespacho.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "orden-despacho"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "ordenDespacho"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("id_orden_despacho");
         elemField.setXmlName(new javax.xml.namespace.QName("", "id_orden_despacho"));
@@ -224,7 +220,6 @@ public class OrdenDespacho  implements java.io.Serializable {
         elemField.setFieldName("id_orden_compra");
         elemField.setXmlName(new javax.xml.namespace.QName("", "id_orden_compra"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
-        elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -237,7 +232,7 @@ public class OrdenDespacho  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("fecha");
         elemField.setXmlName(new javax.xml.namespace.QName("", "fecha"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -246,7 +241,7 @@ public class OrdenDespacho  implements java.io.Serializable {
         elemField.setXmlName(new javax.xml.namespace.QName("", "items"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://logistica.interfaces/", "item"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(true);
+        elemField.setNillable(false);
         elemField.setMaxOccursUnbounded(true);
         typeDesc.addFieldDesc(elemField);
     }

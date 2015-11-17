@@ -2,11 +2,9 @@ package view;
 
 import java.util.List;
 
-import entity.Articulo;
-
 public class ArticuloView {
 	private String nombre;
-	private int codigo;
+	private String codigo;
 	private String descripcion;
 	private String marca;
 	private double precio;
@@ -22,11 +20,11 @@ public class ArticuloView {
 		this.nombre = nombre;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 

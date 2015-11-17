@@ -24,7 +24,7 @@ function asignarDespachoSubmit(e) {
 		})
 		.always(function(response) {
 			loading.hide();
-			$('#modal-asignar-despacho-msg').text(response.estado ? response.estado + ' - ' + response.mensaje : response.responseText);
+			$('#modal-asignar-despacho-msg').text(response.responseText);
 		});
 }
 

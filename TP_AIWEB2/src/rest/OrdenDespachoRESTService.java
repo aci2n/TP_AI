@@ -1,7 +1,6 @@
 package rest;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -24,11 +23,12 @@ import response.RecibirCambioEstadoResponse;
 import util.Utilities;
 import view.ItemArticuloView;
 import view.VentaView;
-import ws.orden.IRecibirOrdenDespachoWs;
-import ws.orden.IRecibirOrdenDespachoWsProxy;
 import ws.orden.Item;
 import ws.orden.OrdenDespacho;
-import ws.orden.RespuestaGenerica;
+import ws.orden.RecibirOrdenDespacho;
+import ws.orden.RecibirOrdenDespachoResponse;
+import ws.orden.RecibirOrdenDespachoWs;
+import ws.orden.RecibirOrdenDespachoWsProxy;
 
 @Stateless
 @Path("/OrdenDeDespacho")
@@ -69,27 +69,29 @@ public class OrdenDespachoRESTService {
 	public Response enviarOrden(@FormParam("idVenta") int idVenta, @FormParam("idDespacho") int idDespacho) {
 		try {
 			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho)) + "DespachoWeb/RecibirOrdenDespachoWs";
-			IRecibirOrdenDespachoWs ws = new IRecibirOrdenDespachoWsProxy(url);
+			RecibirOrdenDespachoWs ws = new RecibirOrdenDespachoWsProxy(url);
 
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);
 
 			List<Item> wsItems = new ArrayList<Item>();
 			for (ItemArticuloView ia : venta.getArticulos()) {
-				Item i = new Item(String.valueOf(ia.getArticulo().getCodigo()), ia.getCantidad());
+				Item i = new Item(ia.getArticulo().getCodigo(), ia.getCantidad());
 				wsItems.add(i);
 			}
 
-			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16", Calendar.getInstance(),
-					wsItems.toArray(new Item[wsItems.size()]));
+			OrdenDespacho wsOrden = new OrdenDespacho(venta.getOrden().getId().toString(), venta.getId(), "16",
+					Utilities.dateToString(venta.getFecha()), wsItems.toArray(new Item[wsItems.size()]));
 
-			RespuestaGenerica respuesta = ws.recibirOrdenDespacho(wsOrden);
-			if (respuesta.getEstado().equals("200") || respuesta.getEstado().equalsIgnoreCase("SUCCESS")) {
+			RecibirOrdenDespachoResponse respuesta = ws.recibirOrdenDespacho(new RecibirOrdenDespacho(wsOrden));
+			
+			String estado = respuesta.get_return().getEstado();
+			if (estado.equalsIgnoreCase("OK")) {
 				ordenesDespachoBean.actualizarOrden(venta.getOrden().getId(), Estado.ACTIVO);
 			}
-			return Response.status(200).entity(respuesta).build();
+			return Response.status(200).entity(estado + " - " + respuesta.get_return().getMensaje()).build();
 		} catch (Exception e) {
 			return Response.status(400).entity(Utilities.generarMensajeError(e)).build();
-		}
+		} // ksae7162
 	}
 
 }

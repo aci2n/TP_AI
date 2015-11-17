@@ -18,7 +18,7 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "codigo")
-	private int codigo;
+	private String codigo;
 	@Column(name = "descripcion")
 	private String descripcion;
 	@Column(name = "marca")
@@ -40,6 +40,17 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 	public Articulo(String nombre, int codigo, String descripcion, String marca, double precio, String pathFoto,
 			String origen) {
 		this.nombre = nombre;
+		this.codigo = String.valueOf(codigo);
+		this.descripcion = descripcion;
+		this.marca = marca;
+		this.precio = precio;
+		this.pathFoto = pathFoto;
+		this.origen = origen;
+	}
+	
+	public Articulo(String nombre, String codigo, String descripcion, String marca, double precio, String pathFoto,
+			String origen) {
+		this.nombre = nombre;
 		this.codigo = codigo;
 		this.descripcion = descripcion;
 		this.marca = marca;
@@ -56,11 +67,11 @@ public class Articulo extends PersistentObject implements ViewGenerator<Articulo
 		this.nombre = nombre;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 

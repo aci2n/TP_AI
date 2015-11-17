@@ -59,4 +59,8 @@ public class Utilities {
 		}
 	}
 
+	public static String dateToString(Date fecha) {
+		return new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(fecha);
+	}
+
 }

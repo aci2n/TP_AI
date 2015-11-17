@@ -10,7 +10,7 @@ package ws.orden;
 public interface RecibirOrdenDespachoWsService extends javax.xml.rpc.Service {
     public java.lang.String getRecibirOrdenDespachoWsPortAddress();
 
-    public ws.orden.IRecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort() throws javax.xml.rpc.ServiceException;
+    public ws.orden.RecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort() throws javax.xml.rpc.ServiceException;
 
-    public ws.orden.IRecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    public ws.orden.RecibirOrdenDespachoWs getRecibirOrdenDespachoWsPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }

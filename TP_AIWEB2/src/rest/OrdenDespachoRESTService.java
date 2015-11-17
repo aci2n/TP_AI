@@ -83,7 +83,7 @@ public class OrdenDespachoRESTService {
 					Utilities.dateToString(venta.getFecha()), wsItems.toArray(new Item[wsItems.size()]));
 
 			RecibirOrdenDespachoResponse respuesta = ws.recibirOrdenDespacho(new RecibirOrdenDespacho(wsOrden));
-			
+
 			String estado = respuesta.get_return().getEstado();
 			if (estado.equalsIgnoreCase("OK")) {
 				ordenesDespachoBean.actualizarOrden(venta.getOrden().getId(), Estado.ACTIVO);

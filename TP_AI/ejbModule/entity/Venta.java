@@ -139,7 +139,6 @@ public class Venta extends PersistentObject implements ViewGenerator<VentaView> 
 		vv.setFecha(fecha);
 		vv.setOrden(ViewUtil.getViewChecked(orden));
 		vv.setPortal(portal);
-		vv.setTotal(total);
 		vv.setUsuario(ViewUtil.getViewChecked(usuario));
 		return vv;
 	}

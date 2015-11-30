@@ -68,7 +68,10 @@ public class OrdenDespachoRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response enviarOrden(@FormParam("idVenta") int idVenta, @FormParam("idDespacho") int idDespacho) {
 		try {
-			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho)) + "DespachoWeb/RecibirOrdenDespachoWs";
+			
+			// DespachoWeb/RecibirOrdenDespachoWs
+			
+			String url = Utilities.normalizarUrl(modulosBean.getUrlModulo(idDespacho, Modulos.Despacho)) + "RecibirOrdenDespachoWs";
 			RecibirOrdenDespachoWs ws = new RecibirOrdenDespachoWsProxy(url);
 
 			VentaView venta = ventasBean.asignarDespachoAVenta(idVenta, idDespacho);

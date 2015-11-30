@@ -46,7 +46,8 @@ public class ArticulosRESTService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response enviarBestSellers(@FormParam("id") int id) {
 		try {
-			String urlString = Utilities.normalizarUrl(modulos.getUrlModulo(id, Modulos.Portal)) + "PortalWEB/rest/articulo";
+			
+			String urlString = Utilities.normalizarUrl(modulos.getUrlModulo(id, Modulos.Portal)) + "rest/articulo";
 
 			URL url = new URL(urlString);
 

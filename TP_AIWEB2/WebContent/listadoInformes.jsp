@@ -30,7 +30,9 @@
 
 		var ip = "localhost";
 		var puerto = "8080";
-		var json;	
+		var json;
+		var timerInterval = 0;
+		var flag = 0;	
 		
 		$("#enviar_informes").click(function(){
 			
@@ -41,11 +43,15 @@
 					success : function(data) {
 						alert("Informes enviados");
 						$("#tbody").empty();
+						clearInterval(timerInterval);
+						$("#consultar_informes").removeClass("btn-warning");
+						$("#consultar_informes").addClass("btn-success");
+						flag = 0;
 					}		
 				});
 			});
 
-		$("#consultar_informes").click(function(){
+		/* $("#consultar_informes").click(function(){
 			$.ajax({
 				type : "GET",
 				dataType : "json",
@@ -68,6 +74,46 @@
 						}
 					}
 				});	
+			}); */
+
+			$("#consultar_informes").click(function(){
+
+				if(flag == 0){
+					flag = 1;
+					$("#consultar_informes").removeClass("btn-success");
+					$("#consultar_informes").addClass("btn-warning");
+				}
+				else{
+					$("#consultar_informes").removeClass("btn-warning");
+					$("#consultar_informes").addClass("btn-success");
+					flag = 0;
+				}
+				
+				timerInterval = setInterval(function() {
+					if(flag == 1){
+					$.ajax({
+						type : "GET",
+						dataType : "json",
+						url : "rest/logsMonitor/all",
+						success : function(data) {
+
+							var cantidadFilas = $('#tbody tr').length;
+							json = data;
+							if(data.length > cantidadFilas){
+									
+								$("#tbody").empty();
+								$.each(data, function(i, val) {	
+
+									var fecha = formatFecha(val.fecha);
+									var hora = formatHora(val.fecha);
+																						
+									$('#tbody').append("<tr><td>"+val.modulo+"</td><td>"+val.descripcion+"</td><td>"
+											+fecha+"</td><td>"+hora+"</td></tr>");
+								});
+							}
+						}
+					})};
+			}, 2000);
 			});
 			
 
@@ -93,7 +139,5 @@
 			}	
 		
 		});
-
-	
 	
 </script>

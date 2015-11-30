@@ -12,7 +12,6 @@ public class VentaView {
 	private String codigo;
 	private Date fecha;
 	private String portal;
-	private double total;
 	private CoordenadaView destino;
 	private OrdenDespachoView orden;
 	private UsuarioView usuario;
@@ -42,11 +41,13 @@ public class VentaView {
 	}
 
 	public double getTotal() {
+		double total = 0;
+		if (articulos != null) {
+			for (ItemArticuloView articulo : articulos) {
+				total += articulo.getCantidad() * articulo.getArticulo().getPrecio();
+			}
+		}
 		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
 	}
 
 	public CoordenadaView getDestino() {

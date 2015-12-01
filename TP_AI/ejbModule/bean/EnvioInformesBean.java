@@ -36,8 +36,8 @@ public class EnvioInformesBean {
 
 		String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
 		String DEFAULT_DESTINATION = "java:/jms/queue/MailQueue";
-		String DEFAULT_USERNAME = "#";
-		String DEFAULT_PASSWORD = "guest";
+		String DEFAULT_USERNAME = "guest";
+		String DEFAULT_PASSWORD = "guest123";
 		String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
 		String PROVIDER_URL = "http-remoting://localhost:8080";
 

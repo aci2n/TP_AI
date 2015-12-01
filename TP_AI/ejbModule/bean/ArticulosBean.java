@@ -17,14 +17,14 @@ public class ArticulosBean extends GenericBean<Articulo> {
 	}
 
 	public List<BestSellerView> getBestSellers() {
-		List<Integer> cantidadesVendidas = (List<Integer>) em
+		List<String> cantidadesVendidas = (List<String>) em
 				.createQuery(
-						"select a.id from ItemArticulo iv inner join iv.articulo a group by a.id order by sum(iv.cantidad) desc")
+						"select a.codigo from ItemArticulo iv inner join iv.articulo a group by a.codigo order by sum(iv.cantidad) desc")
 				.getResultList();
 
 		List<BestSellerView> bestSellers = new ArrayList<>();
 		for (int i = 0; i < cantidadesVendidas.size(); i++) {
-			bestSellers.add(new BestSellerView(i + 1, cantidadesVendidas.get(i)));
+			bestSellers.add(new BestSellerView(cantidadesVendidas.get(i), i + 1));
 		}
 
 		return bestSellers;

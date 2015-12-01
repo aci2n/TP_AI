@@ -1,19 +1,19 @@
 package view;
 
 public class BestSellerView {
-	private Integer idArticulo;
+	private String idArticulo;
 	private Integer ranking;
 
-	public BestSellerView(Integer idArticulo, Integer ranking) {
+	public BestSellerView(String idArticulo, Integer ranking) {
 		this.idArticulo = idArticulo;
 		this.ranking = ranking;
 	}
 
-	public Integer getIdArticulo() {
+	public String getIdArticulo() {
 		return idArticulo;
 	}
 
-	public void setIdArticulo(Integer idArticulo) {
+	public void setIdArticulo(String idArticulo) {
 		this.idArticulo = idArticulo;
 	}
 

@@ -32,20 +32,20 @@ public class ServletInicio extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		List<Modulo> m = moduloBean.getMiConfiguracion();
-		if (m != null) {
-			// m = moduloBean.setMiConfiguracion(new Modulo(Modulos.Email,
-			// "localhost", "8180", null));
-			request.setAttribute("ip", m.get(0).getIp());
-			request.setAttribute("puerto", m.get(0).getPort());
-		}
-
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//
+//		List<Modulo> m = moduloBean.getMiConfiguracion();
+//		if (m != null) {
+//			// m = moduloBean.setMiConfiguracion(new Modulo(Modulos.Email,
+//			// "localhost", "8180", null));
+//			request.setAttribute("ip", m.get(0).getIp());
+//			request.setAttribute("puerto", m.get(0).getPort());
+//		}
+//
+//		request.getRequestDispatcher("index.jsp").forward(request, response);
+//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

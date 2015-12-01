@@ -42,29 +42,29 @@ public class ServletAgregarConfiguracion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		String ip = (String) request.getParameter("ip_dir");
-		String puerto = request.getParameter("puerto");
-		String cola = request.getParameter("cola");
-
-		if (moduloBean.getMiConfiguracion() == null) {
-
-			Modulo m = new Modulo(Modulos.Email, ip, puerto, cola);
-			moduloBean.setMiConfiguracion(m);
-
-			request.setAttribute("modulo", m.getmodulo().toString());
-			request.setAttribute("ip", m.getIp());
-			request.setAttribute("puerto", m.getPort());
-			request.setAttribute("cola", m.getCola());
-			if (m.isActivo())
-				request.setAttribute("activo", "Si");
-			else
-				request.setAttribute("activo", "No");
-		}
-
-		request.getRequestDispatcher("configuracion.jsp").forward(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//
+//		String ip = (String) request.getParameter("ip_dir");
+//		String puerto = request.getParameter("puerto");
+//		String cola = request.getParameter("cola");
+//
+//		if (moduloBean.getMiConfiguracion() == null) {
+//
+//			Modulo m = new Modulo(Modulos.Email, ip, puerto, cola);
+//			moduloBean.setMiConfiguracion(m);
+//
+//			request.setAttribute("modulo", m.getmodulo().toString());
+//			request.setAttribute("ip", m.getIp());
+//			request.setAttribute("puerto", m.getPort());
+//			request.setAttribute("cola", m.getCola());
+//			if (m.isActivo())
+//				request.setAttribute("activo", "Si");
+//			else
+//				request.setAttribute("activo", "No");
+//		}
+//
+//		request.getRequestDispatcher("configuracion.jsp").forward(request, response);
+//	}
 
 }
